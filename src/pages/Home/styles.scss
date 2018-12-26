@@ -1,0 +1,38 @@
+.home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .cd {
+    margin-bottom: 40px;
+    fill: #000;
+    stroke: 0;
+    animation-direction: normal;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: "rotate";
+    animation-timing-function: linear;
+  }
+
+  .button {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #2b2b2b;
+    border-radius: 4px;
+    top: 100px;
+    position: relative;
+    color: #fff;
+    box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.34);
+    transition: transform .5s;
+
+    &:active {
+      box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.34);
+    }
+  }
+}
+
+@keyframes rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

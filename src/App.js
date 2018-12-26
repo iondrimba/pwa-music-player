@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
+import FastAverageColor from 'fast-average-color/dist/index.es6';
 import './App.scss';
 
 const percent = (current, total) => {
@@ -10,6 +11,7 @@ class App extends Component {
   constructor() {
     super();
 
+    this.fac = new FastAverageColor();
     this.state = {
       tracks: [],
       audio: {},
@@ -51,7 +53,7 @@ class App extends Component {
     })
 
     this.audioElement.addEventListener('timeupdate', (evt) => {
-      const scale = percent(evt.target.currentTime, evt.target.duration)/100;
+      const scale = percent(evt.target.currentTime, evt.target.duration) / 100;
 
 
       const item = document.querySelector(`[item-id="${this.state.id}"]`);
@@ -68,8 +70,6 @@ class App extends Component {
     const id = evt.currentTarget.attributes['track-id'].value;
     const track = this.state.tracks.filter((track) => Number(id) === track.id)[0];
 
-    console.log(id, track, track.stream_url);
-
     this.audioElement.src = `${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`;
 
     this.audioCtx.resume();
@@ -82,6 +82,11 @@ class App extends Component {
     this.audioElement.pause();
   }
 
+  onLoadImage = async (evt) => {
+    const color = this.fac.getColor(evt.target, { algorithm: 'simple' });
+    evt.target.parentNode.style.backgroundColor  = color.hex;
+  }
+
   render() {
     return (
       <div className="App">
@@ -91,7 +96,7 @@ class App extends Component {
               return <li key={track.id} item-id={track.id}>
                 <h2>{track.title}</h2>
                 <span>{track.user.username}</span>
-                <img src={track.artwork_url} alt={`album artwork from track ${track.title}`} />
+                <img crossOrigin="" src={track.artwork_url} alt={`album artwork from track ${track.title}`} onLoad={this.onLoadImage} />
                 <button onClick={this.onPlayClick} track-id={track.id}>play</button>
                 <button onClick={this.onPauseClick} track-id={track.id}>pause</button>
                 <div className="progress-bar"></div>

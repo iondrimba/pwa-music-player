@@ -7,6 +7,19 @@ const percent = (current, total) => {
   return (current / total) * 100
 }
 
+const convertSecondsToMMss = (totalSeconds) => {
+  const sec_num = parseInt(totalSeconds, 10);
+  let hours = Math.floor(sec_num / 3600);
+  let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+  let seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+  if (hours < 10) { hours = "0" + hours; }
+  if (minutes < 10) { minutes = "0" + minutes; }
+  if (seconds < 10) { seconds = "0" + seconds; }
+
+  return `${minutes}:${seconds}`;
+}
+
 class App extends Component {
   constructor() {
     super();
@@ -14,8 +27,8 @@ class App extends Component {
     this.fac = new FastAverageColor();
     this.state = {
       tracks: [],
-      audio: {},
-      progress: {}
+      id: 0,
+      currentTime: 0,
     }
   }
 
@@ -26,8 +39,11 @@ class App extends Component {
       })
       .then((result) => {
         this.setState(() => ({
-          tracks: [...result[0].tracks],
-          id: 0,
+          tracks: [...result[0].tracks.map((track) => {
+            Object.assign(track, { currentTime: 0 });
+
+            return track;
+          })],
         }));
 
         this.setupAudio();
@@ -59,7 +75,10 @@ class App extends Component {
       const item = document.querySelector(`[item-id="${this.state.id}"]`);
       item.querySelector('.progress-bar');
 
-      console.log(scale);
+      const track = this.state.tracks.filter((track) => Number(this.state.id) === track.id)[0];
+      track.currentTime = evt.target.currentTime;
+
+      this.setState({currentTime: track.currentTime});
 
       item.querySelector('.progress-bar').style = `transform: scaleX(${scale})`;
 
@@ -84,7 +103,7 @@ class App extends Component {
 
   onLoadImage = async (evt) => {
     const color = this.fac.getColor(evt.target, { algorithm: 'simple' });
-    evt.target.parentNode.style.backgroundColor  = color.hex;
+    evt.target.parentNode.style.backgroundColor = color.hex;
   }
 
   render() {
@@ -100,6 +119,8 @@ class App extends Component {
                 <button onClick={this.onPlayClick} track-id={track.id}>play</button>
                 <button onClick={this.onPauseClick} track-id={track.id}>pause</button>
                 <div className="progress-bar"></div>
+                <time className="current">{convertSecondsToMMss(Number(track.id) === Number(this.state.id) ? this.state.currentTime : 0)}</time>
+                <time className="duration">{convertSecondsToMMss(track.duration / 1000)}</time>
               </li>
             })
           }

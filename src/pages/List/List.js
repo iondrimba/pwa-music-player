@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
 import FastAverageColor from 'fast-average-color/dist/index.es6';
-import './App.scss';
+import '../App.scss';
 
 const percent = (current, total) => {
   return (current / total) * 100
@@ -20,7 +20,7 @@ const convertSecondsToMMss = (totalSeconds) => {
   return `${minutes}:${seconds}`;
 }
 
-class App extends Component {
+class List extends Component {
   constructor() {
     super();
 
@@ -130,4 +130,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default List;

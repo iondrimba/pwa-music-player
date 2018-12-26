@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
 import FastAverageColor from 'fast-average-color/dist/index.es6';
-import '../App.scss';
+import styles from './styles.scss';
 
 const percent = (current, total) => {
   return (current / total) * 100
@@ -30,6 +30,9 @@ class List extends Component {
       id: 0,
       currentTime: 0,
     }
+
+    this.timeupdate  = this.timeupdate.bind(this);
+    this.loadeddata = this.loadeddata.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +58,10 @@ class List extends Component {
     this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     this.analyser = this.audioCtx.createAnalyser();
 
-    this.source = this.audioCtx.createMediaElementSource(this.audioElement);
+    if (!this.source) {
+      this.source = this.audioCtx.createMediaElementSource(this.audioElement);
+    }
+
     this.source.connect(this.analyser);
     this.source.connect(this.audioCtx.destination);
 
@@ -64,26 +70,30 @@ class List extends Component {
     this.frequencyData = new Uint8Array(this.bufferLength);
     this.audioElement.volume = .5;
 
-    this.audioElement.addEventListener('loadeddata', (evt) => {
-      console.log(evt.target.duration);
-    })
+    this.audioElement.addEventListener('loadeddata', this.loadeddata);
 
-    this.audioElement.addEventListener('timeupdate', (evt) => {
-      const scale = percent(evt.target.currentTime, evt.target.duration) / 100;
-
-
-      const item = document.querySelector(`[item-id="${this.state.id}"]`);
-      item.querySelector('.progress-bar');
-
-      const track = this.state.tracks.filter((track) => Number(this.state.id) === track.id)[0];
-      track.currentTime = evt.target.currentTime;
-
-      this.setState({currentTime: track.currentTime});
-
-      item.querySelector('.progress-bar').style = `transform: scaleX(${scale})`;
-
-    })
+    this.audioElement.addEventListener('timeupdate', this.timeupdate);
   }
+
+  loadeddata(evt) {
+    console.log(evt.target.duration);
+  }
+
+  timeupdate(evt) {
+    const scale = percent(evt.target.currentTime, evt.target.duration) / 100;
+
+
+    const item = document.querySelector(`[item-id="${this.state.id}"]`);
+    item.querySelector('.progress-bar');
+
+    const track = this.state.tracks.filter((track) => Number(this.state.id) === track.id)[0];
+    track.currentTime = evt.target.currentTime;
+
+    this.setState({currentTime: track.currentTime});
+
+    item.querySelector('.progress-bar').style = `transform: scaleX(${scale})`;
+  }
+
 
   onPlayClick = (evt) => {
     const id = evt.currentTarget.attributes['track-id'].value;
@@ -106,9 +116,19 @@ class List extends Component {
     evt.target.parentNode.style.backgroundColor = color.hex;
   }
 
+  componentWillUnmount() {
+    this.audioElement.pause();
+    this.audioCtx = null;
+    this.analyser = null;
+    this.source = null;
+    this.audioElement.removeEventListener('timeupdate', this.timeupdate);
+    this.audioElement.addEventListener('loadeddata', this.loadeddata);
+    this.audioElement = null;
+  }
+
   render() {
     return (
-      <div className="App">
+      <div className="list page">
         <ul>
           {
             this.state.tracks.map((track) => {

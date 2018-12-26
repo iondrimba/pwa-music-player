@@ -30,3 +30,12 @@
     transform: rotate(360deg);
   }
 }
+
+.progress-bar {
+  width: 30%;
+  height: 10px;
+  background-color: red;
+  margin: 0 auto;
+  transform: scaleX(0);
+  transform-origin: left;
+}

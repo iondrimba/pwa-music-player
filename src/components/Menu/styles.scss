@@ -7,5 +7,23 @@
   align-items: center;
   padding: 20px 20px;
   box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.06);
-  z-index: 2;
+  z-index: 3;
+
+  &--home {
+    display: none;
+  }
+
+  &--detail {
+    box-shadow: none;
+    justify-content: flex-start;
+
+    .help {
+      display: none;
+    }
+
+    .menu__title {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }

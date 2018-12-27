@@ -14,4 +14,11 @@ body {
 
 .page {
   width: 100%;
+  height: calc(100% - 80px);
+  overflow: hidden;
+  position: relative;
+
+  > div {
+    height: 100%;
+  }
 }

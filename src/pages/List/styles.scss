@@ -1,3 +1,53 @@
 .list {
   overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  background: #fff;
+
+  .track-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .controls {
+    display:none;
+  }
+
+  .row {
+    display: flex;
+    padding: 10px;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 95%;
+      height: 1px;
+      background-color: #e4e4e4;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .album {
+    &__cover {
+      border-radius: 4px;
+      display: block;
+    }
+  }
+
+  .info {
+    margin: 0 10px;
+
+    &__track {
+      margin: 0;
+      font-size: 12pt;
+    }
+  }
+
 }

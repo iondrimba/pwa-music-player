@@ -25,6 +25,7 @@
     color: #fff;
     box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.34);
     transition: transform .5s;
+    border: 0;
 
     &:active {
       box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.34);

@@ -1,11 +1,6 @@
 /* eslint-disable no-undef */
-import React, { Component } from 'react';
-import FastAverageColor from 'fast-average-color/dist/index.es6';
+import React, { Component, Fragment } from 'react';
 import styles from './styles.scss';
-
-const percent = (current, total) => {
-  return (current / total) * 100
-}
 
 const convertSecondsToMMss = (totalSeconds) => {
   const sec_num = parseInt(totalSeconds, 10);
@@ -24,128 +19,41 @@ class List extends Component {
   constructor() {
     super();
 
-    this.fac = new FastAverageColor();
-    this.state = {
-      tracks: [],
-      id: 0,
-      currentTime: 0,
-    }
-
-    this.timeupdate  = this.timeupdate.bind(this);
-    this.loadeddata = this.loadeddata.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount() {
-    fetch(`http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        this.setState(() => ({
-          tracks: [...result[0].tracks.map((track) => {
-            Object.assign(track, { currentTime: 0 });
+  onClick(evt) {
+    const id = Number(evt.currentTarget.attributes['item-id'].value);
 
-            return track;
-          })],
-        }));
-
-        this.setupAudio();
-      });
-  }
-
-  setupAudio() {
-    this.audioElement = document.getElementById('audio');
-    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    this.analyser = this.audioCtx.createAnalyser();
-
-    if (!this.source) {
-      this.source = this.audioCtx.createMediaElementSource(this.audioElement);
-    }
-
-    this.source.connect(this.analyser);
-    this.source.connect(this.audioCtx.destination);
-
-    this.bufferLength = this.analyser.frequencyBinCount;
-
-    this.frequencyData = new Uint8Array(this.bufferLength);
-    this.audioElement.volume = .5;
-
-    this.audioElement.addEventListener('loadeddata', this.loadeddata);
-
-    this.audioElement.addEventListener('timeupdate', this.timeupdate);
-  }
-
-  loadeddata(evt) {
-    console.log(evt.target.duration);
-  }
-
-  timeupdate(evt) {
-    const scale = percent(evt.target.currentTime, evt.target.duration) / 100;
-
-
-    const item = document.querySelector(`[item-id="${this.state.id}"]`);
-    item.querySelector('.progress-bar');
-
-    const track = this.state.tracks.filter((track) => Number(this.state.id) === track.id)[0];
-    track.currentTime = evt.target.currentTime;
-
-    this.setState({currentTime: track.currentTime});
-
-    item.querySelector('.progress-bar').style = `transform: scaleX(${scale})`;
-  }
-
-
-  onPlayClick = (evt) => {
-    const id = evt.currentTarget.attributes['track-id'].value;
-    const track = this.state.tracks.filter((track) => Number(id) === track.id)[0];
-
-    this.audioElement.src = `${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`;
-
-    this.audioCtx.resume();
-    this.audioElement.play();
-
-    this.setState({ id });
-  }
-
-  onPauseClick = (evt) => {
-    this.audioElement.pause();
-  }
-
-  onLoadImage = async (evt) => {
-    const color = this.fac.getColor(evt.target, { algorithm: 'simple' });
-    evt.target.parentNode.style.backgroundColor = color.hex;
-  }
-
-  componentWillUnmount() {
-    this.audioElement.pause();
-    this.audioCtx = null;
-    this.analyser = null;
-    this.source = null;
-    this.audioElement.removeEventListener('timeupdate', this.timeupdate);
-    this.audioElement.addEventListener('loadeddata', this.loadeddata);
-    this.audioElement = null;
+    this.props.onClick(id);
   }
 
   render() {
     return (
-      <div className="list page">
-        <ul>
+      <Fragment>
+        <ul className="track-list">
           {
-            this.state.tracks.map((track) => {
-              return <li key={track.id} item-id={track.id}>
-                <h2>{track.title}</h2>
-                <span>{track.user.username}</span>
-                <img crossOrigin="" src={track.artwork_url} alt={`album artwork from track ${track.title}`} onLoad={this.onLoadImage} />
-                <button onClick={this.onPlayClick} track-id={track.id}>play</button>
-                <button onClick={this.onPauseClick} track-id={track.id}>pause</button>
-                <div className="progress-bar"></div>
-                <time className="current">{convertSecondsToMMss(Number(track.id) === Number(this.state.id) ? this.state.currentTime : 0)}</time>
-                <time className="duration">{convertSecondsToMMss(track.duration / 1000)}</time>
+            this.props.tracks.map((track) => {
+              return <li className="row" key={track.id} item-id={track.id} onClick={this.onClick}>
+                <div className="album">
+                  <img className="album__cover" crossOrigin="" src={track.artwork_url} alt={`album artwork from track ${track.title}`} onLoad={this.onLoadImage} />
+                </div>
+                <div className="info">
+                  <h2 className="info__track">{track.title}</h2>
+                  <span className="info___artist">{track.user.username}</span>
+                </div>
+                <div className="controls">
+                  <button onClick={this.onPlayClick} track-id={track.id}>play</button>
+                  <button onClick={this.onPauseClick} track-id={track.id}>pause</button>
+                  <div className="progress-bar"></div>
+                  <time className="current">{convertSecondsToMMss(Number(track.id) === Number(0) ? 0 : 0)}</time>
+                  <time className="duration">{convertSecondsToMMss(track.duration / 1000)}</time>
+                </div>
               </li>
             })
           }
         </ul>
-      </div>
+      </Fragment>
     );
   }
 }

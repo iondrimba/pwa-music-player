@@ -18,13 +18,41 @@ class App extends Component {
 
     this.state = {
       tracks: [],
+      previousView: '/',
       currentView: '',
       track: {
         currentTime: 0,
         percentage: 0,
         paused: false,
       },
-    }
+    };
+
+    this.views = {
+      list: {
+        view: (key) => {
+          this.views[key].loaded = true;
+
+          return <List tracks={this.state.tracks} onClick={this.onListClck} />
+        },
+        loaded: false,
+      },
+      detail: {
+        view: (key) => {
+          this.views[key].loaded = true;
+
+          return <Detail track={this.state.track} onPlayClick={this.onPlayClick} onPauseClick={this.onPauseClick} />
+        },
+        loaded: false,
+      },
+      about: {
+        view: (key) => {
+          this.views[key].loaded = true;
+
+          return <About />
+        },
+        loaded: false
+      }
+    };
 
     this.history = createHistory();
     this.fetchPlayList = this.fetchPlayList.bind(this);
@@ -36,29 +64,37 @@ class App extends Component {
 
     this.onPauseClick = this.onPauseClick.bind(this);
     this.onPlayClick = this.onPlayClick.bind(this);
+    this.onBackClick = this.onBackClick.bind(this);
+    this.onAboutClick = this.onAboutClick.bind(this);
   }
 
   componentDidMount() {
     this.setupAudio();
+
+    this.history.push('/', 'home');
   }
 
   fetchPlayList() {
-    fetch(`http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        this.setState(() => ({
-          tracks: [...result[0].tracks.map((track) => {
-            Object.assign(track, { currentTime: 0 });
+    if (this.state.tracks.length === 0) {
+      fetch(`http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((result) => {
+          this.setState(() => ({
+            tracks: [...result[0].tracks.map((track) => {
+              Object.assign(track, { currentTime: 0 });
 
-            return track;
-          })],
-          playlistLoaded: true,
-        }));
+              return track;
+            })],
+            playlistLoaded: true,
+          }));
 
-        this.history.push('/List', 'list');
-      });
+          this.history.push('/List', 'list');
+        });
+    } else {
+      this.history.push('/List', 'list');
+    }
   }
 
   selectTrack(id) {
@@ -90,7 +126,9 @@ class App extends Component {
   }
 
   onListClck(id) {
-    this.setState({ track: { ...this.selectTrack(id), currentTime: 0 } });
+    this.setState({ track: { ...this.selectTrack(id), currentTime: 0, percentage: 0 } });
+
+    this.audioElement.src = '';
 
     this.history.push(`/Destail/${id}`, 'detail');
   }
@@ -110,24 +148,43 @@ class App extends Component {
     this.setState({ track: { ...track, paused: true } });
   }
 
+  onBackClick() {
+    this.history.go(-1);
+
+    this.setState({ currentView: this.history.location.state || '/' });
+  }
+
+  onAboutClick() {
+
+  }
+
+  displayView(key) {
+    if (this.views[this.state.currentView] && !this.views[this.state.currentView].loaded) {
+      return this.views[this.state.currentView].view(this.state.currentView);
+    } else {
+      const view = Object.entries(this.views).filter((k, v) => {
+        return k[0] === key && k[1].loaded;
+      });
+
+      return view.length ? view[0][1].view(key) : null;
+    }
+  }
+
   render() {
     return (
       <div className="app">
         <div className="shell">
-          <Menu />
+          <Menu history={this.history} activeView={this.state.currentView} onBackClick={this.onBackClick} onAboutClick={this.onAboutClick} />
           <div className="page">
             <div className="home">
               <Home onStartClick={this.fetchPlayList} />
             </div>
-            <Suspense fallback={<div>Loading 1...</div>}>
-              <div className="list">
-                {this.state.currentView === 'list' ? <List tracks={this.state.tracks} onClick={this.onListClck} /> : null}
+            <Suspense fallback={<div>Loading...</div>}>
+              <div className={`list ${this.state.currentView === 'list' ? 'active' : ''}`}>
+                {this.displayView('list')}
               </div>
-              <div className="detail">
-                {this.state.currentView === 'detail' ? <Detail
-                  track={this.state.track}
-                  onPlayClick={this.onPlayClick}
-                  onPauseClick={this.onPauseClick} /> : null}
+              <div className={`detail ${this.state.currentView === 'detail' ? 'active' : ''}`}>
+                {this.displayView('detail')}
               </div>
             </Suspense>
           </div>

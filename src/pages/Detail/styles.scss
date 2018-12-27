@@ -7,6 +7,12 @@
   display: flex;
   justify-content: center;
 
+  z-index: -1;
+
+  &.active {
+    z-index: 2;
+  }
+
   .album {
     &__cover {
       border-radius: 4px;

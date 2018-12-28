@@ -7,9 +7,17 @@
   display: flex;
   justify-content: center;
   box-shadow: -1px 6px 20px 0 rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+  cursor: pointer;
+
+  &--active {
+    visibility: visible;
+    pointer-events: visible;
+  }
 
   svg {
-    margin-left: 4px;
     fill: #fff;
   }
 }

@@ -28,7 +28,7 @@ class List extends Component {
                 </div>
                 <div className="info">
                   <h2 className="info__track">{track.title}</h2>
-                  <span className="info___artist">{track.user.username}</span>
+                  <span className="info__artist">{track.user.username}</span>
                   <div className="controls">
                     <ProgressBar percent={this.props.track.id === track.id ? this.props.track.percentage : 0} />
                   </div>

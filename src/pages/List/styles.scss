@@ -56,7 +56,12 @@
 
     &__track {
       margin: 0;
-      font-size: 12pt;
+      font-size: inherit;
+      text-transform: capitalize;
+      width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 

@@ -3,9 +3,7 @@ const placeholderData = ()=> {
     return {
       id: i,
       title: 'loading...',
-      user: {
-        username: 'loading...',
-      },
+      artist:'loading...',
       artwork_url: 'https://picsum.photos/67/67/?blur',
     }
   });

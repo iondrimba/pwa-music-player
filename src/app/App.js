@@ -89,18 +89,23 @@ class App extends Component {
         .then((result) => {
           this.setState(() => ({
             tracks: [...result[0].tracks.map((track, index) => {
-              Object.assign(track, {
-                currentTime: 0,
-                ...this.state.track,
+              return Object.assign({}, {
+                id: track.id,
+                stream_url: track.stream_url,
+                uri: track.uri,
+                duration: track.duration,
+                favoritings_count: track.favoritings_count,
+                artist: track.user.username,
                 artwork_url: track.artwork_url.replace('large', 't67x67'),
                 title: track.title.toLowerCase(),
                 index,
+                ...this.state.track,
               });
-
-              return track;
             })],
             playlistLoaded: true,
           }));
+
+          result = null;
         });
     }
   }

@@ -2,8 +2,8 @@
   background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
   border: 0;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   box-shadow: -1px 6px 20px 0 rgba(0, 0, 0, 0.2);
@@ -11,6 +11,8 @@
   position: absolute;
   visibility: hidden;
   cursor: pointer;
+  transform: translateX(-50%);
+    left: 50%;
 
   &--active {
     visibility: visible;

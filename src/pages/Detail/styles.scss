@@ -9,25 +9,84 @@
   z-index: -1;
   overflow: auto;
 
+  .title, .artist {
+    padding: 0;
+    margin: 0;
+  }
+
   &.active {
     z-index: 2;
   }
 
   &__track {
-    margin-top: 40px;
+    margin-top: 0;
+  }
+
+  .prev-button, .next-button {
+    border: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 5px 5px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+
+    svg {
+      fill: #fff;
+    }
+  }
+
+  .next-button {
+    &::after {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 3px;
+      position: absolute;
+      margin-left: 10px;
+      border-radius: 6px;
+      background: #fff;
+    }
+  }
+
+  .prev-button {
+    &::before {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 3px;
+      position: absolute;
+      margin-left: -10px;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    svg {
+      transform: scale(-1);
+    }
   }
 
   &__controls {
     position: relative;
-    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
   }
 
   &__buttons {
-    margin-top: 40px;
-    margin-top: 40px;
+    margin-top: 35px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
+    align-items: center;
+    width: 220px;
+    align-self: center;
   }
 
   &__timing {

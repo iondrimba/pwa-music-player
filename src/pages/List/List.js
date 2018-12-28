@@ -19,7 +19,6 @@ const convertSecondsToMMss = (totalSeconds) => {
 class List extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
     this.onClick = this.onClick.bind(this);
   }

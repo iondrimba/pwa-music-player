@@ -61,7 +61,12 @@
       width: 250px;
       white-space: nowrap;
       overflow: hidden;
+      color: #444;
       text-overflow: ellipsis;
+    }
+
+    &__artist {
+      color: #969696;
     }
   }
 

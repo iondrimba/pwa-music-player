@@ -22,9 +22,9 @@ class Menu extends Component {
   render() {
     return (
       <nav className={`menu menu--${this.props.activeView}`}>
-        <BackButton width={30} onClick={this.onBackClick} />
+        <BackButton width={25} onClick={this.onBackClick} />
         <h1 className="menu__title">{this.props.activeView === 'list' ? 'Queue' : 'Now playing'}</h1>
-        <HelpButton className="help" onClick={this.onAboutClick} width={30} />
+        <HelpButton className="help" onClick={this.onAboutClick} width={25} />
       </nav>
     );
   }

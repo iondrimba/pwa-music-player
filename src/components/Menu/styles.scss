@@ -13,6 +13,10 @@
     display: none;
   }
 
+  svg {
+    cursor: pointer;
+  }
+
   &--detail {
     box-shadow: none;
     justify-content: flex-start;
@@ -22,7 +26,7 @@
     }
 
     .menu__title {
-      width: 100%;
+      width: 80%;
       text-align: center;
     }
   }

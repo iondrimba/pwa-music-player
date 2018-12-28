@@ -11,6 +11,13 @@
   border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
+  .title {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .title, .artist {
     padding: 0;
     margin: 0;

@@ -39,10 +39,10 @@ class Detail extends Component {
               <time className="time">{convertSecondsToMMss(this.props.track.duration / 1000)}</time>
             </div>
             <div className="detail__buttons">
-              <button className="prev-button"><PlayButton width={16}/></button>
-              <MediaButton active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28}/>} />
-              <MediaButton active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28}/>} />
-              <button className="next-button"><PlayButton width={16}/></button>
+              <button className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
+              <MediaButton active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28} />} />
+              <MediaButton active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28} />} />
+              <button className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
             </div>
           </div>
         </div>

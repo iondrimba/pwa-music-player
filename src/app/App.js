@@ -92,7 +92,12 @@ class App extends Component {
         .then((result) => {
           this.setState(() => ({
             tracks: [...result[0].tracks.map((track) => {
-              Object.assign(track, { currentTime: 0, ...this.state.track, artwork_url: track.artwork_url.replace('large', 't67x67') });
+              Object.assign(track, {
+                currentTime: 0,
+                ...this.state.track,
+                artwork_url: track.artwork_url.replace('large', 't67x67'),
+                title: track.title.toLowerCase(),
+              });
 
               return track;
             })],

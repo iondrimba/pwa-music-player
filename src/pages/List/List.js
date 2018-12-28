@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import React, { Component, Fragment } from 'react';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import styles from './styles.scss';
 
 const convertSecondsToMMss = (totalSeconds) => {
@@ -16,8 +17,9 @@ const convertSecondsToMMss = (totalSeconds) => {
 }
 
 class List extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log(props);
 
     this.onClick = this.onClick.bind(this);
   }
@@ -41,13 +43,9 @@ class List extends Component {
                 <div className="info">
                   <h2 className="info__track">{track.title}</h2>
                   <span className="info___artist">{track.user.username}</span>
-                </div>
-                <div className="controls">
-                  <button onClick={this.onPlayClick} track-id={track.id}>play</button>
-                  <button onClick={this.onPauseClick} track-id={track.id}>pause</button>
-                  <div className="progress-bar"></div>
-                  <time className="current">{convertSecondsToMMss(Number(track.id) === Number(0) ? 0 : 0)}</time>
-                  <time className="duration">{convertSecondsToMMss(track.duration / 1000)}</time>
+                  <div className="controls">
+                    <ProgressBar percent={this.props.track.id === track.id ? this.props.track.percentage : 0} />
+                  </div>
                 </div>
               </li>
             })

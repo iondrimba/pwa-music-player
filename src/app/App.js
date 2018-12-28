@@ -32,7 +32,7 @@ class App extends Component {
         view: (key) => {
           this.views[key].loaded = true;
 
-          return <List tracks={this.state.tracks} onClick={this.onListClck} />
+          return <List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />
         },
         loaded: false,
       },
@@ -115,7 +115,7 @@ class App extends Component {
     this.bufferLength = this.analyser.frequencyBinCount;
     this.frequencyData = new Uint8Array(this.bufferLength);
 
-    this.audioElement.volume = .5;
+    this.audioElement.volume = .1;
     this.audioElement.addEventListener('timeupdate', this.timeupdate.bind(this));
 
     this.timeupdate = this.timeupdate.bind(this);
@@ -126,9 +126,11 @@ class App extends Component {
   }
 
   onListClck(id) {
-    this.setState({ track: { ...this.selectTrack(id), currentTime: 0, percentage: 0 } });
+    if (id !== this.state.track.id) {
+      this.audioElement.src = '';
+    }
 
-    this.audioElement.src = '';
+    this.setState({ track: { ...this.selectTrack(id), currentTime: 0, percentage: 0 } });
 
     this.history.push(`/Destail/${id}`, 'detail');
   }

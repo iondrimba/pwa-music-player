@@ -1,0 +1,30 @@
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  position: relative;
+
+  &__bg {
+    width: 100%;
+    background-color: #efeeee;
+    height: inherit;
+    position: absolute;
+    z-index: 1;
+    border-radius: 4px;
+  }
+
+  &__mask {
+    transform-origin: left;
+    width: 100%;
+    position: absolute;
+    height: inherit;
+    border-radius: 4px;
+    z-index: 2;
+  }
+
+  &__progress {
+    width: 100%;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    height: inherit;
+    border-radius: 4px;
+  }
+}

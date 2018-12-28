@@ -6,34 +6,42 @@
   width: 100%;
   display: flex;
   justify-content: center;
-
   z-index: -1;
+  overflow: auto;
 
   &.active {
     z-index: 2;
   }
 
-  .album {
-    &__cover {
-      border-radius: 4px;
-      display: block;
-    }
+  &__track {
+    margin-top: 40px;
   }
 
-  .info {
-    margin: 0 10px;
-
-    &__track {
-      margin: 0;
-      font-size: 12pt;
-    }
+  &__controls {
+    position: relative;
+    margin-top: 70px;
   }
 
-  .progress-bar {
-    width: 100%;
-    height: 10px;
-    background-color: red;
-    transform: scaleX(0);
-    transform-origin: left;
+  &__buttons {
+    margin-top: 40px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__timing {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__cover {
+    border-radius: 6px;
+    display: block;
+  }
+
+  .time {
+    color: #b9b9b9;
   }
 }

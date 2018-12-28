@@ -1,4 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
+import MediaButton from '../../components/MediaButton/MediaButton';
+import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
+import { ReactComponent as PauseButton } from '../../icons/pause.svg';
 import styles from './styles.scss';
 
 const percent = (current, total) => {
@@ -37,13 +41,19 @@ class Detail extends Component {
   render() {
     return (
       <Fragment>
-        <div className="track">
-          <img className="album__cover" crossOrigin="" src={this.props.track.artwork_url.replace(/large/, 't300x300')} alt={`album artwork from track ${this.props.track.title}`} />
-          <div><button onClick={this.onPlayClick} track-id={this.props.track.id}>play</button>
-            <button onClick={this.onPauseClick} track-id={this.props.track.id}>pause</button>
-            <div className="progress-bar" style={{transform: `scaleX(${this.props.track.percentage})`}}></div>
-            <time className="current">{convertSecondsToMMss(this.props.track.currentTime)}</time>
-            <time className="duration">{convertSecondsToMMss(this.props.track.duration / 1000)}</time></div>
+        <div className="detail__track">
+          <img className="detail__cover" crossOrigin="" src={this.props.track.artwork_url.replace(/large/, 't300x300')} alt={`album artwork from track ${this.props.track.title}`} />
+          <div className="detail__controls">
+            <ProgressBar percent={this.props.track.percentage} />
+            <div className="detail__timing">
+              <time className="time">{convertSecondsToMMss(this.props.track.currentTime)}</time>
+              <time className="time">{convertSecondsToMMss(this.props.track.duration / 1000)}</time>
+            </div>
+            <div className="detail__buttons">
+              <MediaButton onClick={this.onPlayClick} id={this.props.track.id} icon={<PlayButton width={26}/>} />
+              <MediaButton onClick={this.onPauseClick} id={this.props.track.id} icon={<PauseButton width={26}/>} />
+            </div>
+          </div>
         </div>
       </Fragment>
     );

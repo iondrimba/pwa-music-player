@@ -8,7 +8,7 @@
   z-index: -1;
 
   &.active {
-    z-index: 2;
+    z-index: 1;
   }
 
   .track-list {
@@ -18,7 +18,10 @@
   }
 
   .controls {
-    display:none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 
   .row {
@@ -48,6 +51,8 @@
 
   .info {
     margin: 0 10px;
+    width: 100%;
+    position: relative;
 
     &__track {
       margin: 0;

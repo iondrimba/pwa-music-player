@@ -3,6 +3,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  z-index: 0;
 
   .cd {
     margin-bottom: 40px;

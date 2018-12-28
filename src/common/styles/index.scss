@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #b9b9b9;
 }
 
 * {
@@ -20,5 +21,6 @@ body {
 
   > div {
     height: 100%;
+    width: 100%;
   }
 }

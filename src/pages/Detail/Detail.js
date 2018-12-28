@@ -27,7 +27,7 @@ class Detail extends Component {
     return (
       <Fragment>
         <div className="detail__track">
-          <img className="detail__cover" crossOrigin="" src={this.props.track.artwork_url.replace(/large/, 't300x300')} alt={`album artwork from track ${this.props.track.title}`} />
+          <img className="detail__cover" crossOrigin="" src={this.props.track.artwork_url.replace('t67x67', 't300x300')} alt={`album artwork from track ${this.props.track.title}`} />
           <div className="detail__controls">
             <ProgressBar percent={this.props.track.percentage} />
             <div className="detail__timing">

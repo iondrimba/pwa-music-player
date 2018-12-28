@@ -84,7 +84,7 @@ class App extends Component {
   }
 
   fetchPlayList() {
-    if (this.state.tracks[0].id === -1) {
+    if (!this.state.tracks[0].id) {
       fetch(`http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`)
         .then((response) => {
           return response.json();
@@ -92,7 +92,7 @@ class App extends Component {
         .then((result) => {
           this.setState(() => ({
             tracks: [...result[0].tracks.map((track) => {
-              Object.assign(track, { currentTime: 0, ...this.state.track });
+              Object.assign(track, { currentTime: 0, ...this.state.track, artwork_url: track.artwork_url.replace('large', 't67x67') });
 
               return track;
             })],

@@ -1,29 +1,29 @@
 import React, { Component, Suspense, lazy } from 'react';
 import createHistory from 'history/createBrowserHistory';
 import Home from '../pages/Home/Home';
+import percent from '../helpers/progress';
 import Menu from '../components/Menu/Menu';
+import initialData from './data';
 import styles from './style.scss';
 
 const List = lazy(() => import('../pages/List/List'));
 const About = lazy(() => import('../pages/About/About'));
 const Detail = lazy(() => import('../pages/Detail/Detail'));
 
-const percent = (current, total) => {
-  return (current / total) * 100
-}
-
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      tracks: [],
+      tracks: [...initialData],
       previousView: '/',
       currentView: '',
       track: {
         currentTime: 0,
         percentage: 0,
-        paused: false,
+        paused: true,
+        played: false,
+        playing: false,
       },
     };
 
@@ -56,10 +56,15 @@ class App extends Component {
 
     this.history = createHistory();
     this.fetchPlayList = this.fetchPlayList.bind(this);
+    this.onStartClick = this.onStartClick.bind(this);
     this.onListClck = this.onListClck.bind(this);
 
     this.history.listen((location, action) => {
       this.setState({ currentView: location.state });
+
+      if (location.state === 'list') {
+        this.fetchPlayList()
+      };
     });
 
     this.onPauseClick = this.onPauseClick.bind(this);
@@ -74,8 +79,12 @@ class App extends Component {
     this.history.push('/', 'home');
   }
 
+  onStartClick() {
+    this.history.push('/List', 'list');
+  }
+
   fetchPlayList() {
-    if (this.state.tracks.length === 0) {
+    if (this.state.tracks[0].id === -1) {
       fetch(`http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`)
         .then((response) => {
           return response.json();
@@ -83,17 +92,13 @@ class App extends Component {
         .then((result) => {
           this.setState(() => ({
             tracks: [...result[0].tracks.map((track) => {
-              Object.assign(track, { currentTime: 0 });
+              Object.assign(track, { currentTime: 0, ...this.state.track });
 
               return track;
             })],
             playlistLoaded: true,
           }));
-
-          this.history.push('/List', 'list');
         });
-    } else {
-      this.history.push('/List', 'list');
     }
   }
 
@@ -130,15 +135,26 @@ class App extends Component {
       this.audioElement.src = '';
     }
 
-    this.setState({ track: { ...this.selectTrack(id), currentTime: 0, percentage: 0 } });
+    this.setState({
+      track: {
+        ...this.selectTrack(id),
+        currentTime: 0,
+        percentage: 0,
+        playing: this.state.track.id === id ? this.state.track.playing : false,
+        played: this.state.track.id === id ? this.state.track.played : false,
+        paused: this.state.track.id === id ? this.state.track.paused : true,
+      }
+    });
 
     this.history.push(`/Destail/${id}`, 'detail');
   }
 
   onPlayClick(track) {
-    if (!track.paused) {
+    if (!track.played) {
       this.audioElement.src = `${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`;
     }
+
+    this.setState({ track: { ...track, paused: false, playing: true, played: true } });
 
     this.audioCtx.resume();
     this.audioElement.play();
@@ -147,7 +163,7 @@ class App extends Component {
   onPauseClick(track) {
     this.audioElement.pause();
 
-    this.setState({ track: { ...track, paused: true } });
+    this.setState({ track: { ...track, paused: true, playing: false } });
   }
 
   onBackClick() {
@@ -179,7 +195,7 @@ class App extends Component {
           <Menu history={this.history} activeView={this.state.currentView} onBackClick={this.onBackClick} onAboutClick={this.onAboutClick} />
           <div className="page">
             <div className="home">
-              <Home onStartClick={this.fetchPlayList} />
+              <Home onStartClick={this.onStartClick} />
             </div>
             <Suspense fallback={<div>Loading...</div>}>
               <div className={`list ${this.state.currentView === 'list' ? 'active' : ''}`}>

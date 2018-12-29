@@ -4,27 +4,12 @@ import { ReactComponent as BackButton } from '../../icons/left-arrow.svg';
 import styles from './styles.scss';
 
 class Menu extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onBackClick = this.onBackClick.bind(this);
-    this.onAboutClick = this.onAboutClick.bind(this);
-  }
-
-  onBackClick() {
-    this.props.onBackClick();
-  }
-
-  onAboutClick() {
-    this.props.onAboutClick();
-  }
-
   render() {
     return (
       <nav className={`menu menu--${this.props.activeView}`}>
-        <BackButton width={25} onClick={this.onBackClick} />
+        <BackButton width={25} onClick={this.props.onBackClick} />
         <h1 className="menu__title">{this.props.activeView === 'list' ? 'Queue' : 'Now playing'}</h1>
-        <HelpButton className="help" onClick={this.onAboutClick} width={25} />
+        <HelpButton className="help" onClick={this.props.onAboutClick} width={25} />
       </nav>
     );
   }

@@ -61,13 +61,11 @@ class App extends Component {
         view: (key) => {
           this.views[key].loaded = true;
 
-          return <About />
+          return <About onCloseClick={this.onBackClick}/>
         },
         loaded: false
       }
     };
-
-
   }
 
   componentDidMount() {
@@ -181,7 +179,7 @@ class App extends Component {
   }
 
   onAboutClick = () => {
-
+    this.history.push('/about', 'about');
   }
 
   displayView(key) {
@@ -217,16 +215,19 @@ class App extends Component {
       <div className="app">
         <div className="shell">
           <Menu history={this.history} activeView={this.state.currentView} onBackClick={this.onBackClick} onAboutClick={this.onAboutClick} />
-          <div className="page">
-            <div className="home">
+          <div className="page-wrapper">
+            <div className="home page">
               <Home onStartClick={this.onStartClick} />
             </div>
             <Suspense fallback={<div>Loading...</div>}>
-              <div className={`list ${this.state.currentView === 'list' ? 'active' : ''}`}>
+              <div className={`list ${this.state.currentView === 'list' ? 'page active' : 'page unactive'}`}>
                 {this.displayView('list')}
               </div>
-              <div className={`detail ${this.state.currentView === 'detail' ? 'active' : ''}`}>
+              <div className={`detail ${this.state.currentView === 'detail' ? 'page active' : 'page unactive'}`}>
                 {this.displayView('detail')}
+              </div>
+              <div className={`about ${this.state.currentView === 'about' ? 'page active' : 'page unactive'}`}>
+                {this.displayView('about')}
               </div>
             </Suspense>
           </div>

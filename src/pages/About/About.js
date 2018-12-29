@@ -1,12 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { ReactComponent as CloseButton } from '../../icons/close.svg';
 import styles from './styles.scss';
 
 class About extends Component {
   render() {
     return (
-      <div className="about">
-        ABOUT
-      </div>
+      <Fragment>
+        <CloseButton width={20} fill={'#ccc'} className="close-button" onClick={this.props.onCloseClick}/>
+        <div className="content">
+          <h1>PWA Music Player</h1>
+          <p>This is a personal project built in my spare time for learning purposes.</p>
+          <h2>Credits:</h2>
+          <ul>
+            <li>Design inspired by <a href="https://dribbble.com/shots/3000629-Music-Player-Sketch-Freebie" target="_blank"  rel="noopener noreferrer"> Armas Nurbahari </a> </li>
+            <li>Songs API by <a href="https://developers.soundcloud.com/docs/api" target="_blank"  rel="noopener noreferrer">Soundcloud</a></li>
+            <li>Bootstrapped with Create React App</li>
+            <li>Pause icon by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"  rel="noopener noreferrer">CC 3.0 BY</a></li>
+            <li>Left arrow icon by <a href="https://www.flaticon.com/authors/lucy-g" title="Lucy G">Lucy G</a> from <a href="https://www.flaticon.com/"
+              title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"  rel="noopener noreferrer">CC 3.0 BY</a></li>
+            <li>Play arrow icon by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"  rel="noopener noreferrer">CC 3.0 BY</a></li>
+
+            <li>Help icon by <a href="https://www.flaticon.com/authors/anton-saputro" title="Anton Saputro">Anton Saputro</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"  rel="noopener noreferrer">CC 3.0 BY</a>
+            </li>
+            <li>
+              Close icon by <a href="https://www.flaticon.com/authors/chanut" title="Chanut">Chanut</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"  rel="noopener noreferrer">CC 3.0 BY</a>
+            </li>
+
+          </ul>
+        </div>
+
+      </Fragment>
     );
   }
 }

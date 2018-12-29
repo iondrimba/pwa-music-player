@@ -1,4 +1,21 @@
 .about {
-  background-color: blueviolet;
-  color: aliceblue;
+  background-color: #fff;
+  color: #000;
+
+  .content {
+    padding: 0 30px;
+    height: 100%;
+  }
+
+  .close-button {
+    position: relative;
+    top: 28px;
+    left: 86%;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
 }

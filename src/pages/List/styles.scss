@@ -1,6 +1,7 @@
 .list {
   overflow-y: auto;
   background: #fff;
+  z-index: 1;
 
   .track-list {
     list-style: none;

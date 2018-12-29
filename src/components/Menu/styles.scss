@@ -9,11 +9,10 @@
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .06);
   z-index: 3;
 
-  &--home {
-    display: none;
-  }
 
-  &--about {
+  .close-button {
+    position: relative;
+    cursor: pointer;
     display: none;
   }
 
@@ -22,12 +21,30 @@
     fill: #dadada;
   }
 
+  &--home {
+    visibility: hidden;
+  }
+
+  &--about {
+    .close-button {
+      display: block;
+    }
+
+    .help {
+      display: none;
+    }
+
+    .menu__title, .back-button {
+      visibility: hidden;
+    }
+  }
+
   &--detail {
     box-shadow: none;
     justify-content: flex-start;
 
     .help {
-      display: none;
+      visibility: hidden;
     }
 
     .menu__title {

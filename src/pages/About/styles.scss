@@ -1,17 +1,11 @@
 .about {
   background-color: #fff;
   color: #000;
+  z-index: 3;
 
   .content {
     padding: 0 30px;
     height: 100%;
-  }
-
-  .close-button {
-    position: relative;
-    top: 28px;
-    left: 86%;
-    cursor: pointer;
   }
 
   ul {

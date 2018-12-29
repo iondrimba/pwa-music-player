@@ -61,7 +61,7 @@ class App extends Component {
         view: (key) => {
           this.views[key].loaded = true;
 
-          return <About onCloseClick={this.onBackClick}/>
+          return <About />
         },
         loaded: false
       }
@@ -214,7 +214,11 @@ class App extends Component {
     return (
       <div className="app">
         <div className="shell">
-          <Menu history={this.history} activeView={this.state.currentView} onBackClick={this.onBackClick} onAboutClick={this.onAboutClick} />
+          <Menu history={this.history}
+            activeView={this.state.currentView}
+            onBackClick={this.onBackClick}
+            onAboutClick={this.onAboutClick}
+            onCloseClick={this.onBackClick} />
           <div className="page-wrapper">
             <div className="home page">
               <Home onStartClick={this.onStartClick} />

@@ -26,13 +26,16 @@ body {
   top: 0 ;
   left: 0;
   transform: translate3d(0,0,0);
+  transition: transform .3s ease-in-out;
 
   &.unactive {
-    z-index: -1;
+    pointer-events: none;
+    transform: translateX(100%) translate3d(0,0,0);
   }
 
 
   &.active {
-    z-index: 2;
+    pointer-events: visible;
+    transform: translateX(0) translate3d(0,0,0);
   }
 }

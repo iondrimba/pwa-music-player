@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import FastAverageColor from 'fast-average-color/dist/index.es6';
+import Transition from 'react-transition-group/Transition';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import MediaButton from '../../components/MediaButton/MediaButton';
 import convertSecondsToMMss from '../../helpers/timer';
@@ -7,6 +8,17 @@ import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import { ReactComponent as PauseButton } from '../../icons/pause.svg';
 import styles from './styles.scss';
 
+const duration = 300;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+}
+
+const transitionStyles = {
+  entering: { opacity: 0 },
+  entered:  { opacity: 1 },
+};
 
 class Detail extends Component {
   constructor(props) {

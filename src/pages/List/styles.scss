@@ -23,14 +23,35 @@
     color: inherit;
     min-height: 80px;
 
-    &:after {
-      content: '';
-      display: block;
-      width: 95%;
-      height: 1px;
-      background-color: #e4e4e4;
-      position: absolute;
-      bottom: 0;
+    &:hover:not(.playing) {
+      background-color: #ececec45;
+    }
+  }
+
+  .progress-bar {
+    visibility: hidden;
+  }
+
+  .playing {
+    height: auto;
+    padding: 15px 15px;
+    background-color: #ececec;
+
+    .album__cover {
+      height: 67px;
+      box-shadow: rgba(2, 2, 2, 0.4) 0px 16px 30px -9px;
+    }
+
+    .progress-bar {
+      visibility: visible;
+
+      &__bg {
+        background-color: #fff;
+      }
+    }
+
+    .info {
+      margin: 0 15px;
     }
   }
 

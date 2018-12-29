@@ -22,9 +22,9 @@ class List extends Component {
         <ul className="track-list">
           {
             this.props.tracks.map((track) => {
-              return <li className="row" key={track.id} item-id={track.id} onClick={this.onClick}>
+              return <li className={`row ${this.props.track.id === track.id && this.props.track.playing ? 'playing' : ''}`} key={track.id} item-id={track.id} onClick={this.onClick}>
                 <div className="album">
-                  <img className="album__cover" src={track.artwork_url} alt={`album artwork from track ${track.title}`}/>
+                  <img className="album__cover" src={track.artwork_url} alt={`album artwork from track ${track.title}`} />
                 </div>
                 <div className="info">
                   <h2 className="info__track">{track.title}</h2>

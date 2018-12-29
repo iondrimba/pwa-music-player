@@ -94,7 +94,7 @@ class App extends Component {
                 duration: track.duration,
                 favoritings_count: track.favoritings_count,
                 artist: track.user.username,
-                artwork_url: track.artwork_url.replace('large', 't67x67'),
+                artwork_url: track.artwork_url.replace('large', 't50x50'),
                 title: track.title.toLowerCase(),
                 index,
                 ...this.state.track,

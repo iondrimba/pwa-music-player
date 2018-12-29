@@ -1,15 +1,6 @@
 .list {
   overflow-y: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: inherit;
   background: #fff;
-  z-index: -1;
-
-  &.active {
-    z-index: 1;
-  }
 
   .track-list {
     list-style: none;
@@ -30,6 +21,7 @@
     position: relative;
     text-decoration: none;
     color: inherit;
+    min-height: 80px;
 
     &:after {
       content: '';

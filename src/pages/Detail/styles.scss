@@ -1,15 +1,7 @@
 .detail {
-  position: absolute;
-  top: 0;
   background-color: #fff;
-  left: 0;
-  width: 100%;
   display: flex;
   justify-content: center;
-  z-index: -1;
-  overflow: auto;
-  border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 
   .title {
     width: 300px;
@@ -24,9 +16,6 @@
     text-transform: capitalize;
   }
 
-  &.active {
-    z-index: 2;
-  }
 
   &__track {
     margin-top: 0;

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import FastAverageColor from 'fast-average-color/dist/index.es6';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import MediaButton from '../../components/MediaButton/MediaButton';
+import AlbumCover from '../../components/AlbumCover/AlbumCover';
 import convertSecondsToMMss from '../../helpers/timer';
 import IconButton from '../../components/IconButton/IconButton';
 import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
@@ -10,28 +10,13 @@ import { ReactComponent as RepeatButton } from '../../icons/repeat-arrows.svg';
 import { ReactComponent as LinkButton } from '../../icons/link.svg';
 import styles from './styles.scss';
 
-
 class Detail extends Component {
-  constructor(props) {
-    super(props);
-
-    this.fac = new FastAverageColor();
-  }
-
-   onPlayClick = () => {
+  onPlayClick = () => {
     this.props.onPlayClick(this.props.track);
   }
 
   onPauseClick = () => {
     this.props.onPauseClick(this.props.track);
-  }
-
-  onLoadImage = async (evt) => {
-    const color = this.fac.getColor(evt.target, { algorithm: 'simple' });
-
-    const rgb =  color.hex.replace('#','').match(/[A-Za-z0-9]{2}/g).map(v => parseInt(v, 16));
-
-    evt.target.style.boxShadow = `0 24px 35px -16px rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.7)`;
   }
 
   onLinkClick = () => {
@@ -42,7 +27,7 @@ class Detail extends Component {
     return (
       <Fragment>
         <div className="detail__track" aria-live="polite" aria-atomic="false">
-          <img className="detail__cover" crossOrigin="" onLoad={this.onLoadImage} src={this.props.track.artwork_url.replace('t50x50', 't300x300')} alt={`album artwork from track ${this.props.track.title}`} />
+          <AlbumCover hide={!this.props.active} src={this.props.track.artwork_url.replace('t50x50', 't300x300')} alt={this.props.track.title} />
           <div className="detail__controls">
             <div className="detail__info">
               <h3 className="title">{this.props.track.title}</h3>
@@ -55,10 +40,10 @@ class Detail extends Component {
             </div>
             <div className="detail__buttons">
               <IconButton label="repeat song" className="icon-button icon-button--repeat" onClick={this.props.onBackClick} icon={<RepeatButton className="icon icon--back" width={16} />} />
-              <button className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
-              <MediaButton active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28} />} />
-              <MediaButton active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28} />} />
-              <button className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
+              <button name="previous song" className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
+              <MediaButton name="pause button" active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28} />} />
+              <MediaButton name="play button" active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28} />} />
+              <button name="next song button" className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
               <IconButton label="song link" className="icon-button icon-button--link" onClick={this.onLinkClick} icon={<LinkButton className="icon icon--back" width={16} />} />
             </div>
           </div>

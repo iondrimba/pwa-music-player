@@ -1,0 +1,40 @@
+.album-cover {
+  border-radius: 6px;
+  overflow: hidden;
+  height: 300px;
+  width: 300px;
+  position: relative;
+  transition: box-shadow .2s ease-out;
+  background-color: #333;
+  box-shadow: rgba(107, 179, 237, .5) 0px 24px 35px -16px;
+
+  &__loader {
+    height: 300px;
+    width: 300px;
+    display: block;
+    background-color: #6bb3ed;
+    transform: scale(1,0);
+    transform-origin: top;
+    transition: transform .2s ease-out;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .show {
+    transform: scale(1,1);
+  }
+
+  .hide {
+    transform-origin: bottom;
+    transform: scale(1,0);
+  }
+
+  &__image {
+    opacity: .01;
+    transition: opacity .1s;
+
+    &--loaded {
+      opacity:.999;
+    }
+  }
+}

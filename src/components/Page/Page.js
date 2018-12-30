@@ -5,7 +5,7 @@ class Page extends Component {
   render() {
     return (
       <section aria-hidden={!this.props.active} className={`${this.props.className} page ${this.props.active ? 'active' : 'unactive'}`}>
-        {this.props.children}
+        {React.cloneElement(this.props.children, { active: this.props.active })}
       </section>
     );
   }

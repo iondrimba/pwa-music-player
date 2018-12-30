@@ -6,19 +6,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .06);
   z-index: 3;
 
-
-  .close-button {
-    position: relative;
-    cursor: pointer;
+  .icon-button--close {
     display: none;
-  }
-
-  svg {
-    cursor: pointer;
-    fill: #dadada;
   }
 
   &--home {
@@ -26,21 +17,20 @@
   }
 
   &--about {
-    .close-button {
+    .icon-button--close{
       display: block;
     }
 
-    .help {
+    .icon-button--help {
       display: none;
     }
 
-    .menu__title, .back-button {
+    .menu__title, .icon-button--back {
       visibility: hidden;
     }
   }
 
   &--detail {
-    box-shadow: none;
     justify-content: flex-start;
 
     .help {

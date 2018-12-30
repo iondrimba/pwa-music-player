@@ -1,0 +1,20 @@
+.icon-button {
+  cursor: pointer;
+  border-radius: 50%;
+  border: 0;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .3s;
+
+  &:hover {
+    background-color: #dadada3d;
+  }
+
+  &:active {
+    background-color: #b5b4b43d;
+  }
+}

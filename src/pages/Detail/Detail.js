@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import FastAverageColor from 'fast-average-color/dist/index.es6';
-import Transition from 'react-transition-group/Transition';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import MediaButton from '../../components/MediaButton/MediaButton';
 import convertSecondsToMMss from '../../helpers/timer';
@@ -8,17 +7,6 @@ import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import { ReactComponent as PauseButton } from '../../icons/pause.svg';
 import styles from './styles.scss';
 
-const duration = 300;
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
-}
-
-const transitionStyles = {
-  entering: { opacity: 0 },
-  entered:  { opacity: 1 },
-};
 
 class Detail extends Component {
   constructor(props) {
@@ -46,7 +34,7 @@ class Detail extends Component {
   render() {
     return (
       <Fragment>
-        <div className="detail__track">
+        <div className="detail__track" aria-live="polite" aria-atomic="false">
           <img className="detail__cover" crossOrigin="" onLoad={this.onLoadImage} src={this.props.track.artwork_url.replace('t50x50', 't300x300')} alt={`album artwork from track ${this.props.track.title}`} />
           <div className="detail__controls">
             <div className="detail__info">

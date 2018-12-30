@@ -3,6 +3,7 @@ import createHistory from 'history/createBrowserHistory';
 import Home from '../pages/Home/Home';
 import percent from '../helpers/progress';
 import Menu from '../components/Menu/Menu';
+import Page from '../components/Page/Page';
 import initialData from './data';
 import styles from './style.scss';
 
@@ -24,6 +25,7 @@ class App extends Component {
         paused: true,
         played: false,
         playing: false,
+        artwork_url: '',
       },
     };
 
@@ -35,37 +37,6 @@ class App extends Component {
         this.fetchPlayList()
       };
     });
-
-    this.views = {
-      list: {
-        view: (key) => {
-          this.views[key].loaded = true;
-
-          return <List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />
-        },
-        loaded: false,
-      },
-      detail: {
-        view: (key) => {
-          this.views[key].loaded = true;
-
-          return <Detail track={this.state.track}
-            onPlayClick={this.playTrack}
-            onPlayNext={this.onPlayNext}
-            onPlayPrev={this.onPlayPrev}
-            onPauseClick={this.onPauseClick} />
-        },
-        loaded: false,
-      },
-      about: {
-        view: (key) => {
-          this.views[key].loaded = true;
-
-          return <About />
-        },
-        loaded: false
-      }
-    };
   }
 
   componentDidMount() {
@@ -88,6 +59,7 @@ class App extends Component {
           this.setState(() => ({
             tracks: [...result[0].tracks.map((track, index) => {
               return Object.assign({}, {
+                ...this.state.track,
                 id: track.id,
                 stream_url: track.stream_url,
                 uri: track.uri,
@@ -97,7 +69,6 @@ class App extends Component {
                 artwork_url: track.artwork_url.replace('large', 't50x50'),
                 title: track.title.toLowerCase(),
                 index,
-                ...this.state.track,
               });
             })],
             playlistLoaded: true,
@@ -182,18 +153,6 @@ class App extends Component {
     this.history.push('/about', 'about');
   }
 
-  displayView(key) {
-    if (this.views[this.state.currentView] && !this.views[this.state.currentView].loaded) {
-      return this.views[this.state.currentView].view(this.state.currentView);
-    } else {
-      const view = Object.entries(this.views).filter((k, v) => {
-        return k[0] === key && k[1].loaded;
-      });
-
-      return view.length ? view[0][1].view(key) : null;
-    }
-  }
-
   onPlayNext = () => {
     const nextTrack = { ...this.state.tracks[this.state.track.index + 1] };
 
@@ -212,7 +171,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
+      <main className="app">
         <div className="shell">
           <Menu history={this.history}
             activeView={this.state.currentView}
@@ -224,19 +183,17 @@ class App extends Component {
               <Home onStartClick={this.onStartClick} />
             </div>
             <Suspense fallback={<div>Loading...</div>}>
-              <div className={`list ${this.state.currentView === 'list' ? 'page active' : 'page unactive'}`}>
-                {this.displayView('list')}
-              </div>
-              <div className={`detail ${this.state.currentView === 'detail' ? 'page active' : 'page unactive'}`}>
-                {this.displayView('detail')}
-              </div>
-              <div className={`about ${this.state.currentView === 'about' ? 'page active' : 'page unactive'}`}>
-                {this.displayView('about')}
-              </div>
+              <Page className="list" active={this.state.currentView === 'list'}>{<List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />}</Page>
+              <Page className="detail" active={this.state.currentView === 'detail'}>{<Detail track={this.state.track}
+            onPlayClick={this.playTrack}
+            onPlayNext={this.onPlayNext}
+            onPlayPrev={this.onPlayPrev}
+            onPauseClick={this.onPauseClick} />}</Page>
+              <Page className="about" active={this.state.currentView === 'about'}>{<About />}</Page>
             </Suspense>
           </div>
         </div>
-      </div >
+      </main >
     );
   }
 }

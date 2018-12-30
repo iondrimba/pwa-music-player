@@ -3,8 +3,11 @@ import FastAverageColor from 'fast-average-color/dist/index.es6';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import MediaButton from '../../components/MediaButton/MediaButton';
 import convertSecondsToMMss from '../../helpers/timer';
+import IconButton from '../../components/IconButton/IconButton';
 import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import { ReactComponent as PauseButton } from '../../icons/pause.svg';
+import { ReactComponent as RepeatButton } from '../../icons/repeat-arrows.svg';
+import { ReactComponent as LinkButton } from '../../icons/link.svg';
 import styles from './styles.scss';
 
 
@@ -31,6 +34,10 @@ class Detail extends Component {
     evt.target.style.boxShadow = `0 24px 35px -16px rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.7)`;
   }
 
+  onLinkClick = () => {
+    window.open(this.props.track.permalink_url);
+  }
+
   render() {
     return (
       <Fragment>
@@ -47,10 +54,12 @@ class Detail extends Component {
               <time className="time">{convertSecondsToMMss(this.props.track.duration / 1000)}</time>
             </div>
             <div className="detail__buttons">
+              <IconButton label="repeat song" className="icon-button icon-button--repeat" onClick={this.props.onBackClick} icon={<RepeatButton className="icon icon--back" width={16} />} />
               <button className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
               <MediaButton active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28} />} />
               <MediaButton active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28} />} />
               <button className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
+              <IconButton label="song link" className="icon-button icon-button--link" onClick={this.onLinkClick} icon={<LinkButton className="icon icon--back" width={16} />} />
             </div>
           </div>
         </div>

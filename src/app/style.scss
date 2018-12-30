@@ -1,7 +1,7 @@
 .app {
   height: 100vh;
   width: 100vw;
-  background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
   display: flex;
   justify-content: center;
 }
@@ -11,7 +11,7 @@
   display: flex;
   align-self: center;
   border-radius: 10px;
-  box-shadow: 0 3px 20px 0 rgba(0,0,0,.06);
+  box-shadow: 1px 3px 20px 8px rgba(0, 0, 0, 0.09);
   height: inherit;
   max-height: 667px;
   overflow: hidden;

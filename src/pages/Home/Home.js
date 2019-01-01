@@ -23,7 +23,7 @@ class Home extends PureComponent {
         <MediaButton className="hidden" tabEnabled={true} name="button show playlist" active={true} onClick={this.props.onStartClick} icon={<PlayButton width={28} />} />
         <footer className="footer">
           <Github fill="#b9b9b9"/>
-         <a href="https://developers.soundcloud.com/docs/api" target="_blank" ref="noopener noreferrer" className="soundcloud">powered by <Soundcloud aria-label="Soundcloud" fill="#b9b9b9" width={64}/></a>
+         <a href="https://developers.soundcloud.com/docs/api" target="_blank" rel="noopener noreferrer" className="soundcloud">powered by <Soundcloud aria-label="Soundcloud" fill="#b9b9b9" width={64}/></a>
         </footer>
       </Fragment>
     );

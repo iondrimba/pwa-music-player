@@ -7,7 +7,6 @@ install:
   - npm i
 test_script:
   - npm run build
-  - npm test
 build: off
 matrix:
   fast_finish: true

@@ -185,17 +185,23 @@ class App extends Component {
             onAboutClick={this.onAboutClick}
             onCloseClick={this.onBackClick} />
           <div className="page-wrapper">
-            <div className="home page">
+            <Page className="home" active={this.state.currentView === 'home'}>
               <Home onStartClick={this.onStartClick} />
-            </div>
+            </Page>
             <Suspense fallback={<Loader />}>
-              <Page className="list" active={this.state.currentView === 'list'}>{<List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />}</Page>
-              <Page className="detail" active={this.state.currentView === 'detail'}>{<Detail track={this.state.track}
-                onPlayClick={this.playTrack}
-                onPlayNext={this.onPlayNext}
-                onPlayPrev={this.onPlayPrev}
-                onPauseClick={this.onPauseClick} />}</Page>
-              <Page className="about" active={this.state.currentView === 'about'}>{<About />}</Page>
+              <Page className="list" active={this.state.currentView === 'list'}>
+                <List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />
+              </Page>
+              <Page className="detail" active={this.state.currentView === 'detail'}>
+                <Detail track={this.state.track}
+                  onPlayClick={this.playTrack}
+                  onPlayNext={this.onPlayNext}
+                  onPlayPrev={this.onPlayPrev}
+                  onPauseClick={this.onPauseClick} />
+              </Page>
+              <Page className="about" active={this.state.currentView === 'about'}>
+              <About />
+              </Page>
             </Suspense>
           </div>
         </div>

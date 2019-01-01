@@ -53,8 +53,10 @@
     justify-content: space-between;
     width: 100%;
     padding: 0 40px;
-    top: 40px;
+    top: 100px;
     position: relative;
+    align-items: center;
+    height: 40px;
   }
 
   .soundcloud {
@@ -62,5 +64,30 @@
     align-items: center;
     text-decoration: none;
     color: #b9b9b9;
+    position: relative;
+    height: 30px;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      opacity: .01;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      top: -5px;
+      left: -7px;
+      background-color: #b9b9b92e;
+      padding: 3px;
+      transition: opacity .3s;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .soundcloud:focus::before {
+    opacity: 1;
   }
 }

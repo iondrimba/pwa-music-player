@@ -19,10 +19,10 @@ class List extends PureComponent {
   render() {
     return (
       <Fragment>
-        <ul className="track-list" role="list">
+        <ul className="track-list" >
           {
             this.props.tracks.map((track, i) => {
-              return <li role="list-item" className="row" key={track.id} >
+              return <li className="row" key={track.id} >
                <button className={`${this.props.track.id === track.id && this.props.track.playing ? 'playing' : ''}`} tabIndex={this.props.active ? "0" : "-1"} onClick={this.onClick} data-id={track.id}>
                 <div className="album">
                   <img className="album__cover" src={track.artwork_url} alt={`Album artwork from track ${track.title}.`} />

@@ -12,16 +12,20 @@
     display: none;
   }
 
-  .icon-button--back .active{
+  .icon-button--back.active{
     transition-delay: .1s;
   }
 
-  &__title .active {
-    transition-delay: .5s;
+  &__title {
+    font-size: 18px;
   }
 
-  .icon-button--help .active {
-    transition-delay: .9s;
+  &__title.active {
+    transition-delay: .2s;
+  }
+
+  .icon-button--help.active {
+    transition-delay: .4s;
   }
 
   .hidden {

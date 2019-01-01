@@ -10,7 +10,7 @@ class Menu extends PureComponent {
     requestAnimationFrame(() => {
       setTimeout(() => {
         [...document.querySelector('.menu').querySelectorAll('.hidden')].map((elmt) => elmt.classList.add('active'));
-      }, 1000);
+      }, 1200);
     });
   }
 

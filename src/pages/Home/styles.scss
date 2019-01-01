@@ -47,4 +47,20 @@
       transform: scale(1) translateY(0);
     }
   }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+    top: 40px;
+    position: relative;
+  }
+
+  .soundcloud {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #b9b9b9;
+  }
 }

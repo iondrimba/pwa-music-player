@@ -2,6 +2,8 @@ import React, { PureComponent, Fragment } from 'react';
 import MediaButton from '../../components/MediaButton/MediaButton';
 import { ReactComponent as Headphones } from '../../icons/headphones.svg';
 import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
+import { ReactComponent as Soundcloud } from '../../icons/soundcloud.svg';
+import { ReactComponent as Github } from '../../icons/github.svg';
 import styles from './styles.scss';
 
 class Home extends PureComponent {
@@ -19,6 +21,10 @@ class Home extends PureComponent {
         <Headphones className="icon hidden" width="100" fill="#ccc" />
 
         <MediaButton className="hidden" tabEnabled={true} name="button show playlist" active={true} onClick={this.props.onStartClick} icon={<PlayButton width={28} />} />
+        <footer className="footer">
+          <Github fill="#b9b9b9"/>
+         <a href="https://developers.soundcloud.com/docs/api" target="_blank" ref="noopener noreferrer" className="soundcloud">powered by <Soundcloud aria-label="Soundcloud" fill="#b9b9b9" width={64}/></a>
+        </footer>
       </Fragment>
     );
   }

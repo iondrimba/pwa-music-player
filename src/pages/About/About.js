@@ -2,9 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import styles from './styles.scss';
 
 class About extends PureComponent {
-
   render() {
-    console.log('about render');
 
     return (
       <Fragment>

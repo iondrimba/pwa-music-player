@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './styles.scss';
 
-class Page extends Component {
+class Page extends PureComponent {
   render() {
     return (
       <section aria-hidden={!this.props.active} className={`${this.props.className} page ${this.props.active ? 'active' : 'unactive'}`}>

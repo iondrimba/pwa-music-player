@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import MediaButton from '../../components/MediaButton/MediaButton';
 import AlbumCover from '../../components/AlbumCover/AlbumCover';
@@ -10,7 +10,7 @@ import { ReactComponent as RepeatButton } from '../../icons/repeat-arrows.svg';
 import { ReactComponent as LinkButton } from '../../icons/link.svg';
 import styles from './styles.scss';
 
-class Detail extends Component {
+class Detail extends PureComponent {
   onPlayClick = () => {
     this.props.onPlayClick(this.props.track);
   }

@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import MediaButton from '../../components/MediaButton/MediaButton';
 import { ReactComponent as Headphones } from '../../icons/headphones.svg';
 import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import styles from './styles.scss';
 
-class Home extends Component {
+class Home extends PureComponent {
   componentDidMount() {
     requestAnimationFrame(() => {
       [...document.querySelectorAll('.hidden')].map((elmt) => elmt.classList.add('active'));

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './styles.scss';
 
-class Loader extends Component {
+class Loader extends PureComponent {
   componentDidMount() {
     requestAnimationFrame(() => {
       document.querySelector('.loader').classList.add('animate');

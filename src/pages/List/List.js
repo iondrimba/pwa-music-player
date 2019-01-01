@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import styles from './styles.scss';
 
-class List extends Component {
+class List extends PureComponent {
   constructor(props) {
     super(props);
 

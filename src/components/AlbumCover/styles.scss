@@ -19,6 +19,22 @@
     z-index: 1;
   }
 
+  &__icon {
+    fill: white;
+    width: 70px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    opacity: .01;
+    transform: translate(-50%, -50%);
+    transition: opacity .2s ease-in;
+
+    &--active {
+      opacity: .99;
+    }
+  }
+
   .show {
     transform: scale(1,1);
   }

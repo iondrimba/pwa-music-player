@@ -10,10 +10,6 @@
     margin-bottom: 50px;
   }
 
-  .media-button {
-    margin-top: 90px;
-  }
-
   .hidden {
     transform: translateY(20px);
     opacity: .01;
@@ -38,6 +34,7 @@
   }
 
   .media-button {
+    margin-top: 90px;
     transition-delay: .22s;
     opacity: 1;
 

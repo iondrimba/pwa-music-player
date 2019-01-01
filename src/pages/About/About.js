@@ -1,9 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import styles from './styles.scss';
 
-class About extends Component {
+class About extends PureComponent {
 
   render() {
+    console.log('about render');
+
     return (
       <Fragment>
         <div className="content" tabIndex="-1">

@@ -29,10 +29,10 @@ class Menu extends PureComponent {
   render() {
     return (
       <nav className={`menu menu--${this.props.activeView}`}>
-        <IconButton label="navigate back" className="hidden icon-button icon-button--back" onClick={this.props.onBackClick} icon={<BackButton className="icon icon--back" width={16} />} />
+        <IconButton label="navigate back" tabEnabled={true} className="hidden icon-button icon-button--back" onClick={this.props.onBackClick} icon={<BackButton className="icon icon--back" width={16} />} />
         <h1 className="hidden menu__title">{this.props.activeView === 'list' ? 'Queue' : 'Now playing'}</h1>
-        <IconButton label="about the app" className="hidden icon-button icon-button--help" onClick={this.props.onAboutClick} icon={<HelpButton className="icon icon--help" width={27} />} />
-        <IconButton label="close about" className="icon-button icon-button--close" onClick={this.props.onCloseClick} icon={<CloseButton className="icon icon--close" width={12} />} />
+        <IconButton label="about the app" tabEnabled={true} className="hidden icon-button icon-button--help" onClick={this.props.onAboutClick} icon={<HelpButton className="icon icon--help" width={27} />} />
+        <IconButton label="close about" tabEnabled={true} className="icon-button icon-button--close" onClick={this.props.onCloseClick} icon={<CloseButton className="icon icon--close" width={12} />} />
       </nav>
     );
   }

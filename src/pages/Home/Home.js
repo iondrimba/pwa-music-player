@@ -18,7 +18,7 @@ class Home extends PureComponent {
         <p className="subtitle hidden">made with SoundCloud API</p>
         <Headphones className="icon hidden" width="100" fill="#ccc" />
 
-        <MediaButton className="hidden" name="button show playlist" active={true} onClick={this.props.onStartClick} icon={<PlayButton width={28} />} />
+        <MediaButton className="hidden" tabEnabled={true} name="button show playlist" active={true} onClick={this.props.onStartClick} icon={<PlayButton width={28} />} />
       </Fragment>
     );
   }

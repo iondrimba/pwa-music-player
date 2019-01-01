@@ -39,12 +39,12 @@ class Detail extends PureComponent {
               <time className="time">{convertSecondsToMMss(this.props.track.duration / 1000)}</time>
             </div>
             <div className="detail__buttons">
-              <IconButton label="repeat song" className="icon-button icon-button--repeat" onClick={this.props.onBackClick} icon={<RepeatButton className="icon icon--back" width={16} />} />
-              <button name="previous song" className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
-              <MediaButton name="pause button" active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28} />} />
-              <MediaButton name="play button" active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28} />} />
-              <button name="next song button" className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
-              <IconButton label="song link" className="icon-button icon-button--link" onClick={this.onLinkClick} icon={<LinkButton className="icon icon--back" width={16} />} />
+              <IconButton label="repeat song" tabEnabled={this.props.active} className="icon-button icon-button--repeat" onClick={this.props.onBackClick} icon={<RepeatButton className="icon icon--back" width={16} />} />
+              <button name="previous song" tabIndex={this.props.active? "0" :"-1"} className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
+              <MediaButton name="pause button" tabEnabled={this.props.active} active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28} />} />
+              <MediaButton name="play button" tabEnabled={this.props.active} active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28} />} />
+              <button name="next song button" tabIndex={this.props.active? "0" :"-1"} className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
+              <IconButton label="song link" tabEnabled={this.props.active} className="icon-button icon-button--link" onClick={this.onLinkClick} icon={<LinkButton className="icon icon--back" width={16} />} />
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 .about {
   background-color: #fff;
-  color: #000;
   z-index: 3;
 
   .content {
@@ -15,5 +14,11 @@
     li {
       margin: 10px 0;
     }
+  }
+
+  a {
+    color: #7aa4e3;
+    text-decoration: none;
+    cursor: pointer;
   }
 }

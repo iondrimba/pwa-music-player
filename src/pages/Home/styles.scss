@@ -13,4 +13,42 @@
   .media-button {
     margin-top: 90px;
   }
+
+  .hidden {
+    transform: translateY(20px);
+    opacity: .01;
+    transition: transform .2s cubic-bezier(0.215, 0.61, 0.355, 1), opacity .2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .active {
+    transform: translateY(0);
+    opacity: .999;
+  }
+
+  .title {
+    transition-delay: 0s;
+  }
+
+  .subtitle {
+    transition-delay: .15s;
+  }
+
+  .icon {
+    transition-delay: .2s;
+  }
+
+  .media-button {
+    transition-delay: .22s;
+    opacity: 1;
+
+    &.hidden {
+      transform: scale(0) translateY(20px);
+      transform-origin: center;
+      transition: transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    &.active {
+      transform: scale(1) translateY(0);
+    }
+  }
 }

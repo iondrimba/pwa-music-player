@@ -4,6 +4,7 @@ import Home from '../pages/Home/Home';
 import percent from '../helpers/progress';
 import Menu from '../components/Menu/Menu';
 import Page from '../components/Page/Page';
+import Loader from '../components/Loader/Loader';
 import initialData from './data';
 import styles from './style.scss';
 
@@ -183,13 +184,13 @@ class App extends Component {
             <div className="home page">
               <Home onStartClick={this.onStartClick} />
             </div>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <Page className="list" active={this.state.currentView === 'list'}>{<List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />}</Page>
               <Page className="detail" active={this.state.currentView === 'detail'}>{<Detail track={this.state.track}
-            onPlayClick={this.playTrack}
-            onPlayNext={this.onPlayNext}
-            onPlayPrev={this.onPlayPrev}
-            onPauseClick={this.onPauseClick} />}</Page>
+                onPlayClick={this.playTrack}
+                onPlayNext={this.onPlayNext}
+                onPlayPrev={this.onPlayPrev}
+                onPauseClick={this.onPauseClick} />}</Page>
               <Page className="about" active={this.state.currentView === 'about'}>{<About />}</Page>
             </Suspense>
           </div>

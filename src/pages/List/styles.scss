@@ -48,6 +48,7 @@
     background-color: #ececec;
 
     .album__cover {
+      width: 67px;
       height: 67px;
       box-shadow: rgba(2, 2, 2, 0.4) 0px 16px 30px -9px;
     }
@@ -69,6 +70,9 @@
     &__cover {
       border-radius: 4px;
       display: block;
+      width: 50px;
+      height: 50px;
+      background-color: #8da4ea;
     }
   }
 

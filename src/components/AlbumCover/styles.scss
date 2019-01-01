@@ -1,18 +1,17 @@
 .album-cover {
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: hidden;
   height: 300px;
   width: 300px;
   position: relative;
   transition: box-shadow .2s ease-out;
-  background-color: #333;
   box-shadow: rgba(107, 179, 237, .5) 0px 24px 35px -16px;
 
   &__loader {
     height: 300px;
     width: 300px;
     display: block;
-    background-color: #6bb3ed;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     transform: scale(1,0);
     transform-origin: top;
     transition: transform .2s ease-out;

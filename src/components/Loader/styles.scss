@@ -1,0 +1,17 @@
+.loader {
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  width: 94%;
+  height: 4px;
+  position: absolute;
+  display: block;
+  border-radius: 6px;
+  margin-top: -30px;
+  transform: translateX(-50%) scale(0,1);
+  left: 50%;
+  transform-origin: left;
+  transition: transform 3s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  &.animate {
+    transform: translateX(-50%) scale(1,1);
+  }
+}

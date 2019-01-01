@@ -32,6 +32,7 @@
     cursor: pointer;
     background-color: rgba(0, 0, 0, .09);
     transition: background-color .2s;
+    position: relative;
 
     &:hover {
       background-color: rgba(0, 0, 0, .2);
@@ -44,7 +45,30 @@
     svg {
       fill: #fff;
     }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      opacity: .01;
+      width: 100%;
+      height: 100%;
+      border: solid 2px #7db0f2a1;
+      border-radius: 50px;
+      transition: opacity .3s;
+      box-shadow: 0px 0px 0px 4px rgba(123, 177, 243, 0.43);
+      top: -2px;
+    }
   }
+
+  .prev-button:focus, .next-button:focus {
+    outline: 0;
+  }
+
+  .prev-button:focus::before, .next-button:focus::before {
+    opacity: .57;
+  }
+
 
   .next-button {
     &::after {
@@ -60,7 +84,7 @@
   }
 
   .prev-button {
-    &::before {
+    &::after {
       content: '';
       display: block;
       height: 16px;

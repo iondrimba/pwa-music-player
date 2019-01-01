@@ -20,7 +20,14 @@ class Home extends PureComponent {
         <p className="subtitle hidden">made with SoundCloud API</p>
         <Headphones className="icon hidden" width="100" fill="#ccc" />
 
-        <MediaButton className="hidden" tabEnabled={this.props.active ? "0" : "-1"} name="button show playlist" active={true} onClick={this.props.onStartClick} icon={<PlayButton width={28} />} />
+        <MediaButton
+          className="hidden"
+          tabEnabled={this.props.active}
+          name="button show playlist"
+          active={true}
+          onClick={this.props.onStartClick}
+          icon={<PlayButton width={28} />}
+        />
         <footer className="footer">
           <Github fill="#b9b9b9"/>
          <a href="https://developers.soundcloud.com/docs/api" tabIndex={this.props.active ? "0" : "-1"} target="_blank" rel="noopener noreferrer" className="soundcloud">powered by <Soundcloud aria-label="Soundcloud" fill="#b9b9b9" width={64}/></a>

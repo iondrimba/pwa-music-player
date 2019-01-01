@@ -7,7 +7,7 @@ import styles from './styles.scss';
 class Home extends PureComponent {
   componentDidMount() {
     requestAnimationFrame(() => {
-      [...document.querySelectorAll('.hidden')].map((elmt) => elmt.classList.add('active'));
+      [...document.querySelector('.home').querySelectorAll('.hidden')].map((elmt) => elmt.classList.add('active'));
     });
   }
 
@@ -18,7 +18,7 @@ class Home extends PureComponent {
         <p className="subtitle hidden">made with SoundCloud API</p>
         <Headphones className="icon hidden" width="100" fill="#ccc" />
 
-        <MediaButton className="button hidden" name="button show playlist" active={true} onClick={this.props.onStartClick} icon={<PlayButton width={28} />} />
+        <MediaButton className="hidden" name="button show playlist" active={true} onClick={this.props.onStartClick} icon={<PlayButton width={28} />} />
       </Fragment>
     );
   }

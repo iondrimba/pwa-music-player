@@ -156,19 +156,23 @@ class App extends Component {
   }
 
   onPlayNext = () => {
-    const nextTrack = { ...this.state.tracks[this.state.track.index + 1] };
+    if (this.state.tracks[this.state.track.index + 1]) {
+      const nextTrack = { ...this.state.tracks[this.state.track.index + 1] };
 
-    this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
+      this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
 
-    this.playTrack(nextTrack);
+      this.playTrack(nextTrack);
+    }
   }
 
   onPlayPrev = () => {
-    const nextTrack = { ...this.state.tracks[this.state.track.index - 1] };
+    if (this.state.tracks[this.state.track.index - 1]) {
+      const nextTrack = { ...this.state.tracks[this.state.track.index - 1] };
 
-    this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
+      this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
 
-    this.playTrack(nextTrack);
+      this.playTrack(nextTrack);
+    }
   }
 
   render() {
@@ -184,7 +188,7 @@ class App extends Component {
             <div className="home page">
               <Home onStartClick={this.onStartClick} />
             </div>
-            <Suspense fallback={<Loader/>}>
+            <Suspense fallback={<Loader />}>
               <Page className="list" active={this.state.currentView === 'list'}>{<List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />}</Page>
               <Page className="detail" active={this.state.currentView === 'detail'}>{<Detail track={this.state.track}
                 onPlayClick={this.playTrack}

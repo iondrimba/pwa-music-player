@@ -12,6 +12,31 @@
     display: none;
   }
 
+  .icon-button--back .active{
+    transition-delay: .1s;
+  }
+
+  &__title .active {
+    transition-delay: .5s;
+  }
+
+  .icon-button--help .active {
+    transition-delay: .9s;
+  }
+
+  .hidden {
+    transform: translateY(20px);
+    opacity: .001;
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .active {
+    transition-duration: .3s, .2s;
+    transform: translateY(0);
+    opacity: .999;
+  }
+
   &--home {
     visibility: hidden;
   }

@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from 'react';
+import React, { PureComponent, Suspense, lazy } from 'react';
 import createHistory from 'history/createBrowserHistory';
 import Home from '../pages/Home/Home';
 import percent from '../helpers/progress';
@@ -12,9 +12,9 @@ const List = lazy(() => import('../pages/List/List'));
 const About = lazy(() => import('../pages/About/About'));
 const Detail = lazy(() => import('../pages/Detail/Detail'));
 
-class App extends Component {
-  constructor() {
-    super();
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
 
     this.state = {
       tracks: [...initialData],

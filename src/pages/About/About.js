@@ -3,10 +3,9 @@ import styles from './styles.scss';
 
 class About extends PureComponent {
   render() {
-
     return (
       <Fragment>
-        <div className="content" tabIndex="-1">
+        <div className="content">
           <h1 tabIndex="-1">PWA Music Player</h1>
           <p>This is a personal project built in my spare time for learning purposes.</p>
           <h2>Credits:</h2>

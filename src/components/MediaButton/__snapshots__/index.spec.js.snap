@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediaButton renders defaultProps 1`] = `
+<button
+  aria-label="click me"
+  className=" media-button "
+  onClick={[Function]}
+  tabIndex="-1"
+  type="button"
+>
+  <svg
+    className="icon icon--back"
+    width={16}
+  >
+    repeat-arrows.svg
+  </svg>
+</button>
+`;

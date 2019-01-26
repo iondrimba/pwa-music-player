@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 class ProgressBar extends Component {
@@ -16,6 +17,10 @@ class ProgressBar extends Component {
       </div>
     )
   }
+}
+
+ProgressBar.propTypes = {
+  percent: PropTypes.number.isRequired,
 }
 
 export default ProgressBar;

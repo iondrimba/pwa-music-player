@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem renders defaultProps 1`] = `
+<li
+  className="row"
+>
+  <button
+    className=""
+    data-id={1}
+    onClick={[Function]}
+    tabIndex="-1"
+  >
+    <div
+      className="album"
+    >
+      <img
+        alt="Album artwork from track John Doe title."
+        className="album__cover"
+        src="/john-doe.jpg"
+      />
+    </div>
+    <div
+      className="info"
+    >
+      <h2
+        className="info__track"
+      >
+        John Doe title
+      </h2>
+      <span
+        className="info__artist"
+      >
+        John Doe
+      </span>
+      <div
+        className="controls"
+      >
+        <div
+          className="progress-bar"
+        >
+          <div
+            className="progress-bar__mask"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className="progress-bar__progress"
+            />
+          </div>
+          <div
+            className="progress-bar__bg"
+          />
+        </div>
+      </div>
+    </div>
+  </button>
+</li>
+`;

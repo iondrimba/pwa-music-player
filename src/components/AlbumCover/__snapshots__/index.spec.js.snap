@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlbumCover renders defaultProps 1`] = `
+<div
+  className="album-cover"
+>
+  <svg
+    className="album-cover__icon"
+  >
+    picture.svg
+  </svg>
+  <div
+    className="album-cover__loader"
+  />
+  <img
+    alt="John Doe alt."
+    className="album-cover__image"
+    crossOrigin=""
+    onLoad={[Function]}
+  />
+</div>
+`;

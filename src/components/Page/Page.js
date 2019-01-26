@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 class Page extends PureComponent {
@@ -9,6 +10,12 @@ class Page extends PureComponent {
       </section>
     );
   }
+}
+
+Page.propTypes = {
+  active: PropTypes.bool,
+  className: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
 }
 
 export default Page;

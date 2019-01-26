@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import FastAverageColor from 'fast-average-color/dist/index.es6';
+import PropTypes from 'prop-types';
+import FastAverageColor from 'fast-average-color/dist/index';
 import { ReactComponent as PictureIcon } from '../../icons/picture.svg';
 import './styles.scss';
 
@@ -62,10 +63,15 @@ class AlbumCover extends PureComponent {
       <div ref={this.view} className={`album-cover`}>
         <PictureIcon className="album-cover__icon" />
         <div ref={this.loader} className="album-cover__loader"></div>
-        <img ref={this.image} className="album-cover__image" crossOrigin="" onLoad={this.onLoadImage} alt={`album artwork from track ${this.props.alt}`} />
+        <img ref={this.image} className="album-cover__image" crossOrigin="" onLoad={this.onLoadImage} alt={this.props.alt} />
       </div>
     );
   }
+}
+
+AlbumCover.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
 }
 
 export default AlbumCover;

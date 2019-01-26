@@ -27,7 +27,11 @@ class Detail extends PureComponent {
     return (
       <Fragment>
         <div className="detail__track" aria-live="polite" aria-atomic="false">
-          <AlbumCover hide={!this.props.active} src={this.props.track.artwork_url.replace('t50x50', 't300x300')} alt={this.props.track.title} />
+          <AlbumCover
+            hide={!this.props.active}
+            src={this.props.track.artwork_url.replace('t50x50', 't300x300')}
+            alt={`album artwork from track ${this.props.track.title}`}
+          />
           <div className="detail__controls">
             <div className="detail__info">
               <h3 className="title">{this.props.track.title}</h3>

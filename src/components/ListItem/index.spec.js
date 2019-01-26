@@ -5,7 +5,7 @@ import { enzymeConfig } from '../../enzimeConfig';
 
 enzymeConfig();
 
-describe('IconButton', () => {
+describe('ListItem', () => {
   it('renders defaultProps', () => {
     const component = renderer.create(<ListItem
       track={{
@@ -15,7 +15,9 @@ describe('IconButton', () => {
         artist: 'John Doe',
       }}
       selectedTrack={{
+        id: 1,
         percentage: '1',
+        playing: false,
         title: 'Track 1',
       }}
       onClick={() => { }} />);

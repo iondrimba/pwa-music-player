@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`IconButton renders defaultProps 1`] = `
+exports[`ListItem renders defaultProps 1`] = `
 <li
   className="row"
 >
@@ -42,7 +42,7 @@ exports[`IconButton renders defaultProps 1`] = `
             className="progress-bar__mask"
             style={
               Object {
-                "width": "0%",
+                "width": "100%",
               }
             }
           >

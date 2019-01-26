@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton renders defaultProps 1`] = `
+<button
+  aria-label="Icon button label"
+  className="icon-button xpto-class"
+  name="Icon button label"
+  onClick={[Function]}
+  tabIndex="-1"
+  type="button"
+>
+  <svg
+    className="icon icon--back"
+    width={16}
+  >
+    repeat-arrows.svg
+  </svg>
+</button>
+`;

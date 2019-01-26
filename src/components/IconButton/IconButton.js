@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 class IconButton extends Component {
@@ -11,6 +12,14 @@ class IconButton extends Component {
       <button type="button" tabIndex={this.props.tabEnabled ? "0" : "-1"} name={this.props.label} aria-label={this.props.label} className={`icon-button ${this.props.className}`} onClick={this.props.onClick}>{this.props.icon}</button>
     )
   }
+}
+
+IconButton.propTypes = {
+  tabEnabled: PropTypes.bool,
+  icon: PropTypes.element.isRequired,
+  label: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default IconButton;

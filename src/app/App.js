@@ -1,7 +1,7 @@
 import React, { PureComponent, Suspense, lazy } from 'react';
 import createHistory from 'history/createBrowserHistory';
 import Home from '../pages/Home/Home';
-import percent from '../helpers/progress';
+import percent from '../helpers/percent';
 import Menu from '../components/Menu/Menu';
 import Page from '../components/Page/Page';
 import Loader from '../components/Loader/Loader';

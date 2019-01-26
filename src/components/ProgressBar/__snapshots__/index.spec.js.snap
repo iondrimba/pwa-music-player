@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar renders defaultProps 1`] = `
+<div
+  className="progress-bar"
+>
+  <div
+    className="progress-bar__mask"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="progress-bar__progress"
+    />
+  </div>
+  <div
+    className="progress-bar__bg"
+  />
+</div>
+`;

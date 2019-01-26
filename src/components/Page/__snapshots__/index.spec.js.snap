@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page renders defaultProps 1`] = `
+<section
+  aria-hidden={false}
+  className="home page active"
+>
+  <div
+    active={true}
+  >
+    Hello
+  </div>
+</section>
+`;

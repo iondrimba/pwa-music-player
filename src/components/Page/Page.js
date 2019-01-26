@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 
 class Page extends PureComponent {
   render() {

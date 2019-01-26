@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import FastAverageColor from 'fast-average-color/dist/index.es6';
 import { ReactComponent as PictureIcon } from '../../icons/picture.svg';
-import styles from './styles.scss';
+import './styles.scss';
 
 class AlbumCover extends PureComponent {
   constructor(props) {

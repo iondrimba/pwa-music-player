@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 
 class IconButton extends Component {
   shouldComponentUpdate(prevProps) {

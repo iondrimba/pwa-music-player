@@ -6,7 +6,7 @@ import Menu from '../components/Menu/Menu';
 import Page from '../components/Page/Page';
 import Loader from '../components/Loader/Loader';
 import initialData from './data';
-import styles from './style.scss';
+import './style.scss';
 
 const List = lazy(() => import('../pages/List/List'));
 const About = lazy(() => import('../pages/About/About'));

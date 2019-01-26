@@ -3,7 +3,7 @@ import { ReactComponent as HelpButton } from '../../icons/help-button.svg';
 import { ReactComponent as BackButton } from '../../icons/left-arrow.svg';
 import { ReactComponent as CloseButton } from '../../icons/close.svg';
 import IconButton from '../IconButton/IconButton';
-import styles from './styles.scss';
+import './styles.scss';
 
 class Menu extends PureComponent {
   componentDidMount() {

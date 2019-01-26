@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import styles from './styles.scss';
+import './styles.scss';
 
 class About extends PureComponent {
   render() {

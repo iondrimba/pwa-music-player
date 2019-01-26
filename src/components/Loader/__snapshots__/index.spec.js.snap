@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader renders defaultProps 1`] = `
+<div
+  aria-label="loading.."
+  className="loader"
+/>
+`;

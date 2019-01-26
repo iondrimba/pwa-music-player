@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { ReactComponent as HelpButton } from '../../icons/help-button.svg';
 import { ReactComponent as BackButton } from '../../icons/left-arrow.svg';
 import { ReactComponent as CloseButton } from '../../icons/close.svg';
@@ -36,6 +37,13 @@ class Menu extends PureComponent {
       </nav>
     );
   }
+}
+
+Menu.propTypes = {
+  activeView: PropTypes.string,
+  onBackClick: PropTypes.func.isRequired,
+  onAboutClick: PropTypes.func.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
 }
 
 export default Menu;

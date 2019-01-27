@@ -1,9 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ProgressBar from './ProgressBar';
-import { enzymeConfig, shallow } from '../../enzimeConfig';
-
-enzymeConfig();
+import { shallow } from 'enzyme';
 
 describe('ProgressBar', () => {
   it('renders defaultProps', () => {

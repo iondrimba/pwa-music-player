@@ -2,9 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Menu from './Menu';
 import sleep from '../../helpers/sleep';
-import { enzymeConfig, mount } from '../../enzimeConfig';
-
-enzymeConfig();
+import { mount } from 'enzyme';
 
 describe('Menu', () => {
   it('renders defaultProps', () => {
@@ -21,14 +19,16 @@ describe('Menu', () => {
   });
 
   describe('componentDidMount', () => {
-    it('adds class active to hidden elements', async () => {
-      Menu.prototype._activeHiddenElements = jest.fn();
+    fit('adds class active to hidden elements', async () => {
+      jest.spyOn(Menu.prototype, '_activeHiddenElements');
 
       const component = mount(<Menu activeView='home' onBackClick={() => { }} onAboutClick={() => { }}onCloseClick={() => { }} />);
 
       await sleep(1300);
 
-      expect(component.instance()._activeHiddenElements).toBeCalled();
+      [...component.instance().menu.current.querySelectorAll('.hidden')].map((elmt) => expect(elmt.className).toContain('active'));
+
+      expect(Menu.prototype._activeHiddenElements).toBeCalled();
     });
   });
 
@@ -42,6 +42,7 @@ describe('Menu', () => {
 
       await sleep(100);
 
+      expect(component.instance().title.current.className).toContain('active');
       expect(component.instance()._animateTitle).toBeCalled();
     });
   });

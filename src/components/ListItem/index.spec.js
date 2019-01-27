@@ -1,9 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ListItem from './ListItem';
-import { enzymeConfig, shallow } from '../../enzimeConfig';
-
-enzymeConfig();
+import { shallow } from 'enzyme';
 
 const buildComponent = () => <ListItem
   track={{

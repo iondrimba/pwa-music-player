@@ -1,9 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import List from './List';
-import { enzymeConfig, shallow } from '../../enzimeConfig';
-
-enzymeConfig();
+import { shallow } from 'enzyme';
 
 const track = {
   id: 1,

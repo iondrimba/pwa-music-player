@@ -2,9 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import IconButton from './IconButton';
 import { ReactComponent as RepeatButton } from '../../icons/repeat-arrows.svg';
-import { enzymeConfig } from '../../enzimeConfig';
-
-enzymeConfig();
 
 describe('IconButton', () => {
   it('renders defaultProps', () => {

@@ -1,9 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Page from './Page';
-import { enzymeConfig } from '../../enzimeConfig';
-
-enzymeConfig();
 
 describe('Page', () => {
   it('renders defaultProps', () => {

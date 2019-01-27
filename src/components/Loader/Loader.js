@@ -2,12 +2,6 @@ import React, { PureComponent } from 'react';
 import './styles.scss';
 
 class Loader extends PureComponent {
-  constructor() {
-    super();
-
-    this.loader = React.createRef();
-  }
-
   _addActiveClass() {
     requestAnimationFrame(() => {
       this.loader.current.classList.add('animate');
@@ -15,6 +9,8 @@ class Loader extends PureComponent {
   }
 
   componentDidMount() {
+    this.loader = React.createRef();
+
     this._addActiveClass();
   }
 

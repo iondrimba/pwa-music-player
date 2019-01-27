@@ -2,9 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import AlbumCover from './AlbumCover';
 import sleep from '../../helpers/sleep';
-import { enzymeConfig, mount } from '../../enzimeConfig';
-
-enzymeConfig();
+import { mount } from 'enzyme';
 
 describe('AlbumCover', () => {
   it('renders defaultProps', () => {

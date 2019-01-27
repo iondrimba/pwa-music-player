@@ -52,20 +52,7 @@ describe('ListItem', () => {
 
     describe('when different track id and title', () => {
       it('returns true', () => {
-        const component = shallow(<ListItem
-          track={{
-            id: 1,
-            artwork_url: '/john-doe.jpg',
-            title: 'John Doe title',
-            artist: 'John Doe',
-          }}
-          selectedTrack={{
-            id: 1,
-            percentage: 1,
-            playing: false,
-            title: 'Track 1',
-          }}
-          onClick={() => { }} />);
+        const component = shallow(buildComponent());
 
         const result = component.instance().shouldComponentUpdate({ selectedTrack: { id: 2, title: 'New John Doe' } });
 
@@ -75,21 +62,7 @@ describe('ListItem', () => {
 
     describe('when changing active state', () => {
       it('returns true', () => {
-        const component = shallow(<ListItem
-          active={false}
-          track={{
-            id: 1,
-            artwork_url: '/john-doe.jpg',
-            title: 'John Doe title',
-            artist: 'John Doe',
-          }}
-          selectedTrack={{
-            id: 1,
-            percentage: 1,
-            playing: false,
-            title: 'Track 1',
-          }}
-          onClick={() => { }} />);
+        const component = shallow(buildComponent());
 
         const result = component.instance().shouldComponentUpdate({ selectedTrack: { id: 2, active: true } });
 

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader renders defaultProps 1`] = `
+<ul
+  className="track-list"
+>
+  <li
+    className="row"
+  >
+    <button
+      className=""
+      data-id={1}
+      onClick={[Function]}
+      tabIndex="-1"
+    >
+      <div
+        className="album"
+      >
+        <img
+          alt="Album artwork from track title."
+          className="album__cover"
+          src="artwork_url"
+        />
+      </div>
+      <div
+        className="info"
+      >
+        <h2
+          className="info__track"
+        >
+          title
+        </h2>
+        <span
+          className="info__artist"
+        >
+          artist
+        </span>
+        <div
+          className="controls"
+        >
+          <div
+            className="progress-bar"
+          >
+            <div
+              className="progress-bar__mask"
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="progress-bar__progress"
+              />
+            </div>
+            <div
+              className="progress-bar__bg"
+            />
+          </div>
+        </div>
+      </div>
+    </button>
+  </li>
+</ul>
+`;

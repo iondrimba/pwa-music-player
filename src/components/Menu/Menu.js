@@ -4,6 +4,7 @@ import { ReactComponent as HelpButton } from '../../icons/help-button.svg';
 import { ReactComponent as BackButton } from '../../icons/left-arrow.svg';
 import { ReactComponent as CloseButton } from '../../icons/close.svg';
 import { add, remove } from '../../helpers/classlist';
+import sleep from '../../helpers/sleep';
 import IconButton from '../IconButton/IconButton';
 import './styles.scss';
 
@@ -12,31 +13,40 @@ class Menu extends PureComponent {
     super();
 
     this.title = React.createRef();
+    this.menu = React.createRef();
+  }
+
+  _activeHiddenElements() {
+    [...this.menu.current.querySelectorAll('.hidden')].map((elmt) => elmt.classList.add('active'));
+  }
+
+  _animateTitle() {
+    remove(this.title.current, 'active');
+
+    requestAnimationFrame(async () => {
+      await sleep(100);
+
+      add(this.title.current, 'active');
+    });
   }
 
   componentDidMount() {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        [...document.querySelector('.menu').querySelectorAll('.hidden')].map((elmt) => elmt.classList.add('active'));
-      }, 1200);
+    requestAnimationFrame(async () => {
+      await sleep(1200);
+
+      this._activeHiddenElements();
     });
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.activeView !== this.props.activeView) {
-      remove(this.title.current, 'active');
-
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          add(this.title.current, 'active');
-        }, 100);
-      });
+      this._animateTitle();
     }
   }
 
   render() {
     return (
-      <nav className={`menu menu--${this.props.activeView}`}>
+      <nav ref={this.menu} className={`menu menu--${this.props.activeView}`}>
         <IconButton label="navigate back" tabEnabled={true} className="hidden icon-button icon-button--back" onClick={this.props.onBackClick} icon={<BackButton className="icon icon--back" width={16} />} />
         <h1 ref={this.title} className="hidden menu__title">{this.props.activeView === 'list' ? 'Queue' : 'Now playing'}</h1>
         <IconButton label="about the app" tabEnabled={true} className="hidden icon-button icon-button--help" onClick={this.props.onAboutClick} icon={<HelpButton className="icon icon--help" width={27} />} />

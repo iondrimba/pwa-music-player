@@ -13,7 +13,7 @@ before_script:
   - npm install -g jest-cli
 script:
   - CI=false npm run build
-  - CI=false npm test
+  - CI=false npm test --coverage
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:

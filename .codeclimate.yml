@@ -8,6 +8,6 @@ exclude_paths:
   - "node_modules"
   - "public"
   - "scripts"
-  - "src/**/*.dev.{js,jsx,mjs}"
+  - "src/**/*.spec.{js,jsx,mjs}"
   - "src/app/data.js"
   - "src/serviceWorker.js"

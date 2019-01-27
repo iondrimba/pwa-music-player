@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import ListItem from '../../components/ListItem/ListItem';
 import './styles.scss';
 
@@ -29,6 +30,17 @@ class List extends PureComponent {
       </Fragment>
     );
   }
+}
+
+List.propTypes = {
+  track: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    artwork_url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    artist: PropTypes.string.isRequired,
+  }),
+  tracks: PropTypes.array,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default List;

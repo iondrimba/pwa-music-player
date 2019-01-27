@@ -26,7 +26,7 @@ describe('ProgressBar', () => {
     });
 
     describe('when percent is the same', () => {
-      it('return true', () => {
+      it('return false', () => {
         const component = shallow(<ProgressBar percent={1} />);
 
         const result = component.instance().shouldComponentUpdate({ percent: 1 });

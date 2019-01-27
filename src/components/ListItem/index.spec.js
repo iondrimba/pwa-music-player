@@ -16,7 +16,7 @@ describe('ListItem', () => {
       }}
       selectedTrack={{
         id: 1,
-        percentage: '1',
+        percentage: 1,
         playing: false,
         title: 'Track 1',
       }}

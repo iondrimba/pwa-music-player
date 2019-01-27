@@ -36,10 +36,10 @@ class ListItem extends Component {
 ListItem.propTypes = {
   active: PropTypes.bool,
   selectedTrack: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    percentage: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    playing: PropTypes.bool.isRequired,
+    id: PropTypes.number,
+    percentage: PropTypes.number,
+    title: PropTypes.string,
+    playing: PropTypes.bool,
   }),
   track: PropTypes.shape({
     id: PropTypes.number.isRequired,

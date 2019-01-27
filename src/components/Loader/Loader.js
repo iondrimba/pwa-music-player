@@ -2,9 +2,15 @@ import React, { PureComponent } from 'react';
 import './styles.scss';
 
 class Loader extends PureComponent {
+  constructor() {
+    super();
+
+    this.loader = React.createRef();
+  }
+
   _addActiveClass() {
     requestAnimationFrame(() => {
-      document.querySelector('.loader').classList.add('animate');
+      this.loader.current.classList.add('animate');
     });
   }
 
@@ -14,7 +20,7 @@ class Loader extends PureComponent {
 
   render() {
     return (
-      <div className="loader" aria-label="loading.." ></div >
+      <div ref={this.loader} className="loader" aria-label="loading.." ></div >
     )
   }
 }

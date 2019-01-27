@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Loader from './Loader';
+import sleep from '../../helpers/sleep';
 import { enzymeConfig, mount } from '../../enzimeConfig';
 
 enzymeConfig();
@@ -15,12 +16,17 @@ describe('Loader', () => {
   });
 
   describe('componentDidMount', () => {
-    it('add class active', async () => {
+    fit('add class animate', async () => {
       jest.spyOn(Loader.prototype, '_addActiveClass');
 
-      mount(<Loader />);
+      const component = mount(<Loader />);
+
+      await sleep(100);
 
       expect(Loader.prototype._addActiveClass).toBeCalled();
+      expect(component.instance().loader.current.className).toContain('animate');
+
+      component.unmount();
     });
   });
 });

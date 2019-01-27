@@ -3,7 +3,7 @@
 exports[`MediaButton renders defaultProps 1`] = `
 <button
   aria-label="click me"
-  className=" media-button "
+  className=" media-button media-button--active"
   onClick={[Function]}
   tabIndex="-1"
   type="button"

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ListItem from './ListItem';
-import { enzymeConfig, mount } from '../../enzimeConfig';
+import { enzymeConfig, shallow } from '../../enzimeConfig';
 
 enzymeConfig();
 
@@ -30,7 +30,7 @@ describe('ListItem', () => {
   describe('shouldComponentUpdate', () => {
     describe('when same track and different percentage played', () => {
       it('returns true', () => {
-        const component = mount(<ListItem
+        const component = shallow(<ListItem
           track={{
             id: 1,
             artwork_url: '/john-doe.jpg',
@@ -53,7 +53,7 @@ describe('ListItem', () => {
 
     describe('when same track and same percentage played', () => {
       it('returns false', () => {
-        const component = mount(<ListItem
+        const component = shallow(<ListItem
           track={{
             id: 1,
             artwork_url: '/john-doe.jpg',
@@ -76,7 +76,7 @@ describe('ListItem', () => {
 
     describe('when different track id and title', () => {
       it('returns true', () => {
-        const component = mount(<ListItem
+        const component = shallow(<ListItem
           track={{
             id: 1,
             artwork_url: '/john-doe.jpg',
@@ -99,7 +99,7 @@ describe('ListItem', () => {
 
     describe('when changing active state', () => {
       it('returns true', () => {
-        const component = mount(<ListItem
+        const component = shallow(<ListItem
           active={false}
           track={{
             id: 1,

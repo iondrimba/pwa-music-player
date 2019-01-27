@@ -5,6 +5,7 @@ import percent from '../helpers/percent';
 import Menu from '../components/Menu/Menu';
 import Page from '../components/Page/Page';
 import Loader from '../components/Loader/Loader';
+import AudioHelper from '../helpers/audio';
 import initialData from './data';
 import './style.scss';
 
@@ -43,6 +44,7 @@ class App extends PureComponent {
   }
 
   componentDidMount() {
+    this.audioHelper = new AudioHelper(document.querySelector('#audio'));
     this.setupAudio();
 
     this.history.push('/', 'home');
@@ -86,23 +88,10 @@ class App extends PureComponent {
   }
 
   setupAudio() {
-    this.audioElement = document.getElementById('audio');
-
-    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    this.analyser = this.audioCtx.createAnalyser();
-
-    this.source = this.audioCtx.createMediaElementSource(this.audioElement);
-    this.source.connect(this.analyser);
-    this.source.connect(this.audioCtx.destination);
-
-    this.bufferLength = this.analyser.frequencyBinCount;
-    this.frequencyData = new Uint8Array(this.bufferLength);
-
-    this.audioElement.volume = .1;
-    this.audioElement.addEventListener('timeupdate', this.timeupdate.bind(this));
-
     this.timeupdate = this.timeupdate.bind(this);
+    this.audioHelper.setup();
+    this.audioHelper.setVolume(.1);
+    this.audioHelper.setTimerHandler(this.timeupdate);
   }
 
   timeupdate = (evt) => {
@@ -111,7 +100,7 @@ class App extends PureComponent {
 
   onListClck = (id) => {
     if (id !== this.state.track.id) {
-      this.audioElement.src = '';
+      this.audioHelper.setAudioSource('');
     }
 
     this.setState({
@@ -130,17 +119,17 @@ class App extends PureComponent {
 
   playTrack = (track) => {
     if (!track.played) {
-      this.audioElement.src = `${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`;
+      this.audioHelper.setAudioSource(`${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`);
     }
 
     this.setState({ track: { ...track, paused: false, playing: true, played: true } });
 
-    this.audioCtx.resume();
-    this.audioElement.play();
+    this.audioHelper.resume();
+    this.audioHelper.play();
   }
 
   onPauseClick = (track) => {
-    this.audioElement.pause();
+    this.audioHelper.pause();
 
     this.setState({ track: { ...track, paused: true, playing: false } });
   }
@@ -178,6 +167,7 @@ class App extends PureComponent {
   render() {
     return (
       <main className="app">
+        <audio id="audio" crossOrigin="anonymous"></audio>
         <div className="shell">
           <Menu history={this.history}
             activeView={this.state.currentView}
@@ -200,7 +190,7 @@ class App extends PureComponent {
                   onPauseClick={this.onPauseClick} />
               </Page>
               <Page className="about" active={this.state.currentView === 'about'}>
-              <About />
+                <About />
               </Page>
             </Suspense>
           </div>

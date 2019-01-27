@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Loader from './Loader';
-import sleep from '../../helpers/sleep';
 import { enzymeConfig, mount } from '../../enzimeConfig';
 
 enzymeConfig();

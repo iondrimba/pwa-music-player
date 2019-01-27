@@ -5,22 +5,24 @@ import { enzymeConfig, shallow } from '../../enzimeConfig';
 
 enzymeConfig();
 
+const buildComponent = () => <ListItem
+  track={{
+    id: 1,
+    artwork_url: '/john-doe.jpg',
+    title: 'John Doe title',
+    artist: 'John Doe',
+  }}
+  selectedTrack={{
+    id: 1,
+    percentage: 1,
+    playing: false,
+    title: 'Track 1',
+  }}
+  onClick={() => { }} />
+
 describe('ListItem', () => {
   it('renders defaultProps', () => {
-    const component = renderer.create(<ListItem
-      track={{
-        id: 1,
-        artwork_url: '/john-doe.jpg',
-        title: 'John Doe title',
-        artist: 'John Doe',
-      }}
-      selectedTrack={{
-        id: 1,
-        percentage: 1,
-        playing: false,
-        title: 'Track 1',
-      }}
-      onClick={() => { }} />);
+    const component = renderer.create(buildComponent());
 
     const tree = component.toJSON();
 
@@ -30,20 +32,7 @@ describe('ListItem', () => {
   describe('shouldComponentUpdate', () => {
     describe('when same track and different percentage played', () => {
       it('returns true', () => {
-        const component = shallow(<ListItem
-          track={{
-            id: 1,
-            artwork_url: '/john-doe.jpg',
-            title: 'John Doe title',
-            artist: 'John Doe',
-          }}
-          selectedTrack={{
-            id: 1,
-            percentage: 1,
-            playing: false,
-            title: 'Track 1',
-          }}
-          onClick={() => { }} />);
+        const component = shallow(buildComponent());
 
         const result = component.instance().shouldComponentUpdate({ selectedTrack: { id: 1, percentage: .1 } });
 
@@ -53,20 +42,7 @@ describe('ListItem', () => {
 
     describe('when same track and same percentage played', () => {
       it('returns false', () => {
-        const component = shallow(<ListItem
-          track={{
-            id: 1,
-            artwork_url: '/john-doe.jpg',
-            title: 'John Doe title',
-            artist: 'John Doe',
-          }}
-          selectedTrack={{
-            id: 1,
-            percentage: 1,
-            playing: false,
-            title: 'Track 1',
-          }}
-          onClick={() => { }} />);
+        const component = shallow(buildComponent());
 
         const result = component.instance().shouldComponentUpdate({ selectedTrack: { id: 1, percentage: 1 } });
 

@@ -1,7 +1,7 @@
 import Audio from '.';
-import { mockAudioContext } from './mock';
+import { audioContext } from './mock';
 
-const buildAudio = () => new Audio(document.createElement('audio'), mockAudioContext());
+const buildAudio = () => new Audio(document.createElement('audio'), audioContext());
 
 describe('Audio', () => {
   describe('constructor', () => {

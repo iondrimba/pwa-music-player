@@ -1,20 +1,5 @@
-import Audio from './audio';
-
-const audioContext = () => {
-  return {
-    destination: {},
-    createAnalyser: () => {
-      return {
-        connect: () => { }
-      }
-    },
-    createMediaElementSource: (element) => {
-      return {
-        connect: () => { }
-      }
-    }
-  };
-};
+import Audio from '.';
+import { audioContext } from './mock';
 
 const buildAudio = () => new Audio(document.createElement('audio'), audioContext());
 

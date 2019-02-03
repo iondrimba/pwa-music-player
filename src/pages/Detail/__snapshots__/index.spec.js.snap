@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail renders without errors 1`] = `
+<div
+  aria-atomic="false"
+  aria-live="polite"
+  className="detail__track"
+>
+  <div
+    className="album-cover"
+  >
+    <svg
+      className="album-cover__icon"
+    >
+      picture.svg
+    </svg>
+    <div
+      className="album-cover__loader"
+    />
+    <img
+      alt="album artwork from track title"
+      className="album-cover__image"
+      crossOrigin=""
+      onLoad={[Function]}
+    />
+  </div>
+  <div
+    className="detail__controls"
+  >
+    <div
+      className="detail__info"
+    >
+      <h3
+        className="title"
+      >
+        title
+      </h3>
+      <p
+        className="artist"
+      >
+        artist
+      </p>
+    </div>
+    <div
+      className="progress-bar"
+    >
+      <div
+        className="progress-bar__mask"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="progress-bar__progress"
+        />
+      </div>
+      <div
+        className="progress-bar__bg"
+      />
+    </div>
+    <div
+      className="detail__timing"
+    >
+      <time
+        className="time"
+      >
+        06:00
+      </time>
+      <time
+        className="time"
+      >
+        00:00
+      </time>
+    </div>
+    <div
+      className="detail__buttons"
+    >
+      <button
+        aria-label="repeat song"
+        className="icon-button icon-button icon-button--repeat"
+        name="repeat song"
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          className="icon icon--back"
+          width={16}
+        >
+          repeat-arrows.svg
+        </svg>
+      </button>
+      <button
+        className="prev-button"
+        name="previous song"
+        onClick={[Function]}
+        tabIndex="0"
+      >
+        <svg
+          width={16}
+        >
+          play-arrow.svg
+        </svg>
+      </button>
+      <button
+        aria-label="pause button"
+        className=" media-button "
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          width={28}
+        >
+          pause.svg
+        </svg>
+      </button>
+      <button
+        aria-label="play button"
+        className=" media-button "
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          width={28}
+        >
+          play-arrow.svg
+        </svg>
+      </button>
+      <button
+        className="next-button"
+        name="next song button"
+        onClick={[Function]}
+        tabIndex="0"
+      >
+        <svg
+          width={16}
+        >
+          play-arrow.svg
+        </svg>
+      </button>
+      <button
+        aria-label="song link"
+        className="icon-button icon-button icon-button--link"
+        name="song link"
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          className="icon icon--back"
+          width={16}
+        >
+          link.svg
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;

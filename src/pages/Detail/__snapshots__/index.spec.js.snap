@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Detail renders defaultProps 1`] = `
+exports[`Detail renders without errors 1`] = `
 <div
   aria-atomic="false"
   aria-live="polite"
@@ -66,12 +66,12 @@ exports[`Detail renders defaultProps 1`] = `
       <time
         className="time"
       >
-        NaN:NaN
+        06:00
       </time>
       <time
         className="time"
       >
-        NaN:NaN
+        00:00
       </time>
     </div>
     <div
@@ -81,7 +81,8 @@ exports[`Detail renders defaultProps 1`] = `
         aria-label="repeat song"
         className="icon-button icon-button icon-button--repeat"
         name="repeat song"
-        tabIndex="-1"
+        onClick={[Function]}
+        tabIndex="0"
         type="button"
       >
         <svg
@@ -95,7 +96,7 @@ exports[`Detail renders defaultProps 1`] = `
         className="prev-button"
         name="previous song"
         onClick={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
       >
         <svg
           width={16}
@@ -107,7 +108,7 @@ exports[`Detail renders defaultProps 1`] = `
         aria-label="pause button"
         className=" media-button "
         onClick={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
         type="button"
       >
         <svg
@@ -120,7 +121,7 @@ exports[`Detail renders defaultProps 1`] = `
         aria-label="play button"
         className=" media-button "
         onClick={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
         type="button"
       >
         <svg
@@ -133,7 +134,7 @@ exports[`Detail renders defaultProps 1`] = `
         className="next-button"
         name="next song button"
         onClick={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
       >
         <svg
           width={16}
@@ -146,7 +147,7 @@ exports[`Detail renders defaultProps 1`] = `
         className="icon-button icon-button icon-button--link"
         name="song link"
         onClick={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
         type="button"
       >
         <svg

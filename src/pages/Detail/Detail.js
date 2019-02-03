@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import MediaButton from '../../components/MediaButton/MediaButton';
 import AlbumCover from '../../components/AlbumCover/AlbumCover';
@@ -44,10 +45,10 @@ class Detail extends PureComponent {
             </div>
             <div className="detail__buttons">
               <IconButton label="repeat song" tabEnabled={this.props.active} className="icon-button icon-button--repeat" onClick={this.props.onBackClick} icon={<RepeatButton className="icon icon--back" width={16} />} />
-              <button name="previous song" tabIndex={this.props.active? "0" :"-1"} className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
+              <button name="previous song" tabIndex={this.props.active ? "0" : "-1"} className="prev-button" onClick={this.props.onPlayPrev}><PlayButton width={16} /></button>
               <MediaButton name="pause button" tabEnabled={this.props.active} active={this.props.track.playing && !this.props.track.paused} onClick={this.onPauseClick} icon={<PauseButton width={28} />} />
               <MediaButton name="play button" tabEnabled={this.props.active} active={!this.props.track.playing && this.props.track.paused} onClick={this.onPlayClick} icon={<PlayButton width={28} />} />
-              <button name="next song button" tabIndex={this.props.active? "0" :"-1"} className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
+              <button name="next song button" tabIndex={this.props.active ? "0" : "-1"} className="next-button" onClick={this.props.onPlayNext}><PlayButton width={16} /></button>
               <IconButton label="song link" tabEnabled={this.props.active} className="icon-button icon-button--link" onClick={this.onLinkClick} icon={<LinkButton className="icon icon--back" width={16} />} />
             </div>
           </div>
@@ -55,6 +56,26 @@ class Detail extends PureComponent {
       </Fragment>
     );
   }
+}
+
+Detail.propTypes = {
+  track: PropTypes.shape({
+    currentTime: PropTypes.number.isRequired,
+    duration: PropTypes.number.isRequired,
+    playing: PropTypes.bool.isRequired,
+    paused: PropTypes.bool.isRequired,
+    id: PropTypes.number.isRequired,
+    artwork_url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    artist: PropTypes.string.isRequired,
+    permalink_url: PropTypes.string.isRequired,
+  }),
+  active: PropTypes.bool.isRequired,
+  onBackClick: PropTypes.func.isRequired,
+  onPauseClick: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func.isRequired,
+  onPlayPrev: PropTypes.func.isRequired,
+  onPlayNext: PropTypes.func.isRequired,
 }
 
 export default Detail;

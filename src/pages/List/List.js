@@ -34,10 +34,10 @@ class List extends PureComponent {
 
 List.propTypes = {
   track: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     artwork_url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    artist: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    artist: PropTypes.string,
   }),
   tracks: PropTypes.array,
   onClick: PropTypes.func.isRequired,

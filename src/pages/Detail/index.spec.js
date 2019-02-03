@@ -19,6 +19,7 @@ const sampleTrack = {
 const detail = ({
   track,
   onPlayClick = () => { },
+  onRepeatClick = () => { },
   onPlayNext = () => { },
   onBackClick = () => { },
   onPlayPrev = () => { },
@@ -26,6 +27,7 @@ const detail = ({
 ) => {
   return <Detail track={track}
     active={true}
+    onRepeatClick={onRepeatClick}
     onPlayClick={onPlayClick}
     onPlayNext={onPlayNext}
     onBackClick={onBackClick}

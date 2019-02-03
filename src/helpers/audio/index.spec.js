@@ -17,10 +17,13 @@ describe('Audio', () => {
     it('defines audioCtx source and analyzer', () => {
       const audio = buildAudio();
 
+      jest.spyOn(audio.element, 'addEventListener');
+
       audio.setup();
 
       expect(audio.analyser).toBeDefined();
       expect(audio.source).toBeDefined();
+      expect(audio.element.addEventListener).toBeCalled();
     });
   });
 
@@ -95,6 +98,48 @@ describe('Audio', () => {
       audio.pause();
 
       expect(audio.element.pause).toBeCalled();
+    });
+  });
+
+  describe('repeat', () => {
+    it('sets audio.repeatPlayback', () => {
+      const audio = buildAudio();
+
+      audio.setup();
+      audio.repeat(true);
+
+      expect(audio.repeatPlayback).toBe(true);
+    });
+  });
+
+  describe('_ended', () => {
+    describe('when repeat is true', () => {
+      it('calls play', () => {
+        const audio = buildAudio();
+        audio.setup();
+        audio.repeat(true);
+
+        audio.element.play = jest.fn();
+
+        jest.spyOn(audio, 'play');
+
+        audio._ended();
+
+        expect(audio.play).toBeCalled();
+      });
+    });
+
+    describe('when repeat is false', () => {
+      it('does not call play', () => {
+        const audio = buildAudio();
+        audio.setup();
+
+        jest.spyOn(audio, 'play');
+
+        audio._ended();
+
+        expect(audio.play).not.toBeCalled();
+      });
     });
   });
 });

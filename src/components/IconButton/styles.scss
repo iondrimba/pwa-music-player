@@ -32,9 +32,17 @@
     box-shadow: 0px 0px 0px 3px rgba(123, 177, 243, 0.33);
     top: -2px;
     left: -2px;
+  }
 
+  &--high-light {
+    svg {
+      fill: #92a0e6;
+      stroke: #7b80d2;
+      stroke-width: 5px;
+    }
   }
 }
+
 
 .icon-button:focus {
   outline: 0;

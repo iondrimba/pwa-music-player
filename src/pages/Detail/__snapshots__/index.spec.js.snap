@@ -79,7 +79,7 @@ exports[`Detail renders without errors 1`] = `
     >
       <button
         aria-label="repeat song"
-        className="icon-button icon-button icon-button--repeat"
+        className="icon-button icon-button "
         name="repeat song"
         onClick={[Function]}
         tabIndex="0"
@@ -144,7 +144,7 @@ exports[`Detail renders without errors 1`] = `
       </button>
       <button
         aria-label="song link"
-        className="icon-button icon-button icon-button--link"
+        className="icon-button icon-button"
         name="song link"
         onClick={[Function]}
         tabIndex="0"

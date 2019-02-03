@@ -9,8 +9,6 @@ const placeholderData = () => {
   });
 }
 
-export default [...placeholderData()];
-
 const credits = [
   {
     label: 'Design inspired by',
@@ -50,3 +48,20 @@ const credits = [
 ];
 
 export { credits };
+
+const initialState = {
+  tracks: [...placeholderData()],
+  previousView: '/',
+  currentView: '',
+  repeat: false,
+  track: {
+    currentTime: 0,
+    percentage: 0,
+    paused: true,
+    played: false,
+    playing: false,
+    artwork_url: '',
+  },
+}
+
+export { initialState };

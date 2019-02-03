@@ -2,6 +2,8 @@ export default class Audio {
   constructor(element, audioCtx) {
     this.element = element;
     this.context  = audioCtx;
+    this.repeatPlayback = false;
+    this._ended = this._ended.bind(this);
   }
 
   _createAnalyser() {
@@ -14,10 +16,18 @@ export default class Audio {
     this.analyser.connect(this.context.destination);
   }
 
+  _ended() {
+    if(this.repeatPlayback) {
+      this.play();
+    }
+  }
+
   setup() {
     this._createAnalyser();
     this._createMediaElementSource();
     this.setVolume(.1);
+
+    this.element.addEventListener('ended', this._ended);
   }
 
   setTimerHandler(callback) {
@@ -42,5 +52,9 @@ export default class Audio {
 
   pause() {
     this.element.pause();
+  }
+
+  repeat(value) {
+    this.repeatPlayback = value;
   }
 }

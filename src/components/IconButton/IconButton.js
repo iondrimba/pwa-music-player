@@ -4,7 +4,7 @@ import './styles.scss';
 
 class IconButton extends Component {
   shouldComponentUpdate(prevProps) {
-    return prevProps.tabEnabled !== this.props.tabEnabled;
+    return prevProps.tabEnabled !== this.props.tabEnabled || prevProps.className !== this.props.className;
   }
 
   render() {

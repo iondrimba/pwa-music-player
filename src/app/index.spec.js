@@ -111,4 +111,20 @@ describe('App', () => {
       expect(instance.history.push).toBeCalledWith('/about', 'about');
     });
   });
+
+
+  describe('onPlayNext', () => {
+    it('plays next track', () => {
+      const component = shallow(<App audioContext={audioContext()} />);
+      const instance = component.instance();
+      component.setState({ tracks: mockTracks, track: { ...mockTracks[0] } });
+
+      jest.spyOn(instance, 'onPlayClick');
+
+      instance.onPlayNext();
+
+      expect(component.state().track).toEqual({ ...Object.assign({}, mockTracks[1], { paused: false, playing: true, played: true }) });
+      expect(instance.onPlayClick).toBeCalledWith({ ...mockTracks[1] });
+    });
+  });
 })

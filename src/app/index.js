@@ -141,23 +141,33 @@ class App extends PureComponent {
     this.history.push('/about', 'about');
   }
 
+  _setTrack(track) {
+    this.setState({ track, currentTime: 0, paused: true, played: false, playing: false });
+  }
+
+  _getNextTrack() {
+    return { ...this.state.tracks[this.state.track.index + 1] };
+  }
+
+  _getPreviousTrack() {
+    return { ...this.state.tracks[this.state.track.index - 1] };
+  }
+
   onPlayNext = () => {
-    if (this.state.tracks[this.state.track.index + 1]) {
-      const nextTrack = { ...this.state.tracks[this.state.track.index + 1] };
+    if (this._getNextTrack()) {
+      const track = this._getNextTrack();
 
-      this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
-
-      this.onPlayClick(nextTrack);
+      this._setTrack(track);
+      this.onPlayClick(track);
     }
   }
 
   onPlayPrev = () => {
-    if (this.state.tracks[this.state.track.index - 1]) {
-      const nextTrack = { ...this.state.tracks[this.state.track.index - 1] };
+    if (this._getPreviousTrack()) {
+      const track = this._getPreviousTrack();
 
-      this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
-
-      this.onPlayClick(nextTrack);
+      this._setTrack(track);
+      this.onPlayClick(track);
     }
   }
 

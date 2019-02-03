@@ -112,7 +112,6 @@ describe('App', () => {
     });
   });
 
-
   describe('onPlayNext', () => {
     it('plays next track', () => {
       const component = shallow(<App audioContext={audioContext()} />);
@@ -125,6 +124,21 @@ describe('App', () => {
 
       expect(component.state().track).toEqual({ ...Object.assign({}, mockTracks[1], { paused: false, playing: true, played: true }) });
       expect(instance.onPlayClick).toBeCalledWith({ ...mockTracks[1] });
+    });
+  });
+
+  describe('onPlayPrev', () => {
+    it('plays previous track', () => {
+      const component = shallow(<App audioContext={audioContext()} />);
+      const instance = component.instance();
+      component.setState({ tracks: mockTracks, track: { ...mockTracks[1] } });
+
+      jest.spyOn(instance, 'onPlayClick');
+
+      instance.onPlayPrev();
+
+      expect(component.state().track).toEqual({ ...Object.assign({}, mockTracks[0], { paused: false, playing: true, played: true }) });
+      expect(instance.onPlayClick).toBeCalledWith({ ...mockTracks[0] });
     });
   });
 })

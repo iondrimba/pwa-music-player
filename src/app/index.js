@@ -6,7 +6,7 @@ import Menu from '../components/Menu/Menu';
 import Page from '../components/Page/Page';
 import Loader from '../components/Loader/Loader';
 import Audio from '../helpers/audio';
-import initialData from './data';
+import { initialState } from './data';
 import './style.scss';
 
 const List = lazy(() => import('../pages/List/List'));
@@ -18,19 +18,7 @@ class App extends PureComponent {
     super(props);
     this.playlistUrl = `http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}
 `;
-    this.state = {
-      tracks: [...initialData],
-      previousView: '/',
-      currentView: '',
-      track: {
-        currentTime: 0,
-        percentage: 0,
-        paused: true,
-        played: false,
-        playing: false,
-        artwork_url: '',
-      },
-    };
+    this.state = { ...initialState };
 
     this.history = createHistory();
     this.history.listen((location, action) => {
@@ -171,6 +159,13 @@ class App extends PureComponent {
     }
   }
 
+  onRepeatClick = () => {
+    const repeat = !this.state.repeat;
+    this.setState({ repeat });
+
+    this.audio.repeat(repeat);
+  }
+
   render() {
     return (
       <main className="app">
@@ -191,6 +186,8 @@ class App extends PureComponent {
               </Page>
               <Page className="detail" active={this.state.currentView === 'detail'}>
                 <Detail track={this.state.track}
+                  repeat={this.state.repeat}
+                  onRepeatClick={this.onRepeatClick}
                   onPlayClick={this.onPlayClick}
                   onPlayNext={this.onPlayNext}
                   onPlayPrev={this.onPlayPrev}

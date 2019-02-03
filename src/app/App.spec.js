@@ -6,6 +6,8 @@ import App from './App';
 jest.mock('../helpers/audio');
 jest.mock('../helpers/classlist');
 
+window.audioContext = function () { };
+
 describe('App', () => {
   beforeEach(() => {
     AudioHelper.mockClear();

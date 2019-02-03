@@ -1,22 +1,23 @@
-export default class AudioHeper {
-  constructor(element) {
+export default class Audio {
+  constructor(element, audioCtx) {
     this.element = element;
+    this.context  = audioCtx;
+  }
+
+  _createAnalyser() {
+    this.analyser = this.context.createAnalyser();
+  }
+
+  _createMediaElementSource() {
+    this.source = this.context.createMediaElementSource(this.element);
+    this.source.connect(this.analyser);
+    this.analyser.connect(this.context.destination);
   }
 
   setup() {
-    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    this.analyser = this.audioCtx.createAnalyser();
-
-    this.source = this.audioCtx.createMediaElementSource(this.element);
-    this.source.connect(this.analyser);
-    this.source.connect(this.audioCtx.destination);
-
-    this.bufferLength = this.analyser.frequencyBinCount;
-    this.frequencyData = new Uint8Array(this.bufferLength);
-
+    this._createAnalyser();
+    this._createMediaElementSource();
     this.setVolume(.1);
-    this.setTimerHandler(this.timerHandler);
   }
 
   setTimerHandler(callback) {
@@ -32,7 +33,7 @@ export default class AudioHeper {
   }
 
   resume() {
-    this.audioCtx.resume();
+    this.context.resume();
   }
 
   play() {

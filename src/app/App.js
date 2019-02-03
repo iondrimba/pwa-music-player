@@ -5,7 +5,7 @@ import percent from '../helpers/percent';
 import Menu from '../components/Menu/Menu';
 import Page from '../components/Page/Page';
 import Loader from '../components/Loader/Loader';
-import AudioHelper from '../helpers/audio';
+import Audio from '../helpers/audio';
 import initialData from './data';
 import './style.scss';
 
@@ -44,7 +44,6 @@ class App extends PureComponent {
   }
 
   componentDidMount() {
-    this.audioHelper = new AudioHelper(document.querySelector('#audio'));
     this.setupAudio();
 
     this.history.push('/', 'home');
@@ -89,9 +88,10 @@ class App extends PureComponent {
 
   setupAudio() {
     this.timeupdate = this.timeupdate.bind(this);
-    this.audioHelper.setup();
-    this.audioHelper.setVolume(.1);
-    this.audioHelper.setTimerHandler(this.timeupdate);
+
+    this.audio = new Audio(document.querySelector('#audio'), new (window.audioContext || window.webkitAudioContext)());
+    this.audio.setup();
+    this.audio.setTimerHandler(this.timeupdate);
   }
 
   timeupdate = (evt) => {
@@ -100,7 +100,7 @@ class App extends PureComponent {
 
   onListClck = (id) => {
     if (id !== this.state.track.id) {
-      this.audioHelper.setAudioSource('');
+      this.audio.setAudioSource('');
     }
 
     this.setState({
@@ -119,17 +119,17 @@ class App extends PureComponent {
 
   playTrack = (track) => {
     if (!track.played) {
-      this.audioHelper.setAudioSource(`${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`);
+      this.audio.setAudioSource(`${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`);
     }
 
     this.setState({ track: { ...track, paused: false, playing: true, played: true } });
 
-    this.audioHelper.resume();
-    this.audioHelper.play();
+    this.audio.resume();
+    this.audio.play();
   }
 
   onPauseClick = (track) => {
-    this.audioHelper.pause();
+    this.audio.pause();
 
     this.setState({ track: { ...track, paused: true, playing: false } });
   }

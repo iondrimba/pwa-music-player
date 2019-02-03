@@ -16,7 +16,8 @@ const Detail = lazy(() => import('../pages/Detail/Detail'));
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
+    this.playlistUrl = `http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}
+`;
     this.state = {
       tracks: [...initialData],
       previousView: '/',
@@ -53,33 +54,29 @@ class App extends PureComponent {
     this.history.push('/List', 'list');
   }
 
-  fetchPlayList = () => {
-    fetch(`http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        this.setState(() => ({
-          tracks: [...result[0].tracks.map((track, index) => {
-            return Object.assign({}, {
-              ...this.state.track,
-              id: track.id,
-              stream_url: track.stream_url,
-              uri: track.uri,
-              duration: track.duration,
-              favoritings_count: track.favoritings_count,
-              artist: track.user.username,
-              artwork_url: track.artwork_url.replace('large', 't50x50'),
-              title: track.title.toLowerCase(),
-              permalink_url: track.permalink_url,
-              index,
-            });
-          })],
-          playlistLoaded: true,
-        }));
+  fetchPlayList = async () => {
+    const result = await fetch(this.playlistUrl);
+    const data = await result.json();
+    const updatedState = {
+      tracks: [...data[0].tracks.map((track, index) => {
+        return Object.assign({}, {
+          ...this.state.track,
+          id: track.id,
+          stream_url: track.stream_url,
+          uri: track.uri,
+          duration: track.duration,
+          favoritings_count: track.favoritings_count,
+          artist: track.user.username,
+          artwork_url: track.artwork_url.replace('large', 't50x50'),
+          title: track.title.toLowerCase(),
+          permalink_url: track.permalink_url,
+          index,
+        });
+      })],
+      playlistLoaded: true,
+    };
 
-        result = null;
-      });
+    this.setState(() => (updatedState));
   }
 
   selectTrack = (id) => {
@@ -89,7 +86,7 @@ class App extends PureComponent {
   setupAudio() {
     this.timeupdate = this.timeupdate.bind(this);
 
-    this.audio = new Audio(document.querySelector('#audio'), new (window.audioContext || window.webkitAudioContext)());
+    this.audio = new Audio(document.querySelector('#audio'), this.props.audioContext);
     this.audio.setup();
     this.audio.setTimerHandler(this.timeupdate);
   }
@@ -98,26 +95,26 @@ class App extends PureComponent {
     this.setState({ track: { ...this.state.track, currentTime: evt.target.currentTime, percentage: percent(evt.target.currentTime, evt.target.duration) / 100 } });
   }
 
-  onListClck = (id) => {
+  onListClick = (id) => {
     if (id !== this.state.track.id) {
       this.audio.setAudioSource('');
     }
 
-    this.setState({
-      track: {
-        ...this.selectTrack(id),
-        currentTime: 0,
-        percentage: 0,
-        playing: this.state.track.id === id ? this.state.track.playing : false,
-        played: this.state.track.id === id ? this.state.track.played : false,
-        paused: this.state.track.id === id ? this.state.track.paused : true,
-      }
-    });
+    const track = {
+      ...this.selectTrack(id),
+      currentTime: 0,
+      percentage: 0,
+      playing: this.state.track.id === id ? this.state.track.playing : false,
+      played: this.state.track.id === id ? this.state.track.played : false,
+      paused: this.state.track.id === id ? this.state.track.paused : true,
+    };
 
-    this.history.push(`/Destail/${id}`, 'detail');
+    this.setState({ track });
+
+    this.history.push(`/Detail/${id}`, 'detail');
   }
 
-  playTrack = (track) => {
+  onPlayClick = (track) => {
     if (!track.played) {
       this.audio.setAudioSource(`${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`);
     }
@@ -150,7 +147,7 @@ class App extends PureComponent {
 
       this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
 
-      this.playTrack(nextTrack);
+      this.onPlayClick(nextTrack);
     }
   }
 
@@ -160,7 +157,7 @@ class App extends PureComponent {
 
       this.setState({ track: nextTrack, currentTime: 0, paused: true, played: false, playing: false });
 
-      this.playTrack(nextTrack);
+      this.onPlayClick(nextTrack);
     }
   }
 
@@ -180,11 +177,11 @@ class App extends PureComponent {
             </Page>
             <Suspense fallback={<Loader />}>
               <Page className="list" active={this.state.currentView === 'list'}>
-                <List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClck} />
+                <List track={this.state.track} tracks={this.state.tracks} onClick={this.onListClick} />
               </Page>
               <Page className="detail" active={this.state.currentView === 'detail'}>
                 <Detail track={this.state.track}
-                  onPlayClick={this.playTrack}
+                  onPlayClick={this.onPlayClick}
                   onPlayNext={this.onPlayNext}
                   onPlayPrev={this.onPlayPrev}
                   onPauseClick={this.onPauseClick} />

@@ -141,4 +141,20 @@ describe('App', () => {
       expect(instance.onPlayClick).toBeCalledWith({ ...mockTracks[0] });
     });
   });
+
+  describe('onRepeatClick', () => {
+    it('keeps song on repeat', () => {
+      const component = shallow(<App audioContext={audioContext()} />);
+      const instance = component.instance();
+
+      component.setState({ tracks: mockTracks, track: { ...mockTracks[1] } });
+
+      jest.spyOn(instance.audio, 'repeat');
+
+      instance.onRepeatClick();
+
+      expect(component.state().repeat).toEqual(true);
+      expect(instance.audio.repeat).toBeCalledWith(true);
+    });
+  });
 })

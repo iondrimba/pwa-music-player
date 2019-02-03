@@ -89,7 +89,7 @@ class App extends PureComponent {
   setupAudio() {
     this.timeupdate = this.timeupdate.bind(this);
 
-    this.audio = new Audio(document.querySelector('#audio'), new window.AudioContext());
+    this.audio = new Audio(document.querySelector('#audio'), new (window.audioContext || window.webkitAudioContext)());
     this.audio.setup();
     this.audio.setTimerHandler(this.timeupdate);
   }

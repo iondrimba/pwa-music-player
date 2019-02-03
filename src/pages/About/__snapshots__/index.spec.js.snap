@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About renders without errors 1`] = `
+<div
+  className="content"
+>
+  <h1
+    tabIndex="-1"
+  >
+    PWA Music Player
+  </h1>
+  <p>
+    This is a personal project built in my spare time for learning purposes.
+  </p>
+  <h2>
+    Credits:
+  </h2>
+  <ul>
+    <li>
+      Design inspired by
+       
+      <a
+        href="https://dribbble.com/shots/3000629-Music-Player-Sketch-Freebie"
+        rel="noopener noreferrer"
+        tabIndex="-1"
+        target="_blank"
+      >
+        Armas Nurbahari
+      </a>
+    </li>
+    <li>
+      Songs API by
+       
+      <a
+        href="https://developers.soundcloud.com/docs/api"
+        rel="noopener noreferrer"
+        tabIndex="-1"
+        target="_blank"
+      >
+        Soundcloud
+      </a>
+    </li>
+    <li>
+      Pause icon by
+       
+      <a
+        href="https://www.flaticon.com/authors/smashicons"
+        rel="noopener noreferrer"
+        tabIndex="-1"
+        target="_blank"
+      >
+        Smashicons
+      </a>
+    </li>
+    <li>
+      Left arrow icon by
+       
+      <a
+        href="https://www.flaticon.com/authors/lucy-g"
+        rel="noopener noreferrer"
+        tabIndex="-1"
+        target="_blank"
+      >
+        Lucy G
+      </a>
+    </li>
+    <li>
+      Play arrow icon by
+       
+      <a
+        href="https://www.freepik.com/"
+        rel="noopener noreferrer"
+        tabIndex="-1"
+        target="_blank"
+      >
+        Freepik
+      </a>
+    </li>
+    <li>
+      Help icon by
+       
+      <a
+        href="https://www.flaticon.com/authors/anton-saputro"
+        rel="noopener noreferrer"
+        tabIndex="-1"
+        target="_blank"
+      >
+        Anton Saputro
+      </a>
+    </li>
+    <li>
+      Close icon by
+       
+      <a
+        href="https://www.flaticon.com/authors/chanut"
+        rel="noopener noreferrer"
+        tabIndex="-1"
+        target="_blank"
+      >
+        Chanut
+      </a>
+    </li>
+  </ul>
+</div>
+`;

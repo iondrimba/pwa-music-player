@@ -1,49 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
+import { credits } from '../../app/data';
 import './styles.scss';
 
 class About extends PureComponent {
   constructor() {
     super();
 
-    this.state = {
-      credits: [
-        {
-          label: 'Design inspired by',
-          link: 'https://dribbble.com/shots/3000629-Music-Player-Sketch-Freebie',
-          author: 'Armas Nurbahari'
-        },
-        {
-          label: 'Songs API by',
-          link: 'https://developers.soundcloud.com/docs/api',
-          author: 'Soundcloud'
-        },
-        {
-          label: 'Pause icon by',
-          link: 'https://www.flaticon.com/authors/smashicons',
-          author: 'Smashicons'
-        },
-        {
-          label: 'Left arrow icon by',
-          link: 'https://www.flaticon.com/authors/lucy-g',
-          author: 'Lucy G'
-        },
-        {
-          label: 'Play arrow icon by',
-          link: 'https://www.freepik.com/',
-          author: 'Freepik'
-        },
-        {
-          label: 'Help icon by',
-          link: 'https://www.flaticon.com/authors/anton-saputro',
-          author: 'Anton Saputro'
-        },
-        {
-          label: 'Close icon by',
-          link: 'https://www.flaticon.com/authors/chanut',
-          author: 'Chanut'
-        },
-      ]
-    }
+    this.state = { credits };
   }
 
   render() {
@@ -56,7 +19,7 @@ class About extends PureComponent {
           <ul>
             {
               this.state.credits.map((license) => {
-                return <li>{license.label} <a tabIndex="-1" target="_blank" rel="noopener noreferrer" href={license.link} >{license.author}</a></li>
+                return <li key={license.label}>{license.label} <a tabIndex="-1" target="_blank" rel="noopener noreferrer" href={license.link} >{license.author}</a></li>
               })
             }
           </ul>

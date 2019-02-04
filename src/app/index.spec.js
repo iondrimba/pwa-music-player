@@ -7,7 +7,7 @@ import mockTracks from '../data/mockTracks';
 import { audioContext } from '../helpers/audio/mock';
 
 jest.mock('../helpers/audio');
-jest.mock('../helpers/classlist');
+jest.mock('../helpers/classList');
 
 describe('App', () => {
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import percent from './percent';
+import percent from '.';
 
 describe('percent', () => {
   it('calculates percentage value', () => {

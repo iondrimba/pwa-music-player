@@ -1,3 +1,11 @@
+.icon {
+  fill: #dadada;
+
+  &--back {
+    margin-right: 3px;
+  }
+}
+
 .icon-button {
   cursor: pointer;
   border-radius: 50%;

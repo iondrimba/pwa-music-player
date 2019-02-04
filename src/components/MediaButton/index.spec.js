@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MediaButton from './MediaButton';
+import MediaButton from '.';
 import { ReactComponent as RepeatButton } from '../../icons/repeat-arrows.svg';
 import { shallow } from 'enzyme';
 const buildComponent = (active = true) => <MediaButton name='click me' active={active} icon={<RepeatButton className="icon icon--back" width={16} />} onClick={() => { }} />

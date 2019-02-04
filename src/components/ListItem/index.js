@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ProgressBar from '../../components/ProgressBar/ProgressBar';
+import ProgressBar from '../ProgressBar';
 
 class ListItem extends Component {
   shouldComponentUpdate(prevProps) {

@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import Audio from '../helpers/audio';
 import App from './index.js';
-import sleep from '../helpers/sleep';
-import mockTracks from './mockTracks.json';
+import mockTracks from '../data/mockTracks';
 import { audioContext } from '../helpers/audio/mock';
 
 jest.mock('../helpers/audio');
-jest.mock('../helpers/classlist');
+jest.mock('../helpers/classList');
 
 describe('App', () => {
   beforeEach(() => {

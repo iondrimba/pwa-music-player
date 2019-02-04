@@ -1,4 +1,4 @@
-import timer from './timer';
+import timer from '.';
 
 describe('timer', () => {
   it('returns formatted time min:sec as string', () => {

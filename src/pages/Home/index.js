@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import MediaButton from '../../components/MediaButton/MediaButton';
+import MediaButton from '../../components/MediaButton';
 import { ReactComponent as Headphones } from '../../icons/headphones.svg';
 import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import { ReactComponent as Soundcloud } from '../../icons/soundcloud.svg';

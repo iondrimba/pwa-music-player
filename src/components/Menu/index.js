@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { ReactComponent as HelpButton } from '../../icons/help-button.svg';
 import { ReactComponent as BackButton } from '../../icons/left-arrow.svg';
 import { ReactComponent as CloseButton } from '../../icons/close.svg';
-import { add, remove } from '../../helpers/classlist';
+import { addClass, removeClass } from '../../helpers/classList';
 import sleep from '../../helpers/sleep';
-import IconButton from '../IconButton/IconButton';
+import IconButton from '../IconButton';
 import './styles.scss';
 
 class Menu extends PureComponent {
@@ -17,16 +17,16 @@ class Menu extends PureComponent {
   }
 
   _activeHiddenElements() {
-    [...this.menu.current.querySelectorAll('.hidden')].map((elmt) => elmt.classList.add('active'));
+    [...this.menu.current.querySelectorAll('.hidden')].map((elmt) => addClass(elmt, 'active'));
   }
 
   _animateTitle() {
-    remove(this.title.current, 'active');
+    removeClass(this.title.current, 'active');
 
     requestAnimationFrame(async () => {
       await sleep(100);
 
-      add(this.title.current, 'active');
+      addClass(this.title.current, 'active');
     });
   }
 

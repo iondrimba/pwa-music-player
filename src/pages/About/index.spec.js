@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import About from './About';
+import About from '.';
 
 describe('About', () => {
   it('renders without errors', () => {

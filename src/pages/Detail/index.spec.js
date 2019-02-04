@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Detail from './Detail';
+import Detail from '.';
 import { shallow } from 'enzyme';
 
 const sampleTrack = {

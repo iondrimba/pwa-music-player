@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Page from './Page';
+import Page from '.';
 
 describe('Page', () => {
   it('renders defaultProps', () => {

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import ListItem from '../../components/ListItem/ListItem';
+import ListItem from '../../components/ListItem';
 import './styles.scss';
 
 class List extends PureComponent {

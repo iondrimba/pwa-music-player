@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Menu from './Menu';
+import Menu from '.';
 import sleep from '../../helpers/sleep';
 import { mount } from 'enzyme';
 

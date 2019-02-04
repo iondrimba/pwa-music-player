@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Loader from './Loader';
+import Loader from '.';
 import { mount } from 'enzyme';
 
 describe('Loader', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ListItem from './ListItem';
+import ListItem from '.';
 import { shallow } from 'enzyme';
 
 const buildComponent = () => <ListItem

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/index';
+import App from './app';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App audioContext={new  AudioContext()}/>, document.getElementById('root'));

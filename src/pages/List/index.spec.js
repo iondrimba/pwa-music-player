@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import List from './List';
+import List from '.';
 import { shallow } from 'enzyme';
 
 const track = {

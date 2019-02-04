@@ -1,17 +1,17 @@
 import React, { PureComponent, Suspense, lazy } from 'react';
 import createHistory from 'history/createBrowserHistory';
-import Home from '../pages/Home/Home';
+import Home from '../pages/Home';
 import percent from '../helpers/percent';
-import Menu from '../components/Menu/Menu';
-import Page from '../components/Page/Page';
-import Loader from '../components/Loader/Loader';
+import Menu from '../components/Menu';
+import Page from '../components/Page';
+import Loader from '../components/Loader';
 import Audio from '../helpers/audio';
-import { initialState } from './data';
+import { initialState } from '../data';
 import './style.scss';
 
-const List = lazy(() => import('../pages/List/List'));
-const About = lazy(() => import('../pages/About/About'));
-const Detail = lazy(() => import('../pages/Detail/Detail'));
+const List = lazy(() => import('../pages/List'));
+const About = lazy(() => import('../pages/About'));
+const Detail = lazy(() => import('../pages/Detail'));
 
 class App extends PureComponent {
   constructor(props) {

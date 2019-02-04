@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ProgressBar from './ProgressBar';
+import ProgressBar from '.';
 import { shallow } from 'enzyme';
 
 describe('ProgressBar', () => {

@@ -1,10 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import ProgressBar from '../../components/ProgressBar/ProgressBar';
-import MediaButton from '../../components/MediaButton/MediaButton';
-import AlbumCover from '../../components/AlbumCover/AlbumCover';
+import ProgressBar from '../../components/ProgressBar';
+import MediaButton from '../../components/MediaButton';
+import AlbumCover from '../../components/AlbumCover';
 import convertSecondsToMMss from '../../helpers/timer';
-import IconButton from '../../components/IconButton/IconButton';
+import IconButton from '../../components/IconButton';
 import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import { ReactComponent as PauseButton } from '../../icons/pause.svg';
 import { ReactComponent as RepeatButton } from '../../icons/repeat-arrows.svg';

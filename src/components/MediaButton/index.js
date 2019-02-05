@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './styles.scss';
+import './style.scss';
 
 class MediaButton extends Component {
   shouldComponentUpdate(prevProps) {

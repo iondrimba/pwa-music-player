@@ -4,7 +4,7 @@ import { ReactComponent as Headphones } from '../../icons/headphones.svg';
 import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import { ReactComponent as Soundcloud } from '../../icons/soundcloud.svg';
 import { ReactComponent as Github } from '../../icons/github.svg';
-import './styles.scss';
+import './style.scss';
 
 class Home extends Component {
   componentDidMount() {

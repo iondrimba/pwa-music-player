@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { credits } from '../../data';
-import './styles.scss';
+import './style.scss';
 
 class About extends PureComponent {
   constructor() {

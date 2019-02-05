@@ -6,7 +6,7 @@ import { ReactComponent as CloseButton } from '../../icons/close.svg';
 import { addClass, removeClass } from '../../helpers/classList';
 import sleep from '../../helpers/sleep';
 import IconButton from '../IconButton';
-import './styles.scss';
+import './style.scss';
 
 class Menu extends PureComponent {
   constructor() {

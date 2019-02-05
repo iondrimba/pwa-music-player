@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import './styles.scss';
+import './style.scss';
 
 class Loader extends PureComponent {
   constructor() {

@@ -9,7 +9,7 @@ import { ReactComponent as PlayButton } from '../../icons/play-arrow.svg';
 import { ReactComponent as PauseButton } from '../../icons/pause.svg';
 import { ReactComponent as RepeatButton } from '../../icons/repeat-arrows.svg';
 import { ReactComponent as LinkButton } from '../../icons/link.svg';
-import './styles.scss';
+import './style.scss';
 
 class Detail extends PureComponent {
   onPlayClick = () => {

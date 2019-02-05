@@ -2,7 +2,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ListItem from '../../components/ListItem';
-import './styles.scss';
+import './style.scss';
 
 class List extends PureComponent {
   constructor(props) {

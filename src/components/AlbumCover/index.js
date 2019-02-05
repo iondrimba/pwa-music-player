@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FastAverageColor from 'fast-average-color/dist/index';
 import sleep from '../../helpers/sleep';
 import { ReactComponent as PictureIcon } from '../../icons/picture.svg';
-import './styles.scss';
+import './style.scss';
 
 class AlbumCover extends PureComponent {
   constructor(props) {

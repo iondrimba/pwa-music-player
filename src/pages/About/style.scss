@@ -1,5 +1,7 @@
+@import '../../app/styles/color';
+
 .about {
-  background-color: #fff;
+  background-color: $base-color;
   z-index: 3;
 
   .content {
@@ -17,7 +19,7 @@
   }
 
   a {
-    color: #7aa4e3;
+    color: $tertiary-font-color;
     text-decoration: none;
     cursor: pointer;
   }

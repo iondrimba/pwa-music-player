@@ -1,6 +1,8 @@
+@import '../../app/styles/color';
+
 .list {
   overflow-y: auto;
-  background: #fff;
+  background: $base-color;
   z-index: 1;
 
   .track-list {
@@ -34,11 +36,11 @@
       font-size: inherit;
 
       &:hover:not(.playing) {
-        background-color: #ececec45;
+        background-color: $list-press;
       }
 
       &:active:not(.playing) {
-        background-color: #f1f1f1;
+        background-color: $list-press;
         box-shadow: inset 0 12px 10px -10px rgba(0, 0, 0, 0.11), inset 0px -12px 10px -10px rgba(0, 0, 0, 0.11);
         padding-top: 14px;
         padding-left: 14px;
@@ -54,7 +56,7 @@
   button.playing {
     height: auto;
     padding: 15px 15px;
-    background-color: #ececec;
+    background-color: $list-press;
 
     .album__cover {
       width: 67px;
@@ -66,7 +68,7 @@
       visibility: visible;
 
       &__bg {
-        background-color: #fff;
+        background-color: $base-color;
       }
     }
 
@@ -81,7 +83,7 @@
       display: block;
       width: 50px;
       height: 50px;
-      background-color: #8da4ea;
+      background-color: $secondary-font-color;
     }
   }
 
@@ -98,12 +100,12 @@
       width: 250px;
       white-space: nowrap;
       overflow: hidden;
-      color: #444;
+      color: $primary-font-color;
       text-overflow: ellipsis;
     }
 
     &__artist {
-      color: #545454;
+      color: $secondary-font-color;
     }
   }
 

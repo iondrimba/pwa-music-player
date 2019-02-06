@@ -1,3 +1,4 @@
+@import './styles/color';
 @import './styles/base';
 @import './styles/fonts';
 
@@ -10,7 +11,7 @@
 }
 
 .shell {
-  background-color: #fff;
+  background-color: $base-color;
   display: flex;
   align-self: center;
   border-radius: 10px;

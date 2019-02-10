@@ -53,6 +53,7 @@ const initialState = {
   previousView: '/',
   currentView: '',
   repeat: false,
+  changingTrack: false,
   track: {
     currentTime: 0,
     percentage: 0,

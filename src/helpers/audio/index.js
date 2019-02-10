@@ -22,11 +22,20 @@ export default class Audio {
     }
   }
 
+  _canplay() {
+    this.canplayCallback();
+  }
+
+  canplay(callback) {
+    this.canplayCallback = callback;
+  }
+
   setup() {
     this._createAnalyser();
     this._createMediaElementSource();
     this.setVolume(.1);
 
+    this.element.addEventListener('canplay', this._canplay.bind(this));
     this.element.addEventListener('ended', this._ended);
   }
 

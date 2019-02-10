@@ -24,10 +24,8 @@ class App extends PureComponent {
     this.history.listen((location, action) => {
       this.setState({ currentView: location.state });
 
-      if (location.state === 'list') {
-        if (!this.state.tracks[0].id) {
-          this.fetchPlayList();
-        }
+      if (location.state === 'list' && !this.state.tracks[0].id) {
+        this.fetchPlayList();
       };
     });
   }
@@ -77,6 +75,11 @@ class App extends PureComponent {
     this.audio = new Audio(document.querySelector('#audio'), this.props.audioContext);
     this.audio.setup();
     this.audio.setTimerHandler(this.timeupdate);
+    this.audio.canplay(() => {
+      this.setState(() => {
+        return { changingTrack: false };
+      });
+    })
   }
 
   timeupdate = (evt) => {
@@ -97,7 +100,9 @@ class App extends PureComponent {
       paused: this.state.track.id === id ? this.state.track.paused : true,
     };
 
-    this.setState({ track });
+    this.setState(() => {
+      return { track };
+    });
 
     this.history.push(`/Detail/${id}`, 'detail');
   }
@@ -107,7 +112,9 @@ class App extends PureComponent {
       this.audio.setAudioSource(`${track.stream_url}?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`);
     }
 
-    this.setState({ track: { ...track, paused: false, playing: true, played: true } });
+    this.setState(() => {
+      return { track: { ...track, paused: false, playing: true, played: true } };
+    });
 
     this.audio.resume();
     this.audio.play();
@@ -116,13 +123,17 @@ class App extends PureComponent {
   onPauseClick = (track) => {
     this.audio.pause();
 
-    this.setState({ track: { ...track, paused: true, playing: false } });
+    this.setState(() => {
+      return { track: { ...track, paused: true, playing: false } }
+    });
   }
 
   onBackClick = () => {
     this.history.go(-1);
 
-    this.setState({ currentView: this.history.location.state || '/' });
+    this.setState(() => {
+      return { currentView: this.history.location.state || '/' };
+    });
   }
 
   onAboutClick = () => {
@@ -130,7 +141,13 @@ class App extends PureComponent {
   }
 
   _setTrack(track) {
-    this.setState({ track, currentTime: 0, paused: true, played: false, playing: false });
+    this.setState(() => {
+      return { track, currentTime: 0, paused: true, played: false, playing: false, changingTrack: true };
+    });
+  }
+
+  _canChangeTrack() {
+    return this.state.changingTrack === false;
   }
 
   _getNextTrack() {
@@ -141,27 +158,27 @@ class App extends PureComponent {
     return { ...this.state.tracks[this.state.track.index - 1] };
   }
 
-  onPlayNext = () => {
-    if (this._getNextTrack()) {
-      const track = this._getNextTrack();
-
+  _changeTrack(track) {
+    if (this._canChangeTrack() && track) {
       this._setTrack(track);
       this.onPlayClick(track);
     }
   }
 
-  onPlayPrev = () => {
-    if (this._getPreviousTrack()) {
-      const track = this._getPreviousTrack();
+  onPlayNext = () => {
+    this._changeTrack(this._getNextTrack());
+  }
 
-      this._setTrack(track);
-      this.onPlayClick(track);
-    }
+  onPlayPrev = () => {
+    this._changeTrack(this._getPreviousTrack());
   }
 
   onRepeatClick = () => {
     const repeat = !this.state.repeat;
-    this.setState({ repeat });
+
+    this.setState(() => {
+      return { repeat };
+    });
 
     this.audio.repeat(repeat);
   }

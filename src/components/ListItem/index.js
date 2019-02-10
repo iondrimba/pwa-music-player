@@ -44,7 +44,7 @@ ListItem.propTypes = {
   }),
   track: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    artwork_url: PropTypes.string.isRequired,
+    artwork_url: PropTypes.string,
     title: PropTypes.string.isRequired,
     artist: PropTypes.string.isRequired,
   }),

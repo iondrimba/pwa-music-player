@@ -18,7 +18,9 @@ class App extends PureComponent {
     super(props);
     this.playlistUrl = `http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}
 `;
-    this.state = { ...initialState };
+    this.state = {
+      ...initialState
+    };
 
     this.history = createHistory();
     this.history.listen((location, action) => {
@@ -71,19 +73,38 @@ class App extends PureComponent {
 
   setupAudio() {
     this.timeupdate = this.timeupdate.bind(this);
+    this.audioStop = this.audioStop.bind(this);
 
     this.audio = new Audio(document.querySelector('#audio'), this.props.audioContext);
     this.audio.setup();
     this.audio.setTimerHandler(this.timeupdate);
+    this.audio.setStopHandler(this.audioStop);
     this.audio.canplay(() => {
       this.setState(() => {
-        return { changingTrack: false };
+        return {
+          changingTrack: false
+        };
       });
     })
   }
 
+  audioStop() {
+    this.setState({
+      track: {
+        ...this.state.track, currentTime: 0, percentage: 0, playing: false,
+        played: false,
+        paused: true,
+      }
+    });
+  }
+
   timeupdate = (evt) => {
-    this.setState({ track: { ...this.state.track, currentTime: evt.target.currentTime, percentage: percent(evt.target.currentTime, evt.target.duration) / 100 } });
+    this.setState({
+      track: {
+        ...this.state.track, currentTime: evt.target.currentTime,
+        percentage: percent(evt.target.currentTime, evt.target.duration) / 100
+      }
+    });
   }
 
   onListClick = (id) => {
@@ -113,7 +134,12 @@ class App extends PureComponent {
     }
 
     this.setState(() => {
-      return { track: { ...track, paused: false, playing: true, played: true } };
+      return {
+        track: {
+          ...track, paused: false, playing: true,
+          played: true
+        }
+      };
     });
 
     this.audio.resume();
@@ -124,7 +150,12 @@ class App extends PureComponent {
     this.audio.pause();
 
     this.setState(() => {
-      return { track: { ...track, paused: true, playing: false } }
+      return {
+        track: {
+          ...track, paused: true,
+          playing: false
+        }
+      }
     });
   }
 
@@ -142,7 +173,10 @@ class App extends PureComponent {
 
   _setTrack(track) {
     this.setState(() => {
-      return { track, currentTime: 0, paused: true, played: false, playing: false, changingTrack: true };
+      return {
+        track, currentTime: 0, paused: true, played: false,
+        playing: false, changingTrack: true
+      };
     });
   }
 
@@ -151,11 +185,15 @@ class App extends PureComponent {
   }
 
   _getNextTrack() {
-    return { ...this.state.tracks[this.state.track.index + 1] };
+    return {
+      ...this.state.tracks[this.state.track.index + 1]
+    };
   }
 
   _getPreviousTrack() {
-    return { ...this.state.tracks[this.state.track.index - 1] };
+    return {
+      ...this.state.tracks[this.state.track.index - 1]
+    };
   }
 
   _changeTrack(track) {

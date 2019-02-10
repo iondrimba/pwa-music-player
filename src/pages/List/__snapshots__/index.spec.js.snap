@@ -8,7 +8,7 @@ exports[`Loader renders defaultProps 1`] = `
     className="row"
   >
     <button
-      className=""
+      className="btn"
       data-id={1}
       onClick={[Function]}
       tabIndex="-1"

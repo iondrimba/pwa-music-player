@@ -489,7 +489,7 @@ AddDefaultCharset utf-8
 
 <IfModule mod_headers.c>
 
-    Header set Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data: stats.g.doubleclick.net https://i1.sndcdn.com; media-src 'self' https://api.soundcloud.com; font-src https://fonts.gstatic.com; connect-src http://api.soundcloud.com"
+    Header set Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data: stats.g.doubleclick.net https://i1.sndcdn.com; media-src 'self' https://api.soundcloud.com https://cf-media.sndcdn.com; font-src https://fonts.gstatic.com; connect-src http://api.soundcloud.com"
 
     # `mod_headers` cannot match based on the content-type, however,
     # the `Content-Security-Policy` response header should be send

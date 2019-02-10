@@ -4,7 +4,7 @@ import './style.scss';
 
 class MediaButton extends Component {
   shouldComponentUpdate(prevProps) {
-    return prevProps.active !== this.props.active;
+    return prevProps.active !== this.props.active || prevProps.tabEnabled !== this.props.tabEnabled;
   }
 
   render() {

@@ -23,7 +23,7 @@ class List extends PureComponent {
         <ul className="track-list" >
           {
             this.props.tracks.map((track) => {
-              return <ListItem key={track.id} selectedTrack={this.props.track} onClick={this.onClick} track={track} />
+              return <ListItem key={track.id} active={this.props.active} selectedTrack={this.props.track} onClick={this.onClick} track={track} />
             })
           }
         </ul>

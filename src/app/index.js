@@ -64,7 +64,7 @@ class App extends PureComponent {
       playlistLoaded: true,
     };
 
-    this.setState(() => (updatedState));
+    this.setState(() => updatedState);
   }
 
   selectTrack = (id) => {

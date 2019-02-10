@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProgressBar from '../ProgressBar';
+import albumThumbNail from '../../data/album-thumbnail.png';
 
 class ListItem extends Component {
   shouldComponentUpdate(prevProps) {
@@ -18,7 +19,7 @@ class ListItem extends Component {
       <li className="row">
         <button className={`${id === this.props.track.id && playing ? 'playing' : ''}`} tabIndex={this.props.active ? "0" : "-1"} onClick={this.props.onClick} data-id={this.props.track.id}>
           <div className="album">
-            <img className="album__cover" src={this.props.track.artwork_url} alt={`Album artwork from track ${this.props.track.title}.`} />
+            <img className="album__cover" width="50" height="50" src={this.props.track.artwork_url || albumThumbNail} alt={`Album artwork from track ${this.props.track.title}.`} />
           </div>
           <div className="info">
             <h2 className="info__track">{this.props.track.title}</h2>

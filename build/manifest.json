@@ -1,6 +1,6 @@
 {
-  "short_name": "PWA Music Playlist",
-  "name": "PWA Playlist",
+  "short_name": "PWA Playlist",
+  "name": "PWA React Music Playlist",
   "icons": [
     {
       "src": "/icon-72x72.png",

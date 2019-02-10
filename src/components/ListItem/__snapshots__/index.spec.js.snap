@@ -16,7 +16,9 @@ exports[`ListItem renders defaultProps 1`] = `
       <img
         alt="Album artwork from track John Doe title."
         className="album__cover"
+        height="50"
         src="/john-doe.jpg"
+        width="50"
       />
     </div>
     <div

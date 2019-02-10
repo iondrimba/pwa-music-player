@@ -89,6 +89,7 @@
   }
 
   .soundcloud:focus::before {
-    opacity: 1;
+    opacity: 0.1;
+    border: solid;
   }
 }

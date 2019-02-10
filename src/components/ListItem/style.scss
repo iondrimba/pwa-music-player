@@ -1,0 +1,10 @@
+@import '../../app/styles/color';
+
+.row {
+  .btn {
+    &:focus {
+      outline: none;
+      background-color: $list-press;
+    }
+  }
+}

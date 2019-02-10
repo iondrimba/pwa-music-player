@@ -116,11 +116,15 @@
   }
 
   &__buttons {
-    margin-top: 25px;
+    margin-top: 5px;
     display: flex;
     justify-content: space-between;
     position: relative;
     align-items: center;
+
+    @media screen and (min-width: 375px) {
+      margin-top: 25px;
+    }
   }
 
   &__timing {

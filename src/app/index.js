@@ -16,7 +16,7 @@ const Detail = lazy(() => import('../pages/Detail'));
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.playlistUrl = `http://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}
+    this.playlistUrl = `https://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}
 `;
     this.state = {
       ...initialState

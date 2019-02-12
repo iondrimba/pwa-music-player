@@ -8,7 +8,7 @@
     "fast-average-color": "^4.3.0",
     "history": "^4.7.2",
     "node-sass": "^4.11.0",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-loadable": "^5.5.0",

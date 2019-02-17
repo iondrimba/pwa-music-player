@@ -167,6 +167,8 @@ class App extends PureComponent {
     });
 
     this.changeView('detail');
+
+    this.onPlayClick(track);
   }
 
   onPlayClick = (track) => {

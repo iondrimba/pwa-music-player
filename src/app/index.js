@@ -136,7 +136,9 @@ class App extends PureComponent {
     this.setState(() => {
       return {
         track: {
-          ...track, paused: false, playing: true,
+          ...track,
+          paused: false,
+          playing: true,
           played: true
         }
       };
@@ -152,7 +154,8 @@ class App extends PureComponent {
     this.setState(() => {
       return {
         track: {
-          ...track, paused: true,
+          ...track,
+          paused: true,
           playing: false
         }
       }
@@ -174,8 +177,12 @@ class App extends PureComponent {
   _setTrack(track) {
     this.setState(() => {
       return {
-        track, currentTime: 0, paused: true, played: false,
-        playing: false, changingTrack: true
+        track,
+        currentTime: 0,
+        paused: true,
+        played: false,
+        playing: false,
+        changingTrack: true
       };
     });
   }
@@ -185,15 +192,15 @@ class App extends PureComponent {
   }
 
   _getNextTrack() {
-    return {
-      ...this.state.tracks[this.state.track.index + 1]
-    };
+    const nextTrack = this.state.tracks[this.state.track.index + 1];
+
+    return nextTrack ? { ...nextTrack } : null;
   }
 
   _getPreviousTrack() {
-    return {
-      ...this.state.tracks[this.state.track.index - 1]
-    };
+    const prevTrack = this.state.tracks[this.state.track.index - 1];
+
+    return prevTrack ? { ...prevTrack } : null;
   }
 
   _changeTrack(track) {

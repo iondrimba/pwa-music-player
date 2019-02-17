@@ -6,11 +6,39 @@
   justify-content: center;
   z-index: 2;
 
-  .title {
-    width: 300px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  &__track {
+    margin-top: 0;
+  }
+
+  &__controls {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    max-width: 300px;
+  }
+
+  &__buttons {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+
+    @media screen and (min-width: 375px) {
+      margin-top: 25px;
+    }
+  }
+
+  &__timing {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .title, .artist {
@@ -19,9 +47,12 @@
     text-transform: capitalize;
   }
 
-
-  &__track {
-    margin-top: 0;
+  .title {
+    margin-bottom: 5px;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .prev-button, .next-button {
@@ -71,30 +102,27 @@
     opacity: .57;
   }
 
-
-  .next-button {
+  .next-button, .prev-button {
     &::after {
       content: '';
       display: block;
       height: 16px;
       width: 3px;
       position: absolute;
-      margin-left: 10px;
       border-radius: 6px;
       background: $base-color;
     }
   }
 
+  .next-button {
+    &::after {
+      margin-left: 10px;
+    }
+  }
+
   .prev-button {
     &::after {
-      content: '';
-      display: block;
-      height: 16px;
-      width: 3px;
-      position: absolute;
       margin-left: -10px;
-      border-radius: 6px;
-      background: $base-color;
     }
 
     svg {
@@ -102,38 +130,25 @@
     }
   }
 
-  &__controls {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  .time {
+    color: $primary-font-color;
   }
 
-  &__info {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    max-width: 300px;
+  .play, .pause {
+    height: 70px;
+    width: 70px;
   }
 
-  &__buttons {
-    margin-top: 5px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    align-items: center;
-
-    @media screen and (min-width: 375px) {
-      margin-top: 25px;
+  .play {
+    svg {
+      margin-left: 5px;
     }
   }
 
-  &__timing {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .time {
-    color: $primary-font-color;
+  .pause {
+    svg {
+      stroke-width: 2px;
+      stroke: #fff;
+    }
   }
 }

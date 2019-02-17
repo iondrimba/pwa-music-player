@@ -12,6 +12,7 @@
     position: absolute;
     z-index: 1;
     border-radius: 4px;
+    opacity: .2;
   }
 
   &__mask {
@@ -21,6 +22,8 @@
     height: inherit;
     border-radius: 4px;
     z-index: 2;
+    transform: scale(0);
+    will-change: transform;
   }
 
   &__progress {

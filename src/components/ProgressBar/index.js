@@ -10,7 +10,7 @@ class ProgressBar extends Component {
   render() {
     return (
       <div className="progress-bar">
-        <div className="progress-bar__mask" style={{ width: `${Math.floor(this.props.percent * 100)}%` }}>
+        <div className="progress-bar__mask" style={{ transform: `scale(${this.props.percent}, 1)` }}>
           <div className="progress-bar__progress"></div>
         </div>
         <div className="progress-bar__bg"></div>

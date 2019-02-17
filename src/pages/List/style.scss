@@ -37,6 +37,7 @@
 
       &:hover:not(.playing) {
         background-color: $list-press;
+        will-change: background-color;
       }
 
       &:active:not(.playing) {
@@ -50,8 +51,11 @@
 
   .progress-bar {
     visibility: hidden;
-  }
 
+    &__bg {
+      opacity: 1;
+    }
+  }
 
   button.playing {
     height: auto;
@@ -108,5 +112,4 @@
       color: $secondary-font-color;
     }
   }
-
 }

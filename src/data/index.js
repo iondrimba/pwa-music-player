@@ -44,6 +44,21 @@ const credits = [
     link: 'https://www.flaticon.com/authors/chanut',
     author: 'Chanut'
   },
+  {
+    label: 'Repeat icon by',
+    link: 'https://www.flaticon.com/free-icon/repeat-arrows_16720#term=repeat&page=1&position=81',
+    author: 'Freepik'
+  },
+  {
+    label: 'Link icon by',
+    link: 'https://www.flaticon.com/free-icon/link_455691#term=link&page=1&position=17',
+    author: 'Creaticca Creative Agency'
+  },
+  {
+    label: 'Headphones icon by',
+    link: 'https://www.flaticon.com/free-icon/headphones_1288446',
+    author: 'Surang'
+  },
 ];
 
 export { credits };

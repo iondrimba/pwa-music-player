@@ -13,7 +13,7 @@ class About extends PureComponent {
     return (
       <Fragment>
         <div className="content">
-          <h1 tabIndex="-1">PWA Music Player</h1>
+          <h1 tabIndex="-1">PWA React Music Player</h1>
           <p>This is a personal project built in my spare time for learning purposes.</p>
           <h2>Credits:</h2>
           <ul>

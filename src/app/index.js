@@ -16,6 +16,7 @@ const Detail = lazy(() => import('../pages/Detail'));
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
     this.playlistUrl = `https://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}
 `;
     this.state = {
@@ -23,10 +24,10 @@ class App extends PureComponent {
     };
 
     this.history = createHistory();
-    this.history.listen((location, action) => {
-      this.setState({ currentView: location.state });
+    this.history.listen((location) => {
+      this.setState({ currentView: location.state.view });
 
-      if (location.state === 'list' && !this.state.tracks[0].id) {
+      if (location.state.view === 'list' && !this.state.tracks[0].id) {
         this.fetchPlayList();
       };
     });
@@ -35,11 +36,11 @@ class App extends PureComponent {
   componentDidMount() {
     this.setupAudio();
 
-    this.history.push('/', 'home');
+    this.changeView('home');
   }
 
   onStartClick = () => {
-    this.history.push('/List', 'list');
+    this.changeView('list');
   }
 
   fetchPlayList = async () => {
@@ -65,6 +66,46 @@ class App extends PureComponent {
     };
 
     this.setState(() => updatedState);
+  }
+
+  changeView(view) {
+    this.history.push(`/${view}`, { view });
+  }
+
+  setTrack(track) {
+    this.setState(() => {
+      return {
+        track,
+        currentTime: 0,
+        paused: true,
+        played: false,
+        playing: false,
+        changingTrack: true
+      };
+    });
+  }
+
+  canChangeTrack() {
+    return this.state.changingTrack === false;
+  }
+
+  getNextTrack() {
+    const nextTrack = this.state.tracks[this.state.track.index + 1];
+
+    return nextTrack ? { ...nextTrack } : null;
+  }
+
+  getPreviousTrack() {
+    const prevTrack = this.state.tracks[this.state.track.index - 1];
+
+    return prevTrack ? { ...prevTrack } : null;
+  }
+
+  changeTrack(track) {
+    if (this.canChangeTrack() && track) {
+      this.setTrack(track);
+      this.onPlayClick(track);
+    }
   }
 
   selectTrack = (id) => {
@@ -125,7 +166,7 @@ class App extends PureComponent {
       return { track };
     });
 
-    this.history.push(`/Detail/${id}`, 'detail');
+    this.changeView('detail');
   }
 
   onPlayClick = (track) => {
@@ -166,56 +207,20 @@ class App extends PureComponent {
     this.history.go(-1);
 
     this.setState(() => {
-      return { currentView: this.history.location.state || '/' };
+      return { currentView: this.history.location.state.view || '/' };
     });
   }
 
   onAboutClick = () => {
-    this.history.push('/about', 'about');
-  }
-
-  _setTrack(track) {
-    this.setState(() => {
-      return {
-        track,
-        currentTime: 0,
-        paused: true,
-        played: false,
-        playing: false,
-        changingTrack: true
-      };
-    });
-  }
-
-  _canChangeTrack() {
-    return this.state.changingTrack === false;
-  }
-
-  _getNextTrack() {
-    const nextTrack = this.state.tracks[this.state.track.index + 1];
-
-    return nextTrack ? { ...nextTrack } : null;
-  }
-
-  _getPreviousTrack() {
-    const prevTrack = this.state.tracks[this.state.track.index - 1];
-
-    return prevTrack ? { ...prevTrack } : null;
-  }
-
-  _changeTrack(track) {
-    if (this._canChangeTrack() && track) {
-      this._setTrack(track);
-      this.onPlayClick(track);
-    }
+    this.changeView('about');
   }
 
   onPlayNext = () => {
-    this._changeTrack(this._getNextTrack());
+    this.changeTrack(this.getNextTrack());
   }
 
   onPlayPrev = () => {
-    this._changeTrack(this._getPreviousTrack());
+    this.changeTrack(this.getPreviousTrack());
   }
 
   onRepeatClick = () => {

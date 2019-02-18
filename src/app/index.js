@@ -36,7 +36,7 @@ class App extends PureComponent {
   componentDidMount() {
     this.setupAudio();
 
-    this.changeView('home');
+    this.history.push('/', { view: 'home' });
   }
 
   onStartClick = () => {

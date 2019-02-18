@@ -32,7 +32,7 @@ describe('App', () => {
 
       instance.onListClick(26814427);
 
-      expect(instance.history.push).toBeCalledWith(`/Detail/26814427`, 'detail');
+      expect(instance.history.push).toBeCalledWith(`/detail`, 'detail');
       expect(component.state('track')).toEqual({ ...mockTracks[0] });
     });
   });
@@ -93,7 +93,7 @@ describe('App', () => {
       instance.onStartClick();
 
       expect(component.state().currentView).toBe('list');
-      expect(instance.history.push).toBeCalledWith('/List', 'list');
+      expect(instance.history.push).toBeCalledWith('/list', 'list');
     });
   });
 

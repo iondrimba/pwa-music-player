@@ -32,7 +32,7 @@ describe('App', () => {
 
       instance.onListClick(26814427);
 
-      expect(instance.history.push).toBeCalledWith(`/detail`, 'detail');
+      expect(instance.history.push).toBeCalledWith(`/detail`, { view: 'detail' });
       expect(component.state('track')).toEqual({ ...mockTracks[0] });
     });
   });
@@ -93,7 +93,7 @@ describe('App', () => {
       instance.onStartClick();
 
       expect(component.state().currentView).toBe('list');
-      expect(instance.history.push).toBeCalledWith('/list', 'list');
+      expect(instance.history.push).toBeCalledWith('/list', { view: 'list' });
     });
   });
 
@@ -107,7 +107,7 @@ describe('App', () => {
       instance.onAboutClick();
 
       expect(component.state().currentView).toBe('about');
-      expect(instance.history.push).toBeCalledWith('/about', 'about');
+      expect(instance.history.push).toBeCalledWith('/about', { view: 'about' });
     });
   });
 

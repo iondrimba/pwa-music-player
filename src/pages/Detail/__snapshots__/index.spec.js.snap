@@ -48,7 +48,7 @@ exports[`Detail renders without errors 1`] = `
         className="progress-bar__mask"
         style={
           Object {
-            "width": "100%",
+            "transform": "scale(1, 1)",
           }
         }
       >
@@ -106,26 +106,26 @@ exports[`Detail renders without errors 1`] = `
       </button>
       <button
         aria-label="pause button"
-        className=" media-button "
+        className="pause media-button "
         onClick={[Function]}
         tabIndex="0"
         type="button"
       >
         <svg
-          width={28}
+          width={24}
         >
           pause.svg
         </svg>
       </button>
       <button
         aria-label="play button"
-        className=" media-button "
+        className="play media-button "
         onClick={[Function]}
         tabIndex="0"
         type="button"
       >
         <svg
-          width={28}
+          width={24}
         >
           play-arrow.svg
         </svg>

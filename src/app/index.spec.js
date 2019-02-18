@@ -33,7 +33,7 @@ describe('App', () => {
       instance.onListClick(26814427);
 
       expect(instance.history.push).toBeCalledWith(`/detail`, { view: 'detail' });
-      expect(component.state('track')).toEqual({ ...mockTracks[0] });
+      expect(component.state('track').id).toEqual(mockTracks[0].id);
     });
   });
 

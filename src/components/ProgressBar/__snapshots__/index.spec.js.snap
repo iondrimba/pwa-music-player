@@ -8,7 +8,7 @@ exports[`ProgressBar renders defaultProps 1`] = `
     className="progress-bar__mask"
     style={
       Object {
-        "width": "100%",
+        "transform": "scale(1, 1)",
       }
     }
   >

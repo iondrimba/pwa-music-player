@@ -10,16 +10,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![Demo](https://raw.githubusercontent.com/iondrimba/images/master/playlist.gif?raw=true)
 
-
 #### About
 This is a personal project built in my spare time for learning purposes.
 It uses the official [SoundCloud](https://developers.soundcloud.com/docs/api)
-
-#### Built with
-* CRA (Create React App)
-* ES6
-* Sass
-* React + Redux
-* Karma + Jasmine
-* VSCode
-* WebPack

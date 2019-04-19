@@ -5,21 +5,8 @@ import sleep from '../../helpers/sleep';
 import { mount } from 'enzyme';
 
 describe('Menu', () => {
-  it('renders defaultProps', () => {
-    const component = renderer.create(<Menu
-      activeView='home'
-      onBackClick={() => { }}
-      onAboutClick={() => { }}
-      onCloseClick={() => { }}
-    />);
-
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
   describe('componentDidMount', () => {
-    fit('adds class active to hidden elements', async () => {
+    it('adds class active to hidden elements', async () => {
       jest.spyOn(Menu.prototype, '_activeHiddenElements');
 
       const component = mount(<Menu activeView='home' onBackClick={() => { }} onAboutClick={() => { }}onCloseClick={() => { }} />);
@@ -40,11 +27,25 @@ describe('Menu', () => {
 
       component.setProps({ activeView: 'about' });
 
-      await sleep(100);
+      await sleep(1000);
 
       expect(component.instance().title.current.className).toContain('active');
       expect(component.instance()._animateTitle).toBeCalled();
+
+      component.unmount();
     });
   });
 
+  it('renders defaultProps', () => {
+    const component = renderer.create(<Menu
+      activeView='home'
+      onBackClick={() => { }}
+      onAboutClick={() => { }}
+      onCloseClick={() => { }}
+    />);
+
+    const tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

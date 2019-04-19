@@ -26,6 +26,7 @@
     "extends": "react-app"
   },
   "jest": {
+    "resetMocks": true,
     "collectCoverageFrom": [
       "**/src/app/index.js",
       "**/src/components/**/*.js",

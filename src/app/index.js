@@ -1,5 +1,5 @@
 import React, { PureComponent, Suspense, lazy } from 'react';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history'
 import Home from '../pages/Home';
 import percent from '../helpers/percent';
 import Menu from '../components/Menu';
@@ -23,7 +23,7 @@ class App extends PureComponent {
       ...initialState
     };
 
-    this.history = createHistory();
+    this.history = createBrowserHistory();
     this.history.listen((location) => {
       this.setState({ currentView: location.state.view });
 

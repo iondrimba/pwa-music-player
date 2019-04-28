@@ -33,7 +33,7 @@ class Home extends Component {
           icon={<PlayButton width={24} />}
         />
         <footer className="footer">
-          <a href="https://github.com/iondrimba/pwa-music-player" tabIndex={this.props.active ? "0" : "-1"} target="_blank" rel="noopener noreferrer" className="github project"> <Github fill="#b9b9b9"/></a>
+          <a href="https://github.com/iondrimba/pwa-music-player" aria-label="Github repository" tabIndex={this.props.active ? "0" : "-1"} target="_blank" rel="noopener noreferrer" className="github project"> <Github fill="#b9b9b9" /></a>
           <a href="https://developers.soundcloud.com/docs/api" tabIndex={this.props.active ? "0" : "-1"} target="_blank" rel="noopener noreferrer" className="soundcloud">powered by <Soundcloud aria-label="Soundcloud" fill="#b9b9b9" width={64}/></a>
         </footer>
       </Fragment>

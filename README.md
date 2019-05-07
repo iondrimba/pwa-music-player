@@ -1,4 +1,4 @@
-## :radio: PWA Music Player
+## :radio: PWA Music Player https://playlist.iondrimbafilho.me
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

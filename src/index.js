@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App audioContext={new  AudioContext()}/>, document.getElementById('root'));
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+if (window.AudioContext) {
+  window.audioContext = new window.AudioContext();
+}
+
+ReactDOM.render(<App audioContext={window.audioContext} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

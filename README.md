@@ -1,7 +1,5 @@
 ## :radio: PWA Music Player https://playlist.iondrimbafilho.me
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 [![Build Status](https://travis-ci.org/iondrimba/pwa-music-player.svg?branch=master)](https://travis-ci.org/iondrimba/pwa-music-player)
 [![Build status](https://ci.appveyor.com/api/projects/status/2851mlkko79pif6y/branch/master?svg=true)](https://ci.appveyor.com/project/iondrimba/pwa-music-player)
 [![Build status](https://david-dm.org/iondrimba/pwa-music-player.svg)](https://david-dm.org/iondrimba/pwa-music-player?view=list)

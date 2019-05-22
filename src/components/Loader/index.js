@@ -9,13 +9,12 @@ class Loader extends PureComponent {
   }
 
   _addActiveClass() {
-    requestAnimationFrame(() => {
-      this.loader.current.classList.add('animate');
-    });
+    this.loader.current.classList.add('animate');
   }
 
   componentDidMount() {
-    this._addActiveClass();
+    const interval = setTimeout(this._addActiveClass, 100);
+    clearTimeout(interval);
   }
 
   render() {

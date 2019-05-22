@@ -24,6 +24,9 @@ class App extends PureComponent {
     };
 
     this.history = createBrowserHistory();
+  }
+
+  componentDidMount() {
     this.history.listen((location) => {
       this.setState({ currentView: location.state.view });
 
@@ -31,9 +34,7 @@ class App extends PureComponent {
         this.fetchPlayList();
       };
     });
-  }
 
-  componentDidMount() {
     this.setupAudio();
 
     this.history.push('/', { view: 'home' });

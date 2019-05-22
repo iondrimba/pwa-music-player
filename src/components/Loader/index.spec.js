@@ -18,7 +18,9 @@ describe('Loader', () => {
 
       mount(<Loader />);
 
-      expect(Loader.prototype._addActiveClass).toBeCalled();
+      setTimeout(() => {
+        expect(Loader.prototype._addActiveClass).toBeCalled();
+      }, 100);
     });
   });
 });

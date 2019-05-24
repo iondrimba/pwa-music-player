@@ -489,7 +489,7 @@ AddDefaultCharset utf-8
 
 <IfModule mod_headers.c>
 
-    Header set Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.6/rollbar.min.js; img-src 'self' data: stats.g.doubleclick.net https://i1.sndcdn.com; media-src 'self' https://api.soundcloud.com https://ec-media.sndcdn.com https://cf-media.sndcdn.com; font-src https://fonts.gstatic.com; connect-src http://api.soundcloud.com https://api.rollbar.com/api/1/item/"
+    Header set Content-Security-Policy: "default-src 'self' https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.6/rollbar.min.js; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.6/rollbar.min.js; img-src 'self' data: stats.g.doubleclick.net https://i1.sndcdn.com; media-src 'self' https://api.soundcloud.com https://ec-media.sndcdn.com https://cf-media.sndcdn.com; font-src https://fonts.gstatic.com; connect-src http://api.soundcloud.com https://api.rollbar.com/api/1/item/ https://cdnjs.cloudflare.com"
 
     # `mod_headers` cannot match based on the content-type, however,
     # the `Content-Security-Policy` response header should be send

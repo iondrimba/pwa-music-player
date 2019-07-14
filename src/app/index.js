@@ -17,8 +17,7 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.playlistUrl = `https://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}
-`;
+    this.playlistUrl = `https://api.soundcloud.com/users/${process.env.REACT_APP_SOUNDCLOUD_USER_ID}/playlists?client_id=${process.env.REACT_APP_SOUNDCLOUD_APP_CLIENT_ID}`;
     this.state = {
       ...initialState
     };
@@ -26,9 +25,11 @@ class App extends PureComponent {
     this.history = createBrowserHistory();
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.history.listen((location) => {
-      this.setState({ currentView: location.state.view });
+      this.setState(() => {
+        return { currentView: this.history.location.state.view || '/' };
+      });
 
       if (location.state.view === 'list' && !this.state.tracks[0].id) {
         this.fetchPlayList();
@@ -47,6 +48,11 @@ class App extends PureComponent {
   fetchPlayList = async () => {
     const result = await fetch(this.playlistUrl);
     const data = await result.json();
+
+    this.updateSate(data);
+  }
+
+  updateSate (data) {
     const updatedState = {
       tracks: [...data[0].tracks.map((track, index) => {
         return Object.assign({}, {
@@ -57,7 +63,7 @@ class App extends PureComponent {
           duration: track.duration,
           favoritings_count: track.favoritings_count,
           artist: track.user.username,
-          artwork_url: track.artwork_url.replace('large', 't50x50'),
+          artwork_url: track.artwork_url ? track.artwork_url.replace('large', 't50x50') : '',
           title: track.title.toLowerCase(),
           permalink_url: track.permalink_url,
           index,
@@ -69,11 +75,11 @@ class App extends PureComponent {
     this.setState(() => updatedState);
   }
 
-  changeView(view) {
+  changeView (view) {
     this.history.push(`/${view}`, { view });
   }
 
-  setTrack(track) {
+  setTrack (track) {
     this.setState(() => {
       return {
         track,
@@ -86,23 +92,23 @@ class App extends PureComponent {
     });
   }
 
-  canChangeTrack() {
+  canChangeTrack () {
     return this.state.changingTrack === false;
   }
 
-  getNextTrack() {
+  getNextTrack () {
     const nextTrack = this.state.tracks[this.state.track.index + 1];
 
     return nextTrack ? { ...nextTrack } : null;
   }
 
-  getPreviousTrack() {
+  getPreviousTrack () {
     const prevTrack = this.state.tracks[this.state.track.index - 1];
 
     return prevTrack ? { ...prevTrack } : null;
   }
 
-  changeTrack(track) {
+  changeTrack (track) {
     if (this.canChangeTrack() && track) {
       this.setTrack(track);
       this.onPlayClick(track);
@@ -113,7 +119,7 @@ class App extends PureComponent {
     return this.state.tracks.filter((track) => Number(id) === track.id)[0];
   }
 
-  setupAudio() {
+  setupAudio () {
     this.timeupdate = this.timeupdate.bind(this);
     this.audioStop = this.audioStop.bind(this);
 
@@ -130,7 +136,7 @@ class App extends PureComponent {
     })
   }
 
-  audioStop() {
+  audioStop () {
     this.setState({
       track: {
         ...this.state.track, currentTime: 0, percentage: 0, playing: false,
@@ -236,7 +242,7 @@ class App extends PureComponent {
     this.audio.repeat(repeat);
   }
 
-  render() {
+  render () {
     return (
       <main className="app">
         <audio id="audio" crossOrigin="anonymous"></audio>

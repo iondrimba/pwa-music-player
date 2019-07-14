@@ -60,7 +60,7 @@ class AlbumCover extends PureComponent {
     this.imageDummy.onload = this._onLoadDummyImage;
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps) {
     if (prevProps.src !== this.props.src) {
       this._displayLoadingCover();
     }

@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import Audio from '../helpers/audio';
 import App from './index.js';
 import mockTracks from '../data/mockTracks';
+import mockPlaylistResponse from '../data/mockPlaylistResponse';
 import { audioContext } from '../helpers/audio/mock';
 
 jest.mock('../helpers/audio');
@@ -19,6 +20,16 @@ describe('App', () => {
 
     ReactDOM.render(<App audioContext={audioContext()} />, div);
     ReactDOM.unmountComponentAtNode(div);
+  });
+
+
+  it('does not crash when image without artwork_url', async () => {
+    const component = shallow(<App audioContext={audioContext()} />);
+    const instance = component.instance();
+
+    expect(() => {
+      instance.updateSate(mockPlaylistResponse)
+    }).not.toThrow();
   });
 
   describe('onListClck', () => {

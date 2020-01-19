@@ -22,8 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --runInBand --no-cache",
-    "coverage": "react-scripts test --coverage",
-    "eject": "react-scripts eject"
+    "coverage": "react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

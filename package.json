@@ -7,7 +7,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "fast-average-color": "^6.0.2",
     "history": "^4.10.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.0",

@@ -1,4 +1,4 @@
-## :radio: PWA Music Player https://playlist.iondrimbafilho.me
+# :radio: PWA Music Player <https://playlist.iondrimbafilho.me>
 
 [![Build Status](https://travis-ci.org/iondrimba/pwa-music-player.svg?branch=master)](https://travis-ci.org/iondrimba/pwa-music-player)
 [![Build status](https://ci.appveyor.com/api/projects/status/2851mlkko79pif6y/branch/master?svg=true)](https://ci.appveyor.com/project/iondrimba/pwa-music-player)
@@ -8,6 +8,7 @@
 
 ![Demo](https://raw.githubusercontent.com/iondrimba/images/master/playlist.gif?raw=true)
 
-#### About
+## About
+
 This is a personal project built in my spare time for learning purposes.
 It uses the official [SoundCloud](https://developers.soundcloud.com/docs/api)

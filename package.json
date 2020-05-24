@@ -8,6 +8,7 @@
     "fast-average-color": "^5.2.0",
     "history": "^4.9.0",
     "node-sass": "^4.12.0",
+    "npm-force-resolutions": "0.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -19,11 +20,11 @@
     "node": ">=10"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "coverage": "react-scripts test --coverage",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --runInBand --no-cache",
+    "coverage": "react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,5 +43,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "resolutions": {
+    "yargs-parser": ">=18.1.2",
+    "minimist": "^1.2.5"
+  }
 }

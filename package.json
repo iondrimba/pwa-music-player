@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "fast-average-color": "^5.2.0",
     "history": "^4.9.0",
     "node-sass": "^4.12.0",

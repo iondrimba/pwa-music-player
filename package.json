@@ -10,7 +10,7 @@
     "node-sass": "^4.12.0",
     "npm-force-resolutions": "0.0.3",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
+    "react": "^16.13.1",
     "react-dom": "^16.8.6",
     "react-loadable": "^5.5.0",
     "react-scripts": "^3.0.1",

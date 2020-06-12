@@ -5,7 +5,7 @@
   "dependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "fast-average-color": "^5.2.0",
+    "fast-average-color": "^6.0.2",
     "history": "^4.9.0",
     "node-sass": "^4.12.0",
     "npm-force-resolutions": "0.0.3",

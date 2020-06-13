@@ -26,12 +26,12 @@ class App extends PureComponent {
   }
 
   componentDidMount () {
-    this.history.listen((location) => {
+    this.history.listen((history) => {
       this.setState(() => {
-        return { currentView: this.history.location.state.view || '/' };
+        return { currentView: history.location.state.view || '/' };
       });
 
-      if (location.state.view === 'list' && !this.state.tracks[0].id) {
+      if (history.location.state.view === 'list' && !this.state.tracks[0].id) {
         this.fetchPlayList();
       };
     });

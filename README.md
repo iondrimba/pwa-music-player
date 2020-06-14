@@ -1,5 +1,5 @@
 # :radio: PWA Music Player <https://playlist.iondrimbafilho.me>
-
+![Node.js CI](https://github.com/iondrimba/pwa-music-player/workflows/Node.js%20CI/badge.svg)
 [![Build Status](https://travis-ci.org/iondrimba/pwa-music-player.svg?branch=master)](https://travis-ci.org/iondrimba/pwa-music-player)
 [![Build status](https://ci.appveyor.com/api/projects/status/2851mlkko79pif6y/branch/master?svg=true)](https://ci.appveyor.com/project/iondrimba/pwa-music-player)
 [![Build status](https://david-dm.org/iondrimba/pwa-music-player.svg)](https://david-dm.org/iondrimba/pwa-music-player?view=list)

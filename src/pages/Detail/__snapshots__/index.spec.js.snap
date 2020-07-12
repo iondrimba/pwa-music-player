@@ -98,6 +98,9 @@ exports[`Detail renders without errors 1`] = `
         onClick={[Function]}
         tabIndex="0"
       >
+        <div
+          className="divider"
+        />
         <svg
           width={16}
         >
@@ -141,6 +144,9 @@ exports[`Detail renders without errors 1`] = `
         >
           play-arrow.svg
         </svg>
+        <div
+          className="divider"
+        />
       </button>
       <button
         aria-label="song link"

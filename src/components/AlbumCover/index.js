@@ -44,8 +44,7 @@ class AlbumCover extends PureComponent {
     this.view.current.style.boxShadow = `0 24px 35px -16px rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.7)`;
   }
 
-  _displayAlbumCover() {
-    this.image.current.attributes.src = this.props.src;
+  async _displayAlbumCover() {
     this.image.current.classList.add('album-cover__image--loaded');
   }
 

@@ -56,6 +56,7 @@
   }
 
   .prev-button, .next-button {
+    align-items: center;
     border: 0;
     border-radius: 50%;
     width: 50px;
@@ -76,21 +77,24 @@
     }
 
     svg {
+      align-items: center;
       fill: $base-color;
+      height: 16px;
+      width: 16px;
     }
 
     &:before {
+      border-radius: 50px;
+      border: solid 2px $border-color;
+      box-shadow: 0px 0px 0px 4px rgba(123, 177, 243, 0.43);
       content: '';
       display: block;
-      position: absolute;
-      opacity: .01;
-      width: 100%;
       height: 100%;
-      border: solid 2px $border-color;
-      border-radius: 50px;
-      transition: opacity .3s;
-      box-shadow: 0px 0px 0px 4px rgba(123, 177, 243, 0.43);
+      opacity: .01;
+      position: absolute;
       top: -2px;
+      transition: opacity .3s;
+      width: 100%;
     }
   }
 
@@ -103,28 +107,16 @@
   }
 
   .next-button, .prev-button {
-    &::after {
-      content: '';
+    .divider {
       display: block;
       height: 16px;
       width: 3px;
-      position: absolute;
       border-radius: 6px;
       background: $base-color;
     }
   }
 
-  .next-button {
-    &::after {
-      margin-left: 10px;
-    }
-  }
-
   .prev-button {
-    &::after {
-      margin-left: -10px;
-    }
-
     svg {
       transform: scale(-1);
     }

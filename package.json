@@ -23,8 +23,7 @@
     "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --runInBand --no-cache",
-    "coverage": "CI=true react-scripts test --coverage"
+    "test": "CI=true react-scripts test --runInBand --no-cache --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

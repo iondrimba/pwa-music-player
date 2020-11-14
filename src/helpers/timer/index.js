@@ -1,4 +1,4 @@
-export default (totalSeconds) => {
+const timer = (totalSeconds) => {
   const sec_num = parseInt(totalSeconds, 10);
   let hours = Math.floor(sec_num / 3600);
   let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
@@ -9,3 +9,5 @@ export default (totalSeconds) => {
 
   return `${minutes}:${seconds}`;
 }
+
+export default timer;

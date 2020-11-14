@@ -4,23 +4,22 @@
   "private": true,
   "dependencies": {
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3",
-    "fast-average-color": "^6.0.2",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "fast-average-color": "^6.2.0",
     "history": "^5.0.0",
-    "node-sass": "^4.12.0",
-    "npm-force-resolutions": "0.0.3",
+    "node-sass": "^4.14.1",
+    "npm-force-resolutions": "^0.0.3",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-loadable": "^5.5.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^4.0.0",
     "react-test-renderer": "^16.13.1"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=15"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "CI=true react-scripts test --runInBand --no-cache --coverage"

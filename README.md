@@ -1,5 +1,7 @@
 # :radio: PWA Music Player <https://playlist.iondrimbafilho.me>
 
+### ⚠️ Soundcloud API change their authentication method and currently this App is not working
+
 ![build](https://github.com/iondrimba/pwa-music-player/workflows/build/badge.svg?branch=master)
 ![deploy](https://github.com/iondrimba/pwa-music-player/workflows/deploy/badge.svg?branch=master)
 ![CodeQL](https://github.com/iondrimba/pwa-music-player/workflows/CodeQL/badge.svg?branch=master)

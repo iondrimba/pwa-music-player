@@ -21,7 +21,7 @@ describe('AlbumCover', () => {
     });
   });
 
-  describe('onLoadImage', () => {
+  describe.skip('onLoadImage', () => {
     it('calls _hideLoader _setAlbumShadowColor _displayAlbumCover', async () => {
       const component = mount(<AlbumCover src="https://i1.sndcdn.com/artworks-000021994411-0lr2l2-t300x300.jpg" alt="John Doe alt." />);
       const instance = component.instance();

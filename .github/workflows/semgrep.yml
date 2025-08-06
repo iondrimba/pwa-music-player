@@ -30,4 +30,4 @@ jobs:
       - name: Run Semgrep
         run: |
           export SEMGREP_BASELINE_REF="${{ github.base_ref }}" # For pull requests
-          semgrep ci --config auto --error
+          semgrep ci

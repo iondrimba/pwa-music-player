@@ -28,6 +28,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Semgrep
-        run: |
-          export SEMGREP_BASELINE_REF="${{ github.base_ref }}" # For pull requests
-          semgrep ci
+      - run: semgrep scan --config auto --error

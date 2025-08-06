@@ -1,26 +1,27 @@
+# Name of this GitHub Actions workflow.
+name: Semgrep CE scan
+
 on:
-  workflow_dispatch: {}
+  # Scan in PRs:
   pull_request: {}
+  # Scan on-demand through GitHub Actions interface:
+  workflow_dispatch: {}
+  # Scan mainline branches and report all findings:
   push:
-    branches:
-    - main
-    - master
-    paths:
-    - .github/workflows/semgrep.yml
-  schedule:
-  # random HH:MM to avoid a load spike on GitHub Actions at 00:00
-  - cron: 42 3 * * *
-name: Semgrep
+    branches: ["master", "!main"]
+
+permissions:
+  contents: read
+
 jobs:
   semgrep:
-    name: semgrep/ci
+    name: semgrep-oss/scan
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    env:
-      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     container:
+      # A Docker image with Semgrep installed. Do not change this.
       image: semgrep/semgrep
+    if: (github.actor != 'dependabot[bot]')
     steps:
-    - uses: actions/checkout@v4
-    - run: semgrep ci
+      - uses: actions/checkout@v4
+      - name: Run Semgrep
+        run: semgrep scan --config auto --error

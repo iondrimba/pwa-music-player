@@ -19,20 +19,12 @@ permissions:
 
 jobs:
   semgrep:
-    # User definable name of this GitHub Actions job.
     name: semgrep-oss/scan
-    # If you are self-hosting, change the following `runs-on` value: 
     runs-on: ubuntu-latest
-
-    container:
-      # A Docker image with Semgrep installed. Do not change this.
-      image: semgrep/semgrep
-
-    # Skip any PR created by dependabot to avoid permission issues:
     if: (github.actor != 'dependabot[bot]')
-
     steps:
-      # Fetch project source with GitHub Actions Checkout. Use either v3 or v4.
       - uses: actions/checkout@v4
-      # Run the "semgrep scan" command on the command line of the docker image.
-      - run: semgrep scan --config auto --error
+      - name: Run Semgrep
+        run: |
+          export SEMGREP_BASELINE_REF="${{ github.base_ref }}" # For pull requests
+          semgrep ci --config auto --error

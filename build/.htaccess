@@ -489,7 +489,7 @@ AddDefaultCharset utf-8
 
 <IfModule mod_headers.c>
 
-    Header set Content-Security-Policy: "default-src 'self' https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.6/rollbar.min.js; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.6/rollbar.min.js; img-src 'self' data: stats.g.doubleclick.net https://i1.sndcdn.com; media-src 'self' https://soundcloud-api.vercel.app/api https://ec-media.sndcdn.com https://cf-media.sndcdn.com; font-src https://fonts.gstatic.com; connect-src https://soundcloud-api.vercel.app/api https://api.rollbar.com/api/1/item/ https://cdnjs.cloudflare.com https://soundcloud-api.vercel.app"
+    Header set Content-Security-Policy: "default-src 'self' https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.6/rollbar.min.js; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.6/rollbar.min.js; img-src 'self' data: stats.g.doubleclick.net https://i1.sndcdn.com; media-src 'self' https://api.soundcloud.com https://soundcloud-api.vercel.app/api https://ec-media.sndcdn.com https://cf-media.sndcdn.com; font-src https://fonts.gstatic.com; connect-src https://playlist.iondrimbafilho.me https://soundcloud-api.vercel.app/api https://api.rollbar.com/api/1/item/ https://cdnjs.cloudflare.com https://soundcloud-api.vercel.app"
 
     # `mod_headers` cannot match based on the content-type, however,
     # the `Content-Security-Policy` response header should be send

@@ -1,5 +1,5 @@
 import React, { PureComponent, Suspense, lazy } from 'react';
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history';
 import Home from '../pages/Home';
 import percent from '../helpers/percent';
 import Menu from '../components/Menu';
@@ -43,14 +43,14 @@ class App extends PureComponent {
 
   onStartClick = () => {
     this.changeView('list');
-  }
+  };
 
   fetchPlayList = async () => {
     const result = await fetch(this.playlistUrl);
     const tracks = await result.json();
 
     this.updateSate(tracks);
-  }
+  };
 
   updateSate(tracks) {
     const updatedState = {
@@ -119,7 +119,7 @@ class App extends PureComponent {
 
   selectTrack = (id) => {
     return this.state.tracks.filter((track) => Number(id) === track.id)[0];
-  }
+  };
 
   setupAudio() {
     this.timeupdate = this.timeupdate.bind(this);
@@ -135,7 +135,7 @@ class App extends PureComponent {
           changingTrack: false
         };
       });
-    })
+    });
   }
 
   audioStop() {
@@ -155,7 +155,7 @@ class App extends PureComponent {
         percentage: percent(evt.target.currentTime, evt.target.duration) / 100
       }
     });
-  }
+  };
 
   onListClick = (id) => {
     if (id !== this.state.track.id) {
@@ -178,14 +178,14 @@ class App extends PureComponent {
     this.changeView('detail');
 
     this.onPlayClick(track);
-  }
+  };
 
   onPlayClick = async (track) => {
     if (!track.played) {
       const result = await fetch(track.stream_url);
       const urlstream = await result.json();
 
-      this.audio.setAudioSource(urlstream.http_mp3_128_url);
+      this.audio.setAudioSource(urlstream.hls_mp3_128_url);
     }
 
     this.setState(() => {
@@ -201,7 +201,7 @@ class App extends PureComponent {
 
     this.audio.resume();
     this.audio.play();
-  }
+  };
 
   onPauseClick = (track) => {
     this.audio.pause();
@@ -213,9 +213,9 @@ class App extends PureComponent {
           paused: true,
           playing: false
         }
-      }
+      };
     });
-  }
+  };
 
   onBackClick = () => {
     this.history.go(-1);
@@ -223,19 +223,19 @@ class App extends PureComponent {
     this.setState(() => {
       return { currentView: this.history.location.state.view || '/' };
     });
-  }
+  };
 
   onAboutClick = () => {
     this.changeView('about');
-  }
+  };
 
   onPlayNext = () => {
     this.changeTrack(this.getNextTrack());
-  }
+  };
 
   onPlayPrev = () => {
     this.changeTrack(this.getPreviousTrack());
-  }
+  };
 
   onRepeatClick = () => {
     const repeat = !this.state.repeat;
@@ -245,7 +245,7 @@ class App extends PureComponent {
     });
 
     this.audio.repeat(repeat);
-  }
+  };
 
   render() {
     return (

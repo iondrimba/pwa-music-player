@@ -14,6 +14,12 @@ jobs:
       matrix:
         node-version: [15.x]
     steps:
+      - name: Check and resolve conflicts
+        run: |
+          git status
+          git diff --name-only --diff-filter=U | xargs git checkout --ours
+          git add .
+          git commit -m "Resolve conflicts automatically" || true
       - name: SSH Deploy
         uses: garygrossgarten/github-action-ssh@release
         with:
